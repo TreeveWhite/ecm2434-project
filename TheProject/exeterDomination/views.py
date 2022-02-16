@@ -23,5 +23,5 @@ def game(request : request) -> HttpResponse:
     return render(request, "exeterDomination/gamePage.html", context)
 
 def leaderboard(request : request) -> HttpResponse:
-    context = {'scores' : [['ExamplePlayerName', "100"]]}
+    context = {'player_scores' : [['ExamplePlayerName', "100"], ], }
     return render(request, "exeterDomination/leaderboardPage.html", context)
