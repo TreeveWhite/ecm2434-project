@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboards | Exeter Domination</title>
+</head>
+<body>
+    <h1>Exeter Domination</h1>
+    <p>These are the live current leaderboards for the game!</p>
+    <br>
+    {% for score in scores %}
+        {% for player in data %}
+            <p>{{ player }} |</p>
+        {% endfor %}
+        <br>         
+    {% endfor %}
+</body>
+</html>
