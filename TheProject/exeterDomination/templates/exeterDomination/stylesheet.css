@@ -1,0 +1,25 @@
+/* #F06543 - orangey
+#E8E9EB - platinum
+#E0DFD5 - greyish
+#313638 - blackish
+#F09D51 - sandy brown
+ */
+body{
+    background-color: #E8E9EB;
+}
+
+text{
+    color: #313638;
+}
+
+.buttons{
+    background-color:#F09D51;
+}
+
+input, text{
+    background-color: #E0DFD5;
+}
+input::placeholder{
+    color:#313638
+}
+
