@@ -1,0 +1,11 @@
+[
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 1,
+        "fields": {
+            "name" : "harrison",
+            "logitude" : 0,
+            "latitude" : 0
+        }
+    }
+]
