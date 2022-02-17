@@ -1,6 +1,8 @@
+import pydoc
 from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render
+from exeterDomination.models import Users, Locations
 
 def index(request : request) -> HttpResponse:
     context = {}
@@ -11,8 +13,8 @@ def about(request : request) -> HttpResponse:
     return render(request, "exeterDomination/aboutPage.html", context)
 
 def login(request : request) -> HttpResponse:
-    context = {}
-    return render(request, "exeterDomination/loginPage.html", context)
+
+    return render(request, "exeterDomination/loginPage.html", {})
 
 def signup(request : request) -> HttpResponse:
     context = {}
