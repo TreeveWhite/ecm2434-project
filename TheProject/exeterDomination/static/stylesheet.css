@@ -64,3 +64,25 @@ html {
 .arcade-font {
     font-family: 'Press Start 2P';
 }
+
+.Codle{
+    text-align: center;
+}
+#grid{
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+h1 {
+    font-size: 42px
+}
+.cell {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #aaa;
+    display: inline-block;
+    margin: 10px;
+    font-size: 40px;
+    font-weight: bold;
+}
