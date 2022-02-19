@@ -1,0 +1,66 @@
+:root {
+    --background: #ced0ce;
+    --darkContrast: #3f403f;
+    --highlight: #e6e8e6;
+    --medContrast: #475841;
+    --lowContrast: #776472;
+}
+
+html {
+    background-color: var(--background);
+}
+
+.myNavbar {
+    background-color: var(--darkContrast);
+}
+
+.main {
+    background-color: var(--background);
+}
+
+.flexColumn {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.flexRow {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button1 {
+    background-color: var(--medContrast);
+    height: 60vh;
+    width: 32vw;
+}
+
+.button2 {
+    background-color: var(--darkContrast);
+    height: 60vh;
+    width: 32vw;
+}
+
+.button3 {
+    background-color: var(--lowContrast);
+    height: 60vh;
+    width: 32vw;
+}
+
+.formButton {
+    background-color: var(--medContrast);
+    width: 20vw;
+    height: 10vh;
+}
+
+.cancelButton {
+    background-color: red;
+    width: 20vw;
+    height: 10vh;
+}
+
+.arcade-font {
+    font-family: 'Press Start 2P';
+}
