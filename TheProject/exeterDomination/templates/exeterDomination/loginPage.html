@@ -37,13 +37,17 @@
     </div>
 
     <div class="fluid-container p-5">
-      <label for="usrname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-      <br><br>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-      <br><br>
-      <button class="formButton" type="submit">Login</button>
+      <div class="d-flex flex-fill justify-content-center">
+        <form action="" method="post" class="justify-container-center">
+          <label for="usrname"><b>Username: </b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+          <br><br>
+          <label for="psw"><b>Password: </b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <br><br>
+          <input class="formButton arcade-font" type="submit" value="Login">
+        </form>
+      </div>
     </div>
   </div>
 </body>
