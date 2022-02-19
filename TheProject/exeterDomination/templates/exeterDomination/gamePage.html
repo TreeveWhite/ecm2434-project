@@ -31,14 +31,19 @@
             <h1 class="arcade-font h-5">Exeter Domination</h1>
         </div>
 
-        <div class="fluid-container p-5 d-flex flex-column justify-content-center">
-            <form action="/claim" method="get" class="justify-content-center">
-                <input type="submit" class="formButton arcade-font" value="Compete">
-            </form>
+        <div class="fluid-container p-3 d-flex flex-column justify-content-center">
+            <noscript id="no_script"></noscript>
+            <h3 class="Codle">Compete to Claim Building</h1>
+            <p class="Codle">Please enter Computer Science related words until you get the correct answer. <br> Only then will you be able to claim the building.</p>
+            <div id="grid"></div>
+            {% load static %}
+            <script src="{% static 'compSciWordle.js' %}"></script>  
         </div>
 
-        <div class="fluid-container p-5 d-flex flex-column justify-content-center">
-            <script src="compSciWordle.js"></script>
+        <div class="d-flex p-2 flex-fill justify-content-center">
+            <form action="/claim" method="get" class="d-flex flex-column justify-content-center">
+                <input type="submit" class="formButton arcade-font" value="Claim Building">
+            </form>
         </div>
     </div>
 </body>
