@@ -68,14 +68,13 @@ html {
 .Codle{
     text-align: center;
 }
+
 #grid{
     color: white;
     text-align: center;
     text-transform: uppercase;
 }
-h1 {
-    font-size: 42px
-}
+
 .cell {
     width: 60px;
     height: 60px;
