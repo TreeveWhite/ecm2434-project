@@ -20,13 +20,19 @@ let wordList = [
   'virus',
   'robot',
   'cable',
-  'hacks'
+  'hacks',
+  'buggy',
+  'agile',
+  'cloud',
+  'cyber',
 ];
 let randomIndex = Math.floor(Math.random() * wordList.length)
 let secret = wordList[randomIndex]
 
 let currentAttempt = ''
+let counter = 0
 let history = []
+let score = 0
 function startGame(){
     let grid = document.getElementById('grid')
     buildGrid()
@@ -47,11 +53,139 @@ function handleKeyDown(e) {
     currentAttempt = ''
   } else if (letter === 'backspace') {
     currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1)
-  } else if (/[a-z]/.test(letter)) {
+    updateGrid()
+    //#region 
+  } else if (letter === 'a') {
     if (currentAttempt.length < 5) {
       currentAttempt += letter
     }
   }
+  else if (letter === 'b') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'c') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'd') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'e') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'f') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'g') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'h') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'i') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'j') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'k') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'l') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'm') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'n') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'o') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'p') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'q') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'r') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 's') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 't') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'u') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'v') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'w') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'x') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'y') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  else if (letter === 'z') {
+    if (currentAttempt.length < 5) {
+      currentAttempt += letter
+    }
+  }
+  //#endregion
   updateGrid()
 }
 
@@ -119,3 +253,4 @@ restartBtn.addEventListener("click", function restartGame(){
     location.reload();
 });
 grid.append(restartBtn);
+
