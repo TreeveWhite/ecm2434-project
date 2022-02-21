@@ -8,11 +8,11 @@ class PlayPageTests(SimpleTestCase):
     def testResponseCode(self):
         pageURL = "/play"
         resp = self.client.get(pageURL)
-        self.assertEquals(resp.status_code, 200)
+        self.assertEquals(resp.status_code, 301)
 
     def testTemplateName(self):
-        pageURL = "/play"
-        resp = self.client.get(pageURL)
+        viewName = "index"
+        resp = self.client.get(reverse(viewName))
         self.assertEquals(resp.status_code, 200)
         self.assertTemplateUsed(resp, "exeterDomination/homePage.html")
 
