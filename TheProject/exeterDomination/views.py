@@ -72,3 +72,7 @@ def game(request : request) -> HttpResponse:
 def leaderboard(request : request) -> HttpResponse:
     context = {'player_scores' : [['ExamplePlayerName', "100"], ], }
     return render(request, "exeterDomination/leaderboardPage.html", context)
+
+def locations(request : request) -> HttpResponse:
+    context = {}
+    return render(request, "exeterDomination/locationsPage.html", context)
