@@ -13,8 +13,12 @@ class TestGame(TestCase):
     """
 
     def setUp(self):
-        # Must be changed when sessions are implemented
-        User.objects.create(username="test", password="password")
+        user = User.objects.create(username='testuser')
+        # Creates a test user
+        user.set_password("abdlklnkf3-3432r@dd")
+        # Sets a password
+        user.save()
+        # Saves the test user info
 
     def testGameWithNoLogin(self):
         """
@@ -22,24 +26,19 @@ class TestGame(TestCase):
         visit the gameplay page without being logged in.
         """
         resp = self.client.get(reverse('game'), follow=True)
-        # Change this if redirect location changes later down the line
-        self.assertRedirects(resp, '/play/login')
-        # Change this if redirect location changes
+        self.assertRedirects(resp, '/play/login?next=%2Fplay%2Fgame')
         self.assertTemplateUsed(resp, 'exeterDomination/loginPage.html')
-        # later down the line
 
     def testGameWithLogin(self):
         """
         Tests if the user is taken to the gameplay page if they
         access it while being logged in already.
         """
-        # Must be changed when sessions are implemented
-        self.client.login(username="test", password="password")
-        #c = Client(enforce_csrf_checks=True)
-        # c.force_login("test")
-        resp = self.client.get(reverse('game'))
-        self.assertRedirects(resp, '/play/game')
-        self.assertTemplateUsed(resp, "exeterDomination/gamePage.html")
+        c = Client()
+        logged_in = c.login(username="testuser", password="abdlklnkf3-3432r@dd")
+        # Logs in with the test user information
+        resp = c.get(reverse('game'))
+        self.assertEquals(resp.status_code, 200)
 
 
 class TestLoginPage(TestCase):
@@ -48,8 +47,12 @@ class TestLoginPage(TestCase):
     """
 
     def setUp(self):
-        # Must be changed when sessions are implemented
-        User.objects.create(username="test", password="password")
+        user = User.objects.create(username='testuser')
+        # Creates a test user
+        user.set_password("abdlklnkf3-3432r@dd")
+        # Sets a password
+        user.save()
+        # Saves the test user info
 
     def testLoginPageWhileLoggedOut(self):
         """
@@ -67,12 +70,12 @@ class TestLoginPage(TestCase):
         to the correct page if they navigate to the login
         page and are already logged in.
         """
-        # Must be changed when sessions are implemented
-        self.client.login(username="test", password="password")
-        resp = self.client.get(reverse('login'))
+        c = Client()
+        logged_in = c.login(username="testuser", password="abdlklnkf3-3432r@dd")
+        resp = c.get(reverse('login'))
         # Not sure where to check the site sends the logged in user
-        self.assertRedirects(resp, '/play/game/')
-        self.assertTemplateUsed(resp, 'exeterDomination/gamePage.html')
+        self.assertEqual(resp.url, "/play/game")
+        self.assertEqual(resp.status_code, 302)
 
 
 class TestSignUpPage(TestCase):
@@ -81,8 +84,12 @@ class TestSignUpPage(TestCase):
     """
 
     def setUp(self):
-        # Must be changed when sessions are implemented
-        User.objects.create(username="test", password="password")
+        user = User.objects.create(username='testuser')
+        # Creates a test user
+        user.set_password("abdlklnkf3-3432r@dd")
+        # Sets a password
+        user.save()
+        # Saves the test user info
 
     def testSignUpPageWhileSignedIn(self):
         """
@@ -90,12 +97,11 @@ class TestSignUpPage(TestCase):
         the appropriate page if they navigate to the
         signup page while already logged in.
         """
-        # Must be changed when sessions are implemented
-        self.client.login(username="test", password="password")
-        resp = self.client.get(reverse('signup'))
-        # Not sure where to check the site sends the logged in user
-        self.assertRedirects(resp, '/play/game/')
-        self.assertTemplateUsed(resp, 'exeterDomination/gamePage.html')
+        c = Client()
+        logged_in = c.login(username="testuser", password="abdlklnkf3-3432r@dd")
+        resp = c.get(reverse('signup'))
+        self.assertEqual(resp.status_code, 302)
+        self.assertEqual(resp.url, '/play/game')
 
     def testSignUpPageWhileSignedOut(self):
         """
@@ -108,5 +114,6 @@ class TestSignUpPage(TestCase):
         self.assertTemplateUsed(resp, 'exeterDomination/signUpPage.html')
 
 
-# class TestLeaderboardPage(TestCase):
-#    def testLeaderboardPage(self):
+# TODO:
+## 1. Make a leaderboard test, compare logged in and logged out versions.
+## 2. Finish up docstrings

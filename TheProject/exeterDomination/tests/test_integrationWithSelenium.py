@@ -47,11 +47,8 @@ class SeleniumLoginTest(StaticLiveServerTestCase, TestCase):
             "//input[@class='formButton arcade-font']")
         button.click()
         self.selenium.implicitly_wait(5)
-        assert "Login" and "Sign Up" not in self.selenium.page_source
         assert self.selenium.title != "Login | Exeter Domination"
-        # assert "<h1>Forbidden <span>(403)</span></h1>" not in self.selenium.page_source
-        # The above test will continually fail until the login / signup system
-        # has been implemented
+
 
 
 class SignUpWithSeleniumTest(StaticLiveServerTestCase, TestCase):
@@ -85,19 +82,16 @@ class SignUpWithSeleniumTest(StaticLiveServerTestCase, TestCase):
         self.selenium.get(self.live_server_url + "/play/signup")
         testUsername = self.selenium.find_element_by_name("username")
         testUsername.send_keys("testUser1")
-        testPassword = self.selenium.find_element_by_name("password")
-        testPassword.send_keys("password")
-        testRepeatPassword = self.selenium.find_element_by_name("psw-repeat")
-        testRepeatPassword.send_keys("password")
+        testPassword = self.selenium.find_element_by_name("password1")
+        testPassword.send_keys("ab43aa1-pejhf@33b")
+        testRepeatPassword = self.selenium.find_element_by_name("password2")
+        testRepeatPassword.send_keys("ab43aa1-pejhf@33b")
         signUpButton = self.selenium.find_element_by_xpath(
             "//input[@class='formButton arcade-font']")
         signUpButton.click()
         self.selenium.implicitly_wait(5)
-        assert "Login" and "Sign Up" not in self.selenium.page_source
         assert self.selenium.title != "Sign Up | Exeter Domination" or "Log In | Exeter Domination"
-        # assert "<h1>Forbidden <span>(403)</span></h1>" not in self.selenium.page_source
-        # The above test will continually fail until the login / signup system
-        # has been implemented
+
 
 
 class testNavigationLinks(StaticLiveServerTestCase, TestCase):
@@ -134,23 +128,6 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         assert self.selenium.title == "Home | Exeter Domination"
         assert self.selenium.current_url == self.live_server_url + "/play/"
 
-    def testHomeToPlayBackToHome(self):
-        """
-        This function tests that the navigation buttons from the home
-        page to the play game page and back are in working order.
-        """
-        self.selenium.get(self.live_server_url + "/play")
-        playButton = self.selenium.find_element_by_xpath(
-            "//input[@class='arcade-font button1']")
-        playButton.click()
-        assert self.selenium.title == "Play Game | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/play/game"
-        assert "<h3 class=\"Codle\">Compete to Claim Building</h3>" in self.selenium.page_source
-        homeButton = self.selenium.find_element_by_xpath(
-            "//a[contains(@href, '/play')]")
-        homeButton.click()
-        assert self.selenium.title == "Home | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/play/"
 
     def testHomeToLeaderboardToHome(self):
         """
