@@ -1,8 +1,6 @@
 from django.urls import reverse
 from django.test import SimpleTestCase
 
-from .. import views
-
 
 class PlayPageTests(SimpleTestCase):
     def testResponseCode(self):
