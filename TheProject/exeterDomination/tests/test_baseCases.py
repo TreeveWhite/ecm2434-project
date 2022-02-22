@@ -155,17 +155,8 @@ class GamePageTests(SimpleTestCase):
         """
         pageURL = "/play/game"
         resp = self.client.get(pageURL)
-        self.assertEquals(resp.status_code, 200)
+        self.assertEquals(resp.status_code, 302)
 
-    def testTemplateName(self):
-        """
-        This test checks that the correct template is loaded
-        when the user navigates to the gameplay page.
-        """
-        pageURL = "/play/game"
-        resp = self.client.get(pageURL)
-        self.assertEquals(resp.status_code, 200)
-        self.assertTemplateUsed(resp, "exeterDomination/gamePage.html")
 
     def testView(self):
         """
@@ -174,7 +165,7 @@ class GamePageTests(SimpleTestCase):
         """
         viewName = "game"
         resp = self.client.get(reverse(viewName))
-        self.assertEquals(resp.status_code, 200)
+        self.assertEquals(resp.status_code, 302)
 
 
 class LeaderboardPageTests(SimpleTestCase):

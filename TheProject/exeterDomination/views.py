@@ -19,36 +19,48 @@ def about(request : request) -> HttpResponse:
     return render(request, "exeterDomination/aboutPage.html", context)
 
 def login(request : request) -> HttpResponse:
-    if request.method == "GET":
-        return render(request, "exeterDomination/loginPage.html", {})
-    if request.method == "POST":
-        username = request.POST['uname']
-        password = request.POST['psw']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            k(request, user)
-            print("LOGGED IN")
-        else:
+    if not request.user.is_authenticated:
+        if request.method == "GET":
             return render(request, "exeterDomination/loginPage.html", {})
-    return redirect(request, 'game')
+        if request.method == "POST":
+            username = request.POST['uname']
+            password = request.POST['psw']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                k(request, user)
+                print("LOGGED IN")
+            else:
+                return render(request, "exeterDomination/loginPage.html", {})
+        return redirect('game')
+    else:
+        return redirect('game')
+
 
 
 def signup(request : request) -> HttpResponse:
-    if request.method == 'GET':
-        form = SignUpForm()
-        context = {'form': form}
-        return render(request, "exeterDomination/signUpPage.html", context)
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            return redirect(reverse('index'))
-        else:
-            print('Form is not valid')
+    if not request.user.is_authenticated:
+        if request.method == 'GET':
+            form = SignUpForm()
             context = {'form': form}
-            return render(request, 'exeterDomination/signUpPage.html', context)
-    return render(request, "exeterDomination/signUpPage.html", {})
+            return render(request, "exeterDomination/signUpPage.html", context)
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+            username = request.POST['username']
+            password = request.POST['password1']
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                user2 = authenticate(request, username=username, password=password)
+                if user2 is not None:
+                    k(request, user2)
+                return redirect(reverse('index'))
+            else:
+                print('Form is not valid')
+                context = {'form': form}
+                return render(request, 'exeterDomination/signUpPage.html', context)
+        return render(request, "exeterDomination/signUpPage.html", {})
+    else:
+        return redirect('game')
 
 
 @login_required(login_url='/play/login')
