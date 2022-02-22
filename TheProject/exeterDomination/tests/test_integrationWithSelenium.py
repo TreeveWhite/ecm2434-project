@@ -23,6 +23,18 @@ class SeleniumLoginTest(StaticLiveServerTestCase, TestCase):
         super().tearDownClass()
 
     def testLoginFunctionality(self):
+        """
+        This function navigates directly to the login page, enters a username and
+        password, and then presses the login button. It then checks that the user
+        is logged in.
+
+        Before Login Implementation:
+            * assert that the page you are taken to after login does not contain
+              Login or Sign Up
+        After Login Implementation:
+            * check for some personal information in the page source, such as
+              username in the top right corner.
+        """
         self.selenium.get(self.live_server_url + "/play/login")
         unameInput = self.selenium.find_element_by_name("uname")
         # Need to tweak this to allow us to use this username in final build
@@ -45,7 +57,7 @@ class SeleniumLoginTest(StaticLiveServerTestCase, TestCase):
 class SignUpWithSeleniumTest(StaticLiveServerTestCase, TestCase):
     """
     This class will test the sign up system with test credentials and check if the
-    user is sent to the correct loacation.
+    user is sent to the correct location.
     """
     @classmethod
     def setUpClass(cls):
@@ -59,6 +71,17 @@ class SignUpWithSeleniumTest(StaticLiveServerTestCase, TestCase):
         super().tearDownClass()
 
     def testSignUpFunctionality(self):
+        """
+        This function loads the signup page, creates a user account, and presses
+        the signup button. It then checks that the user is redirected directly
+        to a page where they are logged in.
+
+        Before Login Implementation:
+            * Checks that Login and Signup are not in the page's source or title
+        After Login Implementation:
+            * Checks that the user is on the correct page, and their username is
+              in the top right corner.
+        """
         self.selenium.get(self.live_server_url + "/play/signup")
         testUsername = self.selenium.find_element_by_name("username")
         testUsername.send_keys("testUser1")
@@ -95,6 +118,10 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         super().tearDownClass()
 
     def testHomeToAboutBackToHome(self):
+        """
+        This function tests that the navigation buttons from the home
+        page to the about page and back are in working order.
+        """
         self.selenium.get(self.live_server_url + "/play")
         aboutButton = self.selenium.find_element_by_xpath(
             "//input[@class='arcade-font button2']")
@@ -108,6 +135,10 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         assert self.selenium.current_url == self.live_server_url + "/play/"
 
     def testHomeToPlayBackToHome(self):
+        """
+        This function tests that the navigation buttons from the home
+        page to the play game page and back are in working order.
+        """
         self.selenium.get(self.live_server_url + "/play")
         playButton = self.selenium.find_element_by_xpath(
             "//input[@class='arcade-font button1']")
@@ -122,6 +153,10 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         assert self.selenium.current_url == self.live_server_url + "/play/"
 
     def testHomeToLeaderboardToHome(self):
+        """
+        This function tests that the navigation buttons from the home
+        page to the leaderboard page and back are in working order.
+        """
         self.selenium.get(self.live_server_url + "/play")
         leaderboardButton = self.selenium.find_element_by_xpath(
             "//input[@class='arcade-font button3']")
@@ -135,6 +170,10 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         assert self.selenium.current_url == self.live_server_url + "/play/"
 
     def testLeaderboardToLogin(self):
+        """
+        This function tests a likely path for a returning user, who may
+        check the leaderboard and then move to the login page.
+        """
         self.selenium.get(self.live_server_url + "/play/leaderboard")
         loginButton = self.selenium.find_element_by_xpath(
             "//a[contains(@href, 'login')]")
@@ -143,6 +182,11 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         assert self.selenium.current_url == self.live_server_url + "/play/login"
 
     def testLeaderboardToSignUp(self):
+        """
+        This function tests the most likely path for a new user, who may
+        have originally been curious about who was topping the leaderboard,
+        and has subsequently navigated to the sign up page.
+        """
         self.selenium.get(self.live_server_url + "/play/leaderboard")
         signUpButton = self.selenium.find_element_by_xpath(
             "//a[contains(@href, 'signup')]")
