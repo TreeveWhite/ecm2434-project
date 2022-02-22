@@ -5,16 +5,20 @@ from django.contrib.auth.models import User
 
 class TestGame(TestCase):
     def setUp(self):
-        User.objects.create(username="test", password="password")  # Must be changed when sessions are implemented
+        # Must be changed when sessions are implemented
+        User.objects.create(username="test", password="password")
 
     def testGameWithNoLogin(self):
         resp = self.client.get(reverse('game'), follow=True)
-        self.assertRedirects(resp, '/play/login')  # Change this if redirect location changes later down the line
-        self.assertTemplateUsed(resp, 'exeterDomination/loginPage.html')  # Change this if redirect location changes
+        # Change this if redirect location changes later down the line
+        self.assertRedirects(resp, '/play/login')
+        # Change this if redirect location changes
+        self.assertTemplateUsed(resp, 'exeterDomination/loginPage.html')
         # later down the line
 
     def testGameWithLogin(self):
-        self.client.login(username="test", password="password")  # Must be changed when sessions are implemented
+        # Must be changed when sessions are implemented
+        self.client.login(username="test", password="password")
         resp = self.client.get(reverse('game'))
         self.assertRedirects(resp, '/play/game')
         self.assertTemplateUsed(resp, "exeterDomination/gamePage.html")
@@ -22,7 +26,8 @@ class TestGame(TestCase):
 
 class TestLoginPage(TestCase):
     def setUp(self):
-        User.objects.create(username="test", password="password")  # Must be changed when sessions are implemented
+        # Must be changed when sessions are implemented
+        User.objects.create(username="test", password="password")
 
     def testLoginPageWhileLoggedOut(self):
         resp = self.client.get(reverse('login'))
@@ -30,20 +35,25 @@ class TestLoginPage(TestCase):
         self.assertTemplateUsed(resp, 'exeterDomination/loginPage.html')
 
     def testLoginPageWhileLoggedIn(self):
-        self.client.login(username="test", password="password")  # Must be changed when sessions are implemented
+        # Must be changed when sessions are implemented
+        self.client.login(username="test", password="password")
         resp = self.client.get(reverse('login'))
-        self.assertRedirects(resp, '/play/game/')  # Not sure where to check the site sends the logged in user
+        # Not sure where to check the site sends the logged in user
+        self.assertRedirects(resp, '/play/game/')
         self.assertTemplateUsed(resp, 'exeterDomination/gamePage.html')
 
 
 class TestSignUpPage(TestCase):
     def setUp(self):
-        User.objects.create(username="test", password="password")  # Must be changed when sessions are implemented
+        # Must be changed when sessions are implemented
+        User.objects.create(username="test", password="password")
 
     def testSignUpPageWhileSignedIn(self):
-        self.client.login(username="test", password="password")  # Must be changed when sessions are implemented
+        # Must be changed when sessions are implemented
+        self.client.login(username="test", password="password")
         resp = self.client.get(reverse('signup'))
-        self.assertRedirects(resp, '/play/game/')  # Not sure where to check the site sends the logged in user
+        # Not sure where to check the site sends the logged in user
+        self.assertRedirects(resp, '/play/game/')
         self.assertTemplateUsed(resp, 'exeterDomination/gamePage.html')
 
     def testSignUpPageWhileSignedOut(self):
@@ -52,5 +62,5 @@ class TestSignUpPage(TestCase):
         self.assertTemplateUsed(resp, 'exeterDomination/signUpPage.html')
 
 
-#class TestLeaderboardPage(TestCase):
+# class TestLeaderboardPage(TestCase):
 #    def testLeaderboardPage(self):
