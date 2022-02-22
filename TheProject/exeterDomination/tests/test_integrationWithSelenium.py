@@ -50,7 +50,6 @@ class SeleniumLoginTest(StaticLiveServerTestCase, TestCase):
         assert self.selenium.title != "Login | Exeter Domination"
 
 
-
 class SignUpWithSeleniumTest(StaticLiveServerTestCase, TestCase):
     """
     This class will test the sign up system with test credentials and check if the
@@ -93,7 +92,6 @@ class SignUpWithSeleniumTest(StaticLiveServerTestCase, TestCase):
         assert self.selenium.title != "Sign Up | Exeter Domination" or "Log In | Exeter Domination"
 
 
-
 class testNavigationLinks(StaticLiveServerTestCase, TestCase):
     """
     This class is mainly just to test that the hyperlinks, and navigation buttons are
@@ -127,7 +125,6 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         homeButton.click()
         assert self.selenium.title == "Home | Exeter Domination"
         assert self.selenium.current_url == self.live_server_url + "/play/"
-
 
     def testHomeToLeaderboardToHome(self):
         """
