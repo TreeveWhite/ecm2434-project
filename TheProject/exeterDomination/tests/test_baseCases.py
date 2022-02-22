@@ -195,7 +195,7 @@ class LeaderboardPageTests(SimpleTestCase):
     def testTemplateName(self):
         """
         This test checks that the correct template is loaded
-        when the user navigates to the leaderbaord page.
+        when the user navigates to the leaderboard page.
         """
         pageURL = "/play/leaderboard"
         resp = self.client.get(pageURL)

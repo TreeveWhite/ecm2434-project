@@ -39,16 +39,18 @@
     <div class="fluid-container p-5">
       <div class="d-flex flex-fill justify-content-center">
         <form action="" method="post">
+          {% csrf_token %}
           <p>Fill in this form to create an account.</p>
           <br>
           <label for="username"><b>Username: </b></label>
-          <input type="text" placeholder="Username" name="username" required>
+            {{ form.username }}
           <br><br>
           <label for="password"><b>Password: </b></label>
-          <input type="password" placeholder="Password" name="password" required>
+            {{ form.password1 }}
           <br><br>
           <label for="psw-repeat"><b>Re-enter Password: </b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            {{ form.password2 }}
+          <br>
           <br><br>
           <div>
             <input type="submit" class="formButton arcade-font" value="Sign Up">
