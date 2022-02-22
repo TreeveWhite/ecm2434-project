@@ -11,6 +11,7 @@ class TestGame(TestCase):
     code is merely a placeholder until the login implementation is
     complete.
     """
+
     def setUp(self):
         # Must be changed when sessions are implemented
         User.objects.create(username="test", password="password")
@@ -35,7 +36,7 @@ class TestGame(TestCase):
         # Must be changed when sessions are implemented
         self.client.login(username="test", password="password")
         #c = Client(enforce_csrf_checks=True)
-        #c.force_login("test")
+        # c.force_login("test")
         resp = self.client.get(reverse('game'))
         self.assertRedirects(resp, '/play/game')
         self.assertTemplateUsed(resp, "exeterDomination/gamePage.html")
@@ -45,6 +46,7 @@ class TestLoginPage(TestCase):
     """
     This class tests the redirects on the login page.
     """
+
     def setUp(self):
         # Must be changed when sessions are implemented
         User.objects.create(username="test", password="password")
@@ -77,6 +79,7 @@ class TestSignUpPage(TestCase):
     """
     This class tests the redirects on the signUp page.
     """
+
     def setUp(self):
         # Must be changed when sessions are implemented
         User.objects.create(username="test", password="password")

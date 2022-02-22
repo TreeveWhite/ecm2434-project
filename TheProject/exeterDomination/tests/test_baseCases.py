@@ -7,6 +7,7 @@ class HomePageTests(SimpleTestCase):
     This class contains the basic base case tests for the home
     page.
     """
+
     def testResponseCode(self):
         """
         This test checks if the correct response code is given
@@ -41,6 +42,7 @@ class AboutPageTests(SimpleTestCase):
     This class contains the basic base case tests for the about
     page.
     """
+
     def testResponseCode(self):
         """
         This test checks if the correct response code is given
@@ -75,6 +77,7 @@ class LoginPageTests(SimpleTestCase):
     This class contains the basic base case tests for the login
     page.
     """
+
     def testResponseCode(self):
         """
         This test checks if the correct response code is given
@@ -109,6 +112,7 @@ class SignUpPageTests(SimpleTestCase):
     This class contains the basic base case tests for the signup
     page.
     """
+
     def testResponseCode(self):
         """
         This test checks if the correct response code is given
@@ -143,6 +147,7 @@ class GamePageTests(SimpleTestCase):
     This class contains the basic base case tests for the gameplay
     page.
     """
+
     def testResponseCode(self):
         """
         This test checks if the correct response code is given
@@ -177,6 +182,7 @@ class LeaderboardPageTests(SimpleTestCase):
     This class contains the basic base case tests for the leaderboard
     page.
     """
+
     def testResponseCode(self):
         """
         This test checks if the correct response code is given
