@@ -2,10 +2,18 @@
 Repo for Group 1 for the Group Software Project.
 
 ## Important Link
-Firefox geckodriver release page for selenium integration tests 
+Firefox geckodriver release page for selenium integration tests.
+
 `
 https://github.com/mozilla/geckodriver/releases
 `
+
+
+
+Put the path for it in 
+
+
+    TheProject/exeterDomination/tests/test_integrationWithSelenium.py
 
 ## Notes
 
