@@ -157,7 +157,6 @@ class GamePageTests(SimpleTestCase):
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 302)
 
-
     def testView(self):
         """
         This test checks that navigating to the game view

@@ -35,7 +35,9 @@ class TestGame(TestCase):
         access it while being logged in already.
         """
         c = Client()
-        logged_in = c.login(username="testuser", password="abdlklnkf3-3432r@dd")
+        logged_in = c.login(
+            username="testuser",
+            password="abdlklnkf3-3432r@dd")
         # Logs in with the test user information
         resp = c.get(reverse('game'))
         self.assertEquals(resp.status_code, 200)
@@ -71,7 +73,9 @@ class TestLoginPage(TestCase):
         page and are already logged in.
         """
         c = Client()
-        logged_in = c.login(username="testuser", password="abdlklnkf3-3432r@dd")
+        logged_in = c.login(
+            username="testuser",
+            password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('login'))
         # Not sure where to check the site sends the logged in user
         self.assertEqual(resp.url, "/play/game")
@@ -98,7 +102,9 @@ class TestSignUpPage(TestCase):
         signup page while already logged in.
         """
         c = Client()
-        logged_in = c.login(username="testuser", password="abdlklnkf3-3432r@dd")
+        logged_in = c.login(
+            username="testuser",
+            password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('signup'))
         self.assertEqual(resp.status_code, 302)
         self.assertEqual(resp.url, '/play/game')
@@ -115,5 +121,5 @@ class TestSignUpPage(TestCase):
 
 
 # TODO:
-## 1. Make a leaderboard test, compare logged in and logged out versions.
-## 2. Finish up docstrings
+# 1. Make a leaderboard test, compare logged in and logged out versions.
+# 2. Finish up docstrings
