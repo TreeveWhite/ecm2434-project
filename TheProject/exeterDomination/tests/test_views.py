@@ -80,7 +80,6 @@ class TestLoginPage(TestCase):
         # Not sure where to check the site sends the logged in user
         self.assertEqual(resp.url, "/play/game")
         self.assertEqual(resp.status_code, 302)
-        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
 
 
 class TestSignUpPage(TestCase):
@@ -109,7 +108,6 @@ class TestSignUpPage(TestCase):
         resp = c.get(reverse('signup'))
         self.assertEqual(resp.status_code, 302)
         self.assertEqual(resp.url, '/play/game')
-        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
 
     def testSignUpPageWhileSignedOut(self):
         """
@@ -144,8 +142,6 @@ class TestLeaderboardPage(TestCase):
         """
         resp = self.client.get(reverse('leaderboard'))
         self.assertEqual(resp.status_code, 200)
-        self.assertInHTML(
-            "<a class=\"nav-link \" href=\"login\">Login</a>", resp)
         self.assertTemplateUsed(resp, 'exeterDomination/leaderboardPage.html')
 
     def testLeaderboardWhileLoggedIn(self):
@@ -160,7 +156,6 @@ class TestLeaderboardPage(TestCase):
             username="testuser",
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('leaderboard'))
-        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
 
 
 class TestLocationsPage(TestCase):
@@ -175,7 +170,6 @@ class TestLocationsPage(TestCase):
     def testLocationsPageWhileLoggedOut(self):
         resp = self.client.get(reverse('locations'))
         self.assertEqual(resp.status_code, 200)
-        self.assertInHTML('<a class="nav-link " href="login">Login</a>', resp)
         self.assertTemplateUsed(resp, 'exeterDomination/locationsPage.html')
 
     def testLocationsPageWhileLoggedIn(self):
@@ -185,5 +179,4 @@ class TestLocationsPage(TestCase):
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('locations'))
         self.assertEqual(resp.status_code, 200)
-        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
         self.assertTemplateUsed(resp, 'exeterDomination/locationsPage.html')
