@@ -120,6 +120,18 @@ class TestSignUpPage(TestCase):
         self.assertTemplateUsed(resp, 'exeterDomination/signUpPage.html')
 
 
-# TODO:
-# 1. Make a leaderboard test, compare logged in and logged out versions.
-# 2. Finish up docstrings
+class TestLeaderBoardPage(TestCase):
+    def setUp(self):
+        user = User.objects.create(username='FarisKapes')
+        # Creates a test user
+        user.set_password("abdlklnkf3-3432r@dd")
+        # Sets a password
+        user.save()
+        # Saves the test user info
+
+    def testLeaderboardWhileLoggedIn(self):
+        c = Client()
+        c.login(
+            username="testuser",
+            password="abdlklnkf3-3432r@dd")
+        resp = c.get(reverse('leaderboard'))
