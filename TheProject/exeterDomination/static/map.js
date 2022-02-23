@@ -60,7 +60,7 @@ map.on('load', () => {
                     'type': 'Feature',
                     'properties': {
                         'description':
-                            '<strong>Harison Building</strong><p>Currently Controlled by { % harrisonOwner % }</p>',
+                            '<strong>Harison Building</strong><p>Currently Controlled by {{ harrisonOwner }}</p>',
                         'icon': 'circle-white-2'
                     },
                     'geometry': {
@@ -72,7 +72,7 @@ map.on('load', () => {
                     'type': 'Feature',
                     'properties': {
                         'description':
-                            '<strong>Inspiration Center</strong><p>Currently Controlled by { % inovationOwner % }</p>',
+                            '<strong>Inspiration Center</strong><p>Currently Controlled by {{ inovationOwner }}</p>',
                         'icon': 'circle-white-2'
                     },
                     'geometry': {
@@ -84,7 +84,7 @@ map.on('load', () => {
                     'type': 'Feature',
                     'properties': {
                         'description':
-                            '<strong>Innovation Center</strong><p>Currently Controlled by { % inovationOwner % }</p>',
+                            '<strong>Innovation Center</strong><p>Currently Controlled by {{ inovationOwner }}</p>',
                         'icon': 'circle-white-2'
                     },
                     'geometry': {
@@ -96,7 +96,7 @@ map.on('load', () => {
                     'type': 'Feature',
                     'properties': {
                         'description':
-                            '<strong>Laver Building</strong><p>Currently Controlled by { % inovationOwner % }</p>',
+                            '<strong>Laver Building</strong><p>Currently Controlled by {{ inovationOwner %}}</p>',
                         'icon': 'circle-white-2'
                     },
                     'geometry': {

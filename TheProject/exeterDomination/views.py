@@ -1,14 +1,16 @@
 import pydoc
 from urllib import request
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as k
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .forms import SignUpForm
-from exeterDomination.models import Users, Locations
+from exeterDomination.models import Locations
 
 def index(request : request) -> HttpResponse:
     context = {}
@@ -74,5 +76,15 @@ def leaderboard(request : request) -> HttpResponse:
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
 def locations(request : request) -> HttpResponse:
-    context = {}
+    # Order in array is harrisonOwner, inspirOwner, innoOwner, laverOwner, amoryOwner,
+    # forumOwner, intoOwner, streathamOwner, newmanOwner, sportsOwner.
+
+    buildingOwners = []
+
+    for i in range(9):
+        buildingOwners.append("No One, The building is not Claimed")
+
+    buildingOwners[0] = Locations.objects.get(pk=1).claimedBy.username
+
+    context = {'buildingOwners' : buildingOwners}
     return render(request, "exeterDomination/locationsPage.html", context)
