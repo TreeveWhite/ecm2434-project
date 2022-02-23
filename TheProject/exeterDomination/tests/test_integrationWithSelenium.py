@@ -167,3 +167,20 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         signUpButton.click()
         assert self.selenium.title == "Sign Up | Exeter Domination"
         assert self.selenium.current_url == self.live_server_url + "/play/signup"
+
+    def testHomeToLocationsAndBack(self):
+        """
+        This function tests the path a user would take when checking the
+        current locations, and then returning to the home page.
+        """
+        self.selenium.get(self.live_server_url + "/play")
+        locationsButton = self.selenium.find_element_by_xpath(
+            "//input[@class='arcade-font button4']")
+        locationsButton.click()
+        assert self.selenium.title == "Locations | Exeter Domination"
+        assert self.selenium.current_url == self.live_server_url + "/play/leaderboard"
+        homeButton = self.selenium.find_element_by_xpath(
+            "//a[contains(@href, '/play')]")
+        homeButton.click()
+        assert self.selenium.title == "Home | Exeter Domination"
+        assert self.selenium.current_url == self.live_server_url + "/play/"
