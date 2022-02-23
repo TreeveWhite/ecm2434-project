@@ -80,6 +80,7 @@ class TestLoginPage(TestCase):
         # Not sure where to check the site sends the logged in user
         self.assertEqual(resp.url, "/play/game")
         self.assertEqual(resp.status_code, 302)
+        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
 
 
 class TestSignUpPage(TestCase):
@@ -108,6 +109,7 @@ class TestSignUpPage(TestCase):
         resp = c.get(reverse('signup'))
         self.assertEqual(resp.status_code, 302)
         self.assertEqual(resp.url, '/play/game')
+        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
 
     def testSignUpPageWhileSignedOut(self):
         """
@@ -120,7 +122,11 @@ class TestSignUpPage(TestCase):
         self.assertTemplateUsed(resp, 'exeterDomination/signUpPage.html')
 
 
-class TestLeaderBoardPage(TestCase):
+class TestLeaderboardPage(TestCase):
+    """
+    This class will be testing the Leaderboard page view.
+    """
+
     def setUp(self):
         user = User.objects.create(username='FarisKapes')
         # Creates a test user
@@ -129,9 +135,55 @@ class TestLeaderBoardPage(TestCase):
         user.save()
         # Saves the test user info
 
+    def testLeaderboardWhileLoggedOut(self):
+        """
+        This function will test the leaderboard page while
+        logged out. Ensuring that the additional table above
+        the leaderboard table with the logged-in users' info
+        is not visible to a visitor / logged-out user.
+        """
+        resp = self.client.get(reverse('leaderboard'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertInHTML(
+            "<a class=\"nav-link \" href=\"login\">Login</a>", resp)
+        self.assertTemplateUsed(resp, 'exeterDomination/leaderboardPage.html')
+
     def testLeaderboardWhileLoggedIn(self):
+        """
+        This function will be testing the leaderboard page
+        while the user is logged in. It will check if the
+        user can see their username and domination percentage
+        above the main leaderboard
+        """
         c = Client()
         c.login(
             username="testuser",
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('leaderboard'))
+        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
+
+
+class TestLocationsPage(TestCase):
+    def setUp(self):
+        user = User.objects.create(username='testUser')
+        # Creates a test user
+        user.set_password("abdlklnkf3-3432r@dd")
+        # Sets a password
+        user.save()
+        # Saves the test user info
+
+    def testLocationsPageWhileLoggedOut(self):
+        resp = self.client.get(reverse('locations'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertInHTML('<a class="nav-link " href="login">Login</a>', resp)
+        self.assertTemplateUsed(resp, 'exeterDomination/locationsPage.html')
+
+    def testLocationsPageWhileLoggedIn(self):
+        c = Client()
+        c.login(
+            username="testuser",
+            password="abdlklnkf3-3432r@dd")
+        resp = c.get(reverse('locations'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertInHTML('<a class="nav-link" href="logout">Logout</a>', resp)
+        self.assertTemplateUsed(resp, 'exeterDomination/locationsPage.html')
