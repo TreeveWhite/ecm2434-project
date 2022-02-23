@@ -1,8 +1,9 @@
 :root {
     --background: #ced0ce;
-    --darkContrast: #3f403f;
-    --highlight: #e6e8e6;
-    --medContrast: #475841;
+    --dark1Contrast: #3f403f;
+    --dark2Contrast: #606360;
+    --med1Contrast: #475841;
+    --med2Contrast: #69140e;
     --lowContrast: #776472;
 }
 
@@ -11,7 +12,7 @@ html {
 }
 
 .myNavbar {
-    background-color: var(--darkContrast);
+    background-color: var(--dark1Contrast);
 }
 
 .main {
@@ -32,25 +33,31 @@ html {
 }
 
 .button1 {
-    background-color: var(--medContrast);
+    background-color: var(--med1Contrast);
     height: 60vh;
-    width: 32vw;
+    width: 24vw;
 }
 
 .button2 {
-    background-color: var(--darkContrast);
+    background-color: var(--dark2Contrast);
     height: 60vh;
-    width: 32vw;
+    width: 24vw;
 }
 
 .button3 {
     background-color: var(--lowContrast);
     height: 60vh;
-    width: 32vw;
+    width: 24vw;
+}
+
+.button4 {
+    background-color: var(--med2Contrast);
+    height: 60vh;
+    width: 24vw;
 }
 
 .formButton {
-    background-color: var(--medContrast);
+    background-color: var(--med1Contrast);
     width: 20vw;
     height: 10vh;
 }
@@ -84,4 +91,9 @@ html {
     margin: 10px;
     font-size: 40px;
     font-weight: bold;
+}
+
+.map {
+    width: 500px; 
+    height: 300px;
 }

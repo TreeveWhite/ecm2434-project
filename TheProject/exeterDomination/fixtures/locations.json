@@ -1,0 +1,101 @@
+[
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 1,
+        "fields": {
+            "name" : "harrison",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 1,
+            "trCoOrd_id" : 2
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 2,
+        "fields": {
+            "name" : "inspiration",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 3,
+            "trCoOrd_id" : 4
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 3,
+        "fields": {
+            "name" : "innovation",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 5,
+            "trCoOrd_id" : 6
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 4,
+        "fields": {
+            "name" : "laver",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 7,
+            "trCoOrd_id" : 8        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 5,
+        "fields": {
+            "name" : "amory",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 9,
+            "trCoOrd_id" : 10
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 6,
+        "fields": {
+            "name" : "forum",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 11,
+            "trCoOrd_id" : 12
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 7,
+        "fields": {
+            "name" : "INTO",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 13,
+            "trCoOrd_id" : 14
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 8,
+        "fields": {
+            "name" : "streatham",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 15,
+            "trCoOrd_id" : 16
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 9,
+        "fields": {
+            "name" : "newman",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 17,
+            "trCoOrd_id" : 18
+        }
+    },
+    {
+        "model" : "exeterDomination.locations",
+        "pk" : 10,
+        "fields": {
+            "name" : "Sports Park",
+            "claimedBy_id" : null,
+            "blCoOrd_id" : 19,
+            "trCoOrd_id" : 20
+        }
+    }
+]
