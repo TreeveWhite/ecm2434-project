@@ -13,5 +13,5 @@ class Locations(models.Model):
     claimedBy = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
 
 class CoOrds(models.Model):
-    longitude = models.IntegerField()
-    latitude = models.IntegerField()
+    longitude = models.DecimalField(decimal_places=6, max_digits=8)
+    latitude = models.DecimalField(decimal_places=6, max_digits=8)

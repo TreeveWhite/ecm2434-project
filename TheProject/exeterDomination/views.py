@@ -81,10 +81,12 @@ def locations(request : request) -> HttpResponse:
 
     buildingOwners = []
 
-    for i in range(9):
-        buildingOwners.append("No One, The building is not Claimed")
-
-    buildingOwners[0] = Locations.objects.get(pk=1).claimedBy.username
+    for i in range(1, 11, 1):
+        buildingOwner = Locations.objects.get(pk=i).claimedBy
+        if buildingOwner != None:
+            buildingOwners.append(buildingOwner.username)
+        else:
+            buildingOwners.append("no one. This building is yet to be claimed")
 
     context = {'buildingOwners' : buildingOwners}
     return render(request, "exeterDomination/locationsPage.html", context)

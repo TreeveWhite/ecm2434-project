@@ -1,9 +1,9 @@
 :root {
     --background: #ced0ce;
-    --darkContrast: #3f403f;
-    --highlight: #e6e8e6;
+    --dark1Contrast: #3f403f;
+    --dark2Contrast: #606360;
     --med1Contrast: #475841;
-    --med2Contrast: #284595;
+    --med2Contrast: #69140e;
     --lowContrast: #776472;
 }
 
@@ -12,7 +12,7 @@ html {
 }
 
 .myNavbar {
-    background-color: var(--darkContrast);
+    background-color: var(--dark1Contrast);
 }
 
 .main {
@@ -39,7 +39,7 @@ html {
 }
 
 .button2 {
-    background-color: var(--darkContrast);
+    background-color: var(--dark2Contrast);
     height: 60vh;
     width: 24vw;
 }

@@ -1,0 +1,162 @@
+[
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 1,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 2,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 3,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 4,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 5,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 6,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 7,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 8,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 9,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 10,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 11,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 12,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 13,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 14,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 15,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 16,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 17,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 18,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 19,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    },
+    {
+        "model" : "exeterDomination.CoOrds",
+        "pk" : 20,
+        "fields": {
+            "longitude" : 0,
+            "latitude" : 0
+        }
+    }
+]
