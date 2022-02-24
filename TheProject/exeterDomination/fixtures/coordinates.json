@@ -3,160 +3,160 @@
         "model" : "exeterDomination.CoOrds",
         "pk" : 1,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" :50.73729629634505,
+            "latitude" : -3.53291494866221
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 2,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" :50.738055772185106,
+            "latitude" :  -3.532291302323557
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 3,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73787961426595,
+            "latitude" : -3.5309270563916755
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 4,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.738204030638514,
+            "latitude" : -3.530356494862815
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 5,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.738144789555776,
+            "latitude" : -3.5316759183983493
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 6,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73858768536155,
+            "latitude" : -3.5307086383058106
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 7,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73708777984007,
+            "latitude" : -3.5340395860385456
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 8,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73808360675247,
+            "latitude" : -3.5333085540795253
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 9,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73606268063665,
+            "latitude" : -3.5320782800771156
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 10,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.737186860095676,
+            "latitude" : -3.5311827621522696
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 11,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.734673773424134,
+            "latitude" : -3.5339037547285272
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 12,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73567653516841,
+            "latitude" : -3.5329639529497
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 13,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73593189342546,
+            "latitude" : -3.5341251739952497
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 14,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73628067318535,
+            "latitude" : -3.5332493377829337
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 15,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.7352823680944,
+            "latitude" : -3.5317813847323976
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 16,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73614464714174,
+            "latitude" : -3.530102374891385
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 17,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73631303648688,
+            "latitude" : -3.536262824382675
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 18,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.73682109206047,
+            "latitude" : -3.535556170408512
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 19,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.736953532825396,
+            "latitude" : -3.537850148336588
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 20,
         "fields": {
-            "longitude" : 0,
-            "latitude" : 0
+            "longitude" : 50.738584268417526,
+            "latitude" : -3.5367432589802377
         }
     }
 ]
