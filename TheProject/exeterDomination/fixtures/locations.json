@@ -13,7 +13,7 @@
         "model" : "exeterDomination.locations",
         "pk" : 2,
         "fields": {
-            "name" : "inspiration",
+            "name" : "innovation1",
             "claimedBy_id" : null,
             "blCoOrd_id" : 3,
             "trCoOrd_id" : 4
@@ -23,7 +23,7 @@
         "model" : "exeterDomination.locations",
         "pk" : 3,
         "fields": {
-            "name" : "innovation",
+            "name" : "innovation2",
             "claimedBy_id" : null,
             "blCoOrd_id" : 5,
             "trCoOrd_id" : 6
