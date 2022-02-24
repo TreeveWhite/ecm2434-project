@@ -31,6 +31,7 @@ let secret = wordList[randomIndex]
 
 let currentAttempt = ''
 let counter = 0
+let green_counter = 0
 let history = []
 let score = 0
 function startGame(){
@@ -50,6 +51,8 @@ function handleKeyDown(e) {
       return
     }
     history.push(currentAttempt)
+    counter+=1
+    this.check_if_lost()
     currentAttempt = ''
   } else if (letter === 'backspace') {
     currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1)
@@ -189,7 +192,11 @@ function handleKeyDown(e) {
   updateGrid()
 }
 
-
+function check_if_lost(){
+  if (counter==6) {
+    alert("Game lost, please restart")
+  }
+}
 function buildGrid() {
   for (let i = 0; i < 6; i++) {
     let row = document.createElement('div')
@@ -226,6 +233,11 @@ function drawAttempt(row, attempt, isCurrent) {
       cell.style.backgroundColor = getBgColor(attempt, i)
     }
   }
+  if (green_counter==5){
+    document.getElementById('claimButton').disabled = false;
+  } else {
+    green_counter=0
+  }
 }
 
 function getBgColor(attempt, i) {
@@ -238,6 +250,7 @@ function getBgColor(attempt, i) {
     return '#212121'
   }
   if (correctLetter === attemptLetter) {
+    green_counter+=1
     return '#538d4e'
   }
   return '#b59f3b'
