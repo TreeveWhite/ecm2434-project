@@ -48,23 +48,22 @@
         <p>These are the live current leaderboards for the game!</p>
         <br>
 
+        {% if request.user.is_authenticated %}
         <table class="table table-bordered table-dark">
             <thead>
                 <tr>
-                    <th>Player Name</th>
-                    <th>Player Domination Percent</th>
+                    <th>Your Name</th>
+                    <th>Your Domination Percent</th>
                 </tr>
                 <tbody>
-                    {% for score in player_scores %}
                         <tr>
-                        {% for column in score %}
-                            <td>{{ column }}</td>
-                        {% endfor %}
-                        </tr>         
-                    {% endfor %}
+                            <td>{{ request.user.username }}</td>
+                            <td>UID for now: {{ request.user.id }}</td>
+                        </tr>
                 </tbody>
             </thead>
         </table>
+        {% endif %}
         <table class="table table-bordered table-dark">
             <thead>
                 <tr>
