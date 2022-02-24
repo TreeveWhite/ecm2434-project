@@ -6,8 +6,8 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('exeterDomination', '0005_coords_remove_locations_p1latitude_and_more'),
-    ]
+        ('exeterDomination',
+         '0005_coords_remove_locations_p1latitude_and_more'), ]
 
     operations = [
         migrations.RemoveField(

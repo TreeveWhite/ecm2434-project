@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.test import Client
+from ..models import Locations
 
 
 class TestGame(TestCase):
@@ -143,6 +144,7 @@ class TestLeaderboardPage(TestCase):
         resp = self.client.get(reverse('leaderboard'))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'exeterDomination/leaderboardPage.html')
+        assert not "FarisKapes".encode("UTF-8") in resp.content
 
     def testLeaderboardWhileLoggedIn(self):
         """
@@ -153,12 +155,20 @@ class TestLeaderboardPage(TestCase):
         """
         c = Client()
         c.login(
-            username="testuser",
+            username="FarisKapes",
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('leaderboard'))
+        assert "FarisKapes".encode('UTF-8') in resp.content
 
 
 class TestLocationsPage(TestCase):
+    """
+    This class will be testing the locations page.
+    """
+    fixtures = ['../fixtures/coordinates.json', '../fixtures/locations.json']
+    # This allows the fixtures containing the coordinate and location
+    # information to be loaded
+
     def setUp(self):
         user = User.objects.create(username='testUser')
         # Creates a test user
@@ -168,11 +178,19 @@ class TestLocationsPage(TestCase):
         # Saves the test user info
 
     def testLocationsPageWhileLoggedOut(self):
+        """
+        This function tests the locations page view while the user is
+        logged out.
+        """
         resp = self.client.get(reverse('locations'))
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'exeterDomination/locationsPage.html')
 
     def testLocationsPageWhileLoggedIn(self):
+        """
+        This function tests the locations page view while the user is
+        logged in.
+        """
         c = Client()
         c.login(
             username="testuser",

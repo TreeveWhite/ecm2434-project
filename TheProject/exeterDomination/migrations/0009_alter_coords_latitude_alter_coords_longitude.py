@@ -6,8 +6,8 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('exeterDomination', '0008_alter_coords_latitude_alter_coords_longitude'),
-    ]
+        ('exeterDomination',
+         '0008_alter_coords_latitude_alter_coords_longitude'), ]
 
     operations = [
         migrations.AlterField(
