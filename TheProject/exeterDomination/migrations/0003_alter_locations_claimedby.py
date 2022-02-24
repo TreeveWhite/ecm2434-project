@@ -14,6 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='locations',
             name='claimedBy',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='exeterDomination.users'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to='exeterDomination.users'),
         ),
     ]

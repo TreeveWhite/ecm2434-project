@@ -13,22 +13,19 @@ class Migration(migrations.Migration):
     operations = [
         migrations.CreateModel(
             name='Locations',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+            fields=[('id', models.BigAutoField(
+                auto_created=True, primary_key=True, serialize=False,
+                verbose_name='ID')),
                 ('name', models.TextField()),
                 ('longitude', models.IntegerField()),
                 ('latitude', models.IntegerField()),
-                ('claimedBy', models.IntegerField()),
-            ],
-        ),
+                ('claimedBy', models.IntegerField()), ],),
         migrations.CreateModel(
             name='Users',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+            fields=[('id', models.BigAutoField(
+                auto_created=True, primary_key=True, serialize=False,
+                verbose_name='ID')),
                 ('name', models.TextField()),
                 ('username', models.TextField()),
                 ('password', models.TextField()),
-                ('possession', models.IntegerField()),
-            ],
-        ),
-    ]
+                ('possession', models.IntegerField()), ],), ]
