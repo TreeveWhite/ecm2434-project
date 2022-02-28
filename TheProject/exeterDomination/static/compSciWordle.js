@@ -9,28 +9,7 @@ At the moment the player keeps trying to win and when they do they can claim the
 let wordList = [
   'codes',
   'apple',
-  'cache',
-  'ascii',
-  'click',
   'debug',
-  'email',
-  'input',
-  'intel',
-  'logic',
-  'macro',
-  'modem',
-  'octal',
-  'pixel',
-  'query',
-  'stack',
-  'virus',
-  'robot',
-  'cable',
-  'hacks',
-  'buggy',
-  'agile',
-  'cloud',
-  'cyber',
 ];
 //selection of a random word
 let randomIndex = Math.floor(Math.random() * wordList.length) 

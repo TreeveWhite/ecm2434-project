@@ -21,7 +21,7 @@
             <ul class="navbar-nav">
                 {% if request.user.is_authenticated %}
                 <li class="nav-item px-3">
-                    <a class="nav-link " href="/play">Home</a>
+                    <a class="nav-link " href="/">Home</a>
                 </li>
                 <li class="nav-item px-3">
                     <a class="nav-link" href="leaderboard">Leaderboard</a>
@@ -32,7 +32,7 @@
                 {% endif %}
                 {% if not request.user.is_authenticated %}
                 <li class="nav-item px-3">
-                    <a class="nav-link " href="/play">Home</a>
+                    <a class="nav-link " href="/">Home</a>
                 </li>
                 <li class="nav-item px-3">
                     <a class="nav-link " href="login">Login</a>

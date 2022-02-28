@@ -71,7 +71,7 @@ def signup(request: request) -> HttpResponse:
         return redirect('game')
 
 
-@login_required(login_url='/play/login')
+@login_required(login_url='/login')
 def game(request: request) -> HttpResponse:
     context = {}
     return render(request, "exeterDomination/gamePage.html", context)
