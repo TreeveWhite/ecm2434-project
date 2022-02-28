@@ -16,13 +16,6 @@
 </head>
 
 <body>
-    <p>Click the button to get your coordinates.</p>
-
-    <button onclick="getLocation()">Try It</button>
-
-    <p id="demo"></p>
-
-
     <nav class="navbar navbar-expand-sm myNavbar navbar-dark">
         <div class="container-fluid justify-content-end">
             <ul class="navbar-nav">
@@ -289,36 +282,8 @@
                         map.on('mouseleave', 'places', () => {
                             map.getCanvas().style.cursor = '';
                         });
-                        
-                        document.addEventListener("DOMContentLoaded", function() {
-                            getLocation();
-                            print(getLocation());
-                        });
-                        
-                        map.addControl(
-                        new mapboxgl.GeolocateControl({
-                            positionOptions: {
-                            enableHighAccuracy: true
-                            },
-                            // When active the map will receive updates to the device's location as it changes.
-                            trackUserLocation: true,
-                            // Draw an arrow next to the location dot to indicate which direction the device is heading.
-                            showUserHeading: true
-                        })
-                    );
                     });
-                    var x = document.getElementById("demo");
-                    function getLocation() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.watchPosition(showPosition);
-                    } else {
-                        x.innerHTML = "Geolocation is not supported by this browser.";
-                    }
-                    }
-                    function showPosition(position) {
-                    x.innerHTML = "Latitude: " + position.coords.latitude + 
-                    "<br>Longitude: " + position.coords.longitude; 
-                    }
+                    
                 </script>
             </div>
         </div>

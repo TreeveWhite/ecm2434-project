@@ -69,23 +69,4 @@
         </div>
     </div>
 </body>
-<script>
-    var x = document.getElementById("play_Button");
-    
-    function getLocation() {
-      if (navigator.geolocation) {
-        var location = navigator.geolocation.watchPosition();
-      } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-      console.log(location)
-      return location
-    }
-        
-    function showPosition(position) {
-        x.innerHTML="Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude;
-        print(position.coords.longitude)
-    }
-    </script>
 </html>
