@@ -51,7 +51,8 @@
         <div class="d-flex flexColumn">
             <div class="d-flex pt-5 flexRow">
                 <div class="flex-fill">
-                    <input class="arcade-font button1" type="button" value="Play" onclick="location.href = 'game';">
+                    <input class="arcade-font button1" type="button" value="Play" onclick="location.href = 'game';" 
+                        id="play_Button">
                 </div>
                 <div class="flex-fill">
                     <input class="arcade-font button3" type="button" value="Leaderboards"
@@ -68,5 +69,23 @@
         </div>
     </div>
 </body>
-
+<script>
+    var x = document.getElementById("play_Button");
+    
+    function getLocation() {
+      if (navigator.geolocation) {
+        var location = navigator.geolocation.watchPosition();
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+      console.log(location)
+      return location
+    }
+        
+    function showPosition(position) {
+        x.innerHTML="Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude;
+        print(position.coords.longitude)
+    }
+    </script>
 </html>

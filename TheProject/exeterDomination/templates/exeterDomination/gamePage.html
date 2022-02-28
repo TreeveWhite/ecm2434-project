@@ -59,10 +59,25 @@
 
         <div class="d-flex p-2 flex-fill justify-content-center">
             <form action="/claim" method="get" class="d-flex flex-column justify-content-center">
-                <input type="submit" class="formButton arcade-font" value="Claim Building">
+                <input type="submit" class="formButton arcade-font" value="Claim Building" id="demo">
             </form>
         </div>
     </div>
+    <script>
+        var x = document.getElementById("demo");
+        
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+          } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+            
+        function showPosition(position) {
+            x.innerHTML="Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
 </body>
-
 </html>
