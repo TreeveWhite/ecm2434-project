@@ -27,7 +27,7 @@ class TestGame(TestCase):
         visit the gameplay page without being logged in.
         """
         resp = self.client.get(reverse('game'), follow=True)
-        self.assertRedirects(resp, '/play/login?next=%2Fplay%2Fgame')
+        self.assertRedirects(resp, '/login?next=%2Fgame')
         self.assertTemplateUsed(resp, 'exeterDomination/loginPage.html')
 
     def testGameWithLogin(self):
@@ -79,7 +79,7 @@ class TestLoginPage(TestCase):
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('login'))
         # Not sure where to check the site sends the logged in user
-        self.assertEqual(resp.url, "/play/game")
+        self.assertEqual(resp.url, "/game")
         self.assertEqual(resp.status_code, 302)
 
 
@@ -108,7 +108,7 @@ class TestSignUpPage(TestCase):
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('signup'))
         self.assertEqual(resp.status_code, 302)
-        self.assertEqual(resp.url, '/play/game')
+        self.assertEqual(resp.url, '/game')
 
     def testSignUpPageWhileSignedOut(self):
         """
