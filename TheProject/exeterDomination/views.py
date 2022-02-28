@@ -14,16 +14,37 @@ from exeterDomination.models import Locations
 
 
 def index(request: request) -> HttpResponse:
+    """
+    This is the index view. It renders the home
+    page for the user.
+    """
     context = {}
     return render(request, "exeterDomination/homePage.html", context)
 
 
 def about(request: request) -> HttpResponse:
+    """
+    This is the about view. It renders the about
+    page for the user.
+    """
     context = {}
     return render(request, "exeterDomination/aboutPage.html", context)
 
 
 def login(request: request) -> HttpResponse:
+    """
+    This is the login view. If the user is authenticated, then
+    they are redirecred to the game page; otherwise the type of
+    request is checked:
+        * GET request: It will render the loginPage
+            with empty fields.
+        * POST request: It will get the username and
+            password entered. It then tries to
+            authenticate the user; if the credentials
+            match, then the user is logged in and taken
+            to the game page. Otherwise the form is
+            reset.
+    """
     if not request.user.is_authenticated:
         if request.method == "GET":
             return render(request, "exeterDomination/loginPage.html", {})
@@ -42,6 +63,19 @@ def login(request: request) -> HttpResponse:
 
 
 def signup(request: request) -> HttpResponse:
+    """
+    This is the signup view. If the user is authenticated, then
+    they are redirected to the game page; otherwise the type of
+    request is checked:
+        * GET request: It will render the signUpPage
+            with empty form fields.
+        * POST request: It will get the username and
+            password entered. If the form is valid,
+            then the form data is cleaned for security,
+            and then the user is added to the database.
+            Finally, the user is logged in and redirected
+            to the home page.
+    """
     if not request.user.is_authenticated:
         if request.method == 'GET':
             form = SignUpForm()
@@ -73,16 +107,32 @@ def signup(request: request) -> HttpResponse:
 
 @login_required(login_url='/login')
 def game(request: request) -> HttpResponse:
+    """
+    This is the game view. It can only be accessed by
+    logged-in users; if an un-logged in user tries to
+    access it, they are redirected to the login page.
+    Otherwise the game page is rendered.
+    """
     context = {}
     return render(request, "exeterDomination/gamePage.html", context)
 
 
 def leaderboard(request: request) -> HttpResponse:
+    """
+    This is the leaderboard view. It renders
+    the leaderboard page.
+    """
     context = {'player_scores': [['ExamplePlayerName', "100"], ], }
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
 
 def locations(request: request) -> HttpResponse:
+    """
+    This is the locations view. It queries the
+    locations database, and passes them as
+    context to the main page. They are then
+    displayed on a map of the campus.
+    """
     # Order in array is harrisonOwner, inspirOwner, innoOwner, laverOwner, amoryOwner,
     # forumOwner, intoOwner, streathamOwner, newmanOwner, sportsOwner.
 

@@ -13,9 +13,9 @@ class HomePageTests(SimpleTestCase):
         This test checks if the correct response code is given
         when a user navigates to the home page.
         """
-        pageURL = "/play"
+        pageURL = "/"
         resp = self.client.get(pageURL)
-        self.assertEquals(resp.status_code, 301)
+        self.assertEquals(resp.status_code, 200)
 
     def testTemplateName(self):
         """
@@ -48,7 +48,7 @@ class AboutPageTests(SimpleTestCase):
         This test checks if the correct response code is given
         when a user navigates to the about page.
         """
-        pageURL = "/play/about"
+        pageURL = "/about"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
 
@@ -57,7 +57,7 @@ class AboutPageTests(SimpleTestCase):
         This test checks that the correct template is loaded
         when the user navigates to the about page.
         """
-        pageURL = "/play/about"
+        pageURL = "/about"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
         self.assertTemplateUsed(resp, "exeterDomination/aboutPage.html")
@@ -83,7 +83,7 @@ class LoginPageTests(SimpleTestCase):
         This test checks if the correct response code is given
         when a user navigates to the login page.
         """
-        pageURL = "/play/login"
+        pageURL = "/login"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
 
@@ -92,7 +92,7 @@ class LoginPageTests(SimpleTestCase):
         This test checks that the correct template is loaded
         when the user navigates to the login page.
         """
-        pageURL = "/play/login"
+        pageURL = "/login"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
         self.assertTemplateUsed(resp, "exeterDomination/loginPage.html")
@@ -118,7 +118,7 @@ class SignUpPageTests(SimpleTestCase):
         This test checks if the correct response code is given
         when a user navigates to the signup page.
         """
-        pageURL = "/play/signup"
+        pageURL = "/signup"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
 
@@ -127,7 +127,7 @@ class SignUpPageTests(SimpleTestCase):
         This test checks that the correct template is loaded
         when the user navigates to the signup page.
         """
-        pageURL = "/play/signup"
+        pageURL = "/signup"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
         self.assertTemplateUsed(resp, "exeterDomination/signUpPage.html")
@@ -153,7 +153,7 @@ class GamePageTests(SimpleTestCase):
         This test checks if the correct response code is given
         when a user navigates to the gameplay page.
         """
-        pageURL = "/play/game"
+        pageURL = "/game"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 302)
 
@@ -178,7 +178,7 @@ class LeaderboardPageTests(SimpleTestCase):
         This test checks if the correct response code is given
         when a user navigates to the leaderboard page.
         """
-        pageURL = "/play/leaderboard"
+        pageURL = "/leaderboard"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
 
@@ -187,7 +187,7 @@ class LeaderboardPageTests(SimpleTestCase):
         This test checks that the correct template is loaded
         when the user navigates to the leaderboard page.
         """
-        pageURL = "/play/leaderboard"
+        pageURL = "/leaderboard"
         resp = self.client.get(pageURL)
         self.assertEquals(resp.status_code, 200)
         self.assertTemplateUsed(resp, "exeterDomination/leaderboardPage.html")
