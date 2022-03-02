@@ -72,7 +72,6 @@ function handleKeyDown(e) {
     currentAttempt = ''
   } else if (letter === 'backspace') {
     currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1)
-    updateGrid()
     //#region 
   } else if (letter === 'a') {
     if (currentAttempt.length < 5) {
@@ -257,6 +256,7 @@ function drawAttempt(row, attempt, isCurrent) {
     if (attempt[i] !== undefined) {
       cell.textContent = attempt[i]
     } else {
+      cell.textContent = ""
     }
     if (isCurrent) {
       cell.style.backgroundColor = '#111'
