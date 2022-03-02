@@ -11,6 +11,8 @@ You need to install the following software and packages in order to run our soft
 ## Software to install
 - Python version 3.7 and above. The download can be found on the Download section on https://www.python.org
 - PostgreSQL - The download can be found at https://www.postgresql.org/. Follow the steps on the launcher and when in the application there a couple of requirements. First, any passwords set need to be set to the same password as the one set in settings.py. You then need to make a database called exeterDomination (or whatever is set in settings.py)
+- Mozille Firefox - this is used to run the testing. This can be found at https://www.mozilla.org/en-GB/firefox/new/
+- Geckdriver version 30- this is used in the testing and can be found at https://github.com/mozilla/geckodriver/releases with all releases for each system. Once installed, if the installation is compressed, double-click it and decompress it so that the executable file is available.
  ## Packages to install
 - Django - to install this go to your command prompt and enter :
 ```
@@ -23,6 +25,10 @@ pip install psycopg2
 - On Macs you may need to install the binary version which can be done by entering the following into the command prompt:
 ```
 pip install psycopg2-binary
+```
+- Selenium - to install this go to your command prompt and enter the following:
+```
+pip install selenium
 ```
 
 # How to install and deploy
@@ -91,7 +97,10 @@ In the current version, click the Play button and it will take you to the Game P
 
 # Testing
 To run the tests enter the directory in which the django commands were typed above. It should be along the lines of /ecm2434-project/TheProject.
-Then enter the following command:
+## Testing Prerequisites
+The software is linked above but you need to ensure that Firefox, Selenium and Geckodriver are all installed. In the test_integrationWithSelenium.py file you need to change the pathToGeckoDriver variable to the path where your Geckodriver executable is.
+## Running the tests
+Once all of the prerequisites are met then enter the following command:
 ```
 python manage.py test
 ```

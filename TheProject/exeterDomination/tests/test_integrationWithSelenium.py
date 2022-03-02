@@ -9,7 +9,7 @@ from django.test import TestCase
 
 
 # Insert geckodriver executable here
-pathToGeckodriver = "/Users/faris/downloads/geckodriver"
+pathToGeckodriver = "/Users/ethan/Downloads/geckodriver"
 
 
 class SeleniumLoginTest(StaticLiveServerTestCase, TestCase):
