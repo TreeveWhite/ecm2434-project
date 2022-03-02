@@ -1,3 +1,11 @@
+"""
+alarms.py
+=======================================
+This file holds all the functions related to locations in articular when 
+handling the function which determins if a players longitude and lattude
+are inside that of ay building in the system.
+"""
+
 from django.contrib.auth.models import User
 from exeterDomination.models import Locations
 
@@ -8,11 +16,34 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
     east corners.
 
     All positions use longitude and latitude coordinates.
+
+    :param userID: The userID checking if in any buildings.
+    :type userID: int
+    :param posLat: The latitude of the user's location.
+    :type posLat: float
+    :param posLong: The longitude of the user's location.
+    :type posLong: float
+
+    :return: The name of the location claimed (if one is claimed).
+    :rtype: str
     """
     claimed = False
 
+    #Compares users long and lat to every building in system.
     for location in Locations.objects.all():
+
+        print(location.name)
+        print("Player Lat:", posLat)
+        print("Player Long:", posLong)
+        print("Location Lat Top:", location.trCoOrd.latitude, " Location Lat Bottom: ", location.blCoOrd.latitude)
+        print(posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude)
+
+        print("Location Long left:", location.blCoOrd.longitude, " Location Long Right: ", location.trCoOrd.longitude)
+        print(posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)
+        print()
+
         if ((posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude) and (posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)):
+            #Users position is inside location
             location.claimedBy = User.objects.get(pk=userID)
             location.save()
             claimed = True
@@ -20,6 +51,8 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
             break
 
     if claimed == False:
+        #The player is not inside any recognised building.
         return ""
     else:
+        #The player has claimed a building.
         return location.name

@@ -71,11 +71,10 @@
                     <th>Player Domination Percent</th>
                 </tr>
                 <tbody>
-                    {% for score in player_scores %}
+                    {% for player,score in player_scores.items %}
                         <tr>
-                        {% for column in score %}
-                            <td>{{ column }}</td>
-                        {% endfor %}
+                        <td>{{ player }}</td>
+                        <td>{{ score }}%</td>
                         </tr>         
                     {% endfor %}
                 </tbody>

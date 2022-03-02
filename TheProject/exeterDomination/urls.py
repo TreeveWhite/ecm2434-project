@@ -1,4 +1,6 @@
 """
+urls.py
+=======================================
 The urls.py file declares the urls and the views
 that they are linked to.
 """
@@ -7,6 +9,7 @@ from django.urls import path
 
 from . import views
 
+#The following are all the possible urls the system supports.
 urlpatterns = [
     path('', views.index, name='index'),
     path('login', views.login, name='login'),

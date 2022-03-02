@@ -1,7 +1,9 @@
 """
+views.py
+=======================================
 The views.py file is responsible for displaying
 the correct content on the page a user navigates
- to.
+to.
 """
 from urllib import request
 from django.http import HttpResponse
@@ -22,9 +24,11 @@ def index(request: request) -> HttpResponse:
     This is the index view. It renders the home
     page for the user.
 
-    Returns:
-        HttpResponse: the rendered template for
-            this page
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
     context = {}
     return render(request, "exeterDomination/homePage.html", context)
@@ -35,9 +39,11 @@ def about(request: request) -> HttpResponse:
     This is the about view. It renders the about
     page for the user.
 
-    Returns:
-        HttpResponse: the rendered template for
-            this page
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
     context = {}
     return render(request, "exeterDomination/aboutPage.html", context)
@@ -48,6 +54,7 @@ def login(request: request) -> HttpResponse:
     This is the login view. If the user is authenticated, then
     they are redirecred to the game page; otherwise the type of
     request is checked.
+
         * GET request: It will render the loginPage
             with empty fields.
         * POST request: It will get the username and
@@ -56,6 +63,12 @@ def login(request: request) -> HttpResponse:
             match, then the user is logged in and taken
             to the game page. Otherwise the form is
             reset.
+
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
     if not request.user.is_authenticated:
         if request.method == "GET":
@@ -78,6 +91,7 @@ def signup(request: request) -> HttpResponse:
     This is the signup view. If the user is authenticated, then
     they are redirected to the game page; otherwise the type of
     request is checked:
+
         * GET request: It will render the signUpPage
             with empty form fields.
         * POST request: It will get the username and
@@ -86,6 +100,12 @@ def signup(request: request) -> HttpResponse:
             and then the user is added to the database.
             Finally, the user is logged in and redirected
             to the home page.
+    
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
     if not request.user.is_authenticated:
         if request.method == 'GET':
@@ -124,9 +144,11 @@ def game(request: request) -> HttpResponse:
     access it, they are redirected to the login page.
     Otherwise, the game page is rendered.
 
-    Returns:
-        HttpResponse: the rendered template for
-            this page
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
     context = {}
     return render(request, "exeterDomination/gamePage.html", context)
@@ -137,11 +159,27 @@ def leaderboard(request: request) -> HttpResponse:
     This is the leaderboard view. It renders
     the leaderboard page.
 
-    Returns:
-        HttpResponse: the rendered template for
-            this page
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
-    context = {'player_scores': [['ExamplePlayerName', "100"], ], }
+
+    claimedLocations = Locations.objects.select_related('claimedBy').exclude(claimedBy__isnull=True)
+    numClaimed = claimedLocations.count()
+    numLocations = Locations.objects.all().count()
+
+    playerScores = {}
+    for location in claimedLocations:
+        if location.claimedBy.username in playerScores.keys():
+            playerScores[location.claimedBy.username] += 1/numLocations*100
+        else:
+            playerScores[location.claimedBy.username] = 1/numLocations*100
+    
+    playerScores["Unclaimed"] = (numLocations-numClaimed)/numLocations*100
+
+    context = {'player_scores': playerScores}
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
 
@@ -152,9 +190,11 @@ def locations(request: request) -> HttpResponse:
     context to the main page. They are then
     displayed on a map of the campus.
 
-    Returns:
-        HttpResponse: the rendered template for
-            this page
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
     # Order in array is harrisonOwner, inspirOwner, innoOwner, laverOwner, amoryOwner,
     # forumOwner, intoOwner, streathamOwner, newmanOwner, sportsOwner.
@@ -177,20 +217,21 @@ def claim(request: request) -> HttpResponse:
     This is the claim method. It enables
     a player to claim a location.
 
-    Returns:
-        HttpResponse: the rendered template for
-            this page
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+    
+    :return: the rendered template for this page
+    :rtype: HttpResponse
     """
 
     if request.method == "POST":
         playerLong = request.POST.get("long")
         playerLat = request.POST.get("lat")
 
-        print(playerLat)
+        # print(playerLat)
+        # print(playerLong)
 
-        print(playerLong)
-
-        locationName = posInRec(1, float(playerLat), float(playerLong))
+        locationName = posInRec(request.user.id, float(playerLong), float(playerLat))
 
         if locationName != "":
             msg = f"Congratulations, you have claimed the {locationName} building."
