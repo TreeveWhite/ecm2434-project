@@ -10,16 +10,16 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
     All positions use longitude and latitude coordinates.
     """
     claimed = False
+
     for location in Locations.objects.all():
-
-        print(location.trCoOrd.latitude)
-
-        if ((location.trCoOrd.latitude >= posLat >= location.blCoOrd.latitude) and (
-                posLong <= location.blCoOrd.longitude <= posLong)):
+        if ((posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude) and (posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)):
+            location.claimedBy = User.objects.get(pk=userID)
+            location.save()
             claimed = True
-
+        
             break
 
-    location.claimedBy = User.objects.get(pk=userID)
-
-    return claimed
+    if claimed == False:
+        return ""
+    else:
+        return location.name

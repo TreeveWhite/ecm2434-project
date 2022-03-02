@@ -11,14 +11,24 @@ function getLocation() {
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+}
 
 function showPosition(position) {
     var xhttp = new XMLHttpRequest();
     const csrftoken = getCookie('csrftoken');
+
     xhttp.open("POST", "/claim", true);
-    xhttp.setRequestHeader("Content-type", "text/html");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.setRequestHeader("X-CSRFToken", csrftoken);
-    xhttp.send("long=50&lat=50");
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            window.alert(xhttp.responseText)
+        }
+    }
+
+    xhttp.send("long="+position.coords.longitude+"&lat="+position.coords.latitude);
 }
