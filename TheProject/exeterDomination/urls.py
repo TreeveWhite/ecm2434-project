@@ -1,3 +1,7 @@
+"""
+The urls.py file declares the urls and the views
+that they are linked to.
+"""
 from unicodedata import name
 from django.urls import path
 

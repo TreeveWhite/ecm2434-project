@@ -1,3 +1,7 @@
+"""
+This test file is for testing
+forms used on the website.
+"""
 from django.test import TestCase
 from ..forms import SignUpForm
 

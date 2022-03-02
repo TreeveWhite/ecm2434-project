@@ -1,3 +1,7 @@
+"""
+This module creates the database models for
+the coordinates and locations tables.
+"""
 from django.conf import settings
 from django.db import models
 
@@ -25,8 +29,6 @@ class Locations(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}"
-    
-
 
 
 class CoOrds(models.Model):
