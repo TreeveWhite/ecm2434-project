@@ -155,15 +155,19 @@ def claim(request: request) -> HttpResponse:
     """
 
     if request.method == "POST":
-        # playerLong = request.POST["long"]
-        # playerLat = request.POST["lat"]
+        playerLong = request.POST.get("long")
+        playerLat = request.POST.get("lat")
 
-        playerLong = 50.73771
-        playerLat = -3.53265
+        print(playerLat)
 
-        success = posInRec(1, playerLat, playerLong)
+        print(playerLong)
 
-        print(success)
+        locationName = posInRec(1, float(playerLat), float(playerLong))
 
-        context = {}
-        return render(request, "exeterDomination/gamePage.html", context)
+        if locationName != "":
+            msg = f"Congratulations, you have claimed the {locationName} building."
+        
+        else:
+            msg = "Unfortunatly you are not close enough to claim any building. Please move to a building accepted by the game and try again. See locations page for all buildings."
+
+        return HttpResponse(msg)
