@@ -1,8 +1,17 @@
+"""
+The forms.py enables us to
+display forms on the frontend
+and pass data to the database.
+"""
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
 
 class SignUpForm(UserCreationForm):
+    """
+    This class allows us to display a form that
+    lets a user create an account.
+    """
     username = forms.CharField(
         max_length=128,
         required=True,

@@ -1,3 +1,8 @@
+"""
+This test file is an integration
+test. Many aspects of the site
+are tested as one.
+"""
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from django.test import TestCase

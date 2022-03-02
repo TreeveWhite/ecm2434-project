@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from exeterDomination.models import Locations
 
 
-def posInRec(userID : int, posLat: int, posLong: int) -> bool:
+def posInRec(userID: int, posLat: int, posLong: int) -> bool:
     """
     This function is used to check if a position is within a rectangle defined by its top west and bottom
     east corners.
@@ -14,9 +14,10 @@ def posInRec(userID : int, posLat: int, posLong: int) -> bool:
 
         print(location.trCoOrd.latitude)
 
-        if ((posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude) and (posLong <= location.blCoOrd.longitude and posLong >= location.blCoOrd.longitude)):
+        if ((location.trCoOrd.latitude >= posLat >= location.blCoOrd.latitude) and (
+                posLong <= location.blCoOrd.longitude <= posLong)):
             claimed = True
-            
+
             break
 
     location.claimedBy = User.objects.get(pk=userID)
