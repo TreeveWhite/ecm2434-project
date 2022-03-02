@@ -141,7 +141,21 @@ def leaderboard(request: request) -> HttpResponse:
         HttpResponse: the rendered template for
             this page
     """
-    context = {'player_scores': [['ExamplePlayerName', "100"], ], }
+
+    claimedLocations = Locations.objects.select_related('claimedBy').exclude(claimedBy__isnull=True)
+    numClaimed = claimedLocations.count()
+    numLocations = Locations.objects.all().count()
+
+    playerScores = {}
+    for location in claimedLocations:
+        if location.claimedBy.username in playerScores.keys():
+            playerScores[location.claimedBy.username] += 1/numLocations*100
+        else:
+            playerScores[location.claimedBy.username] = 1/numLocations*100
+    
+    playerScores["Unclaimed"] = (numLocations-numClaimed)/numLocations*100
+
+    context = {'player_scores': playerScores}
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
 
@@ -186,11 +200,10 @@ def claim(request: request) -> HttpResponse:
         playerLong = request.POST.get("long")
         playerLat = request.POST.get("lat")
 
-        print(playerLat)
+        # print(playerLat)
+        # print(playerLong)
 
-        print(playerLong)
-
-        locationName = posInRec(1, float(playerLat), float(playerLong))
+        locationName = posInRec(1, float(playerLong), float(playerLat))
 
         if locationName != "":
             msg = f"Congratulations, you have claimed the {locationName} building."
