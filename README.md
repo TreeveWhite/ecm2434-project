@@ -11,7 +11,7 @@ You need to install the following software and packages in order to run our soft
 ## Software to install
 - Python version 3.7 and above. The download can be found on the Download section on https://www.python.org
 - PostgreSQL - The download can be found at https://www.postgresql.org/. Follow the steps on the launcher and when in the application there a couple of requirements. First, any passwords set need to be set to the same password as the one set in settings.py. You then need to make a database called exeterDomination (or whatever is set in settings.py)
-- Mozille Firefox - this is used to run the testing
+- Mozille Firefox - this is used to run the testing. This can be found at https://www.mozilla.org/en-GB/firefox/new/
 - Geckdriver version 30- this is used in the testing and can be found at https://github.com/mozilla/geckodriver/releases with all releases for each system. Once installed, if the installation is compressed, double-click it and decompress it so that the executable file is available.
  ## Packages to install
 - Django - to install this go to your command prompt and enter :
