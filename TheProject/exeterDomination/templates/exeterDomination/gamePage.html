@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+    {% load static %}
+    <script src="{% static 'location.js' %}"></script>  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -48,8 +50,6 @@
         </div>
 
         <div class="fluid-container p-3 d-flex flex-column justify-content-center">
-            <noscript id="no_script"></noscript>
-            <p>{{ request.user.id }}</p>
             <h3 class="Codle">Compete to Claim Building</h1>
             <p class="Codle">Please enter Computer Science related words until you get the correct answer. <br> Only then will you be able to claim the building.</p>
             <div id="grid"></div>
@@ -58,11 +58,10 @@
         </div>
 
         <div class="d-flex p-2 flex-fill justify-content-center">
-            <form action="/claim" method="get" class="d-flex flex-column justify-content-center">
-                <input id="claimButton" type="submit" class="formButton arcade-font" value="Claim Building" disabled>
-            </form>
+            <div class="d-flex flex-column justify-content-center">
+                <button id="claimButton" class="formButton arcade-font" value="Claim Building" onclick="getLocation()" disabled>Claim Building</button>
+            </div>
         </div>
     </div>
 </body>
-
 </html>
