@@ -1,4 +1,3 @@
-import pydoc
 from urllib import request
 from django.conf import settings
 from django.http import HttpResponse
