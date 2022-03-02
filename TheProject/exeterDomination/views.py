@@ -12,6 +12,8 @@ from django.contrib.auth.models import User
 from .forms import SignUpForm
 from exeterDomination.models import Locations
 
+from .location import posInRec
+
 
 def index(request: request) -> HttpResponse:
     """
@@ -147,3 +149,22 @@ def locations(request: request) -> HttpResponse:
 
     context = {'buildingOwners': buildingOwners}
     return render(request, "exeterDomination/locationsPage.html", context)
+
+def claim(request: request) -> HttpResponse:
+    """
+    
+    """
+
+    if request.method == "POST":
+        # playerLong = request.POST["long"]
+        # playerLat = request.POST["lat"]
+
+        playerLong = 50.73771
+        playerLat = -3.53265
+
+        success = posInRec(1, playerLat, playerLong)
+
+        print(success)
+
+        context = {}
+        return render(request, "exeterDomination/gamePage.html", context)
