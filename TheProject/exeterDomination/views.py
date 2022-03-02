@@ -67,7 +67,6 @@ def login(request: request) -> HttpResponse:
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 k(request, user)
-                print("LOGGED IN")
             else:
                 return render(request, "exeterDomination/loginPage.html", {})
         return redirect('game')

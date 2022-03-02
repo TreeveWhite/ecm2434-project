@@ -9,7 +9,7 @@ from django.test import TestCase
 
 
 # Insert geckodriver executable here
-pathToGeckodriver = "/Users/ethan/Downloads/geckodriver"
+pathToGeckodriver = "/Users/faris/Downloads/geckodriver"
 
 
 class SeleniumLoginTest(StaticLiveServerTestCase, TestCase):
@@ -91,9 +91,6 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
     in time for release.
     """
     fixtures = ['../fixtures/coordinates.json', '../fixtures/locations.json']
-
-    def setUp(self):
-        pass
 
     @classmethod
     def setUpClass(cls):
