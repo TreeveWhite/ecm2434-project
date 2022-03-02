@@ -6,10 +6,31 @@ At the moment the player keeps trying to win and when they do they can claim the
 */ 
 'use strict'
 //This is the word list used, to be expanded for the full version
+//answerList
 let wordList = [
   'codes',
   'apple',
   'debug',
+  //'admin',
+  //'cache',
+  //'click',
+  //'email',
+  //'input',
+  //'logic',
+  //'mouse',
+  //'pixel',
+  //'queue',
+  //'reset',
+  //'robot',
+  //'abort',
+  //'write',
+  //'proxy',
+  //'micro',
+  //'lines',
+  //'https',
+  //'merge',
+  //'tests',
+  //'login',
 ];
 //selection of a random word
 let randomIndex = Math.floor(Math.random() * wordList.length) 
