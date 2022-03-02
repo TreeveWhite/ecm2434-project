@@ -11,19 +11,7 @@ def posInRec(userID : int, posLat: int, posLong: int) -> bool:
     """
     claimed = False
 
-    # print("Player Lat: ", posLat)
-    # print("Player Long: ", posLong)
-
     for location in Locations.objects.all():
-
-        # print("Lat left: ", location.blCoOrd.latitude, "|  Lat right: ", location.trCoOrd.latitude)
-        # print("Long Bottom: ", location.blCoOrd.longitude, "|  Long Top: ", location.trCoOrd.longitude)
-
-        # print("Lat check")
-        # print(posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude)
-
-        # print("Long check")
-        # print(posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)
 
         if ((posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude) and (posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)):
             claimed = True
