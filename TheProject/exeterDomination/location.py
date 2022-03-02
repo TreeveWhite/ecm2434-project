@@ -14,10 +14,12 @@ def posInRec(userID : int, posLat: int, posLong: int) -> bool:
     for location in Locations.objects.all():
 
         if ((posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude) and (posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)):
+            location.claimedBy = User.objects.get(pk=userID)
+            location.save()
             claimed = True
             break
 
-    location.claimedBy = User.objects.get(pk=userID)
-    location.save()
-
-    return claimed
+    if claimed == False:
+        return ""
+    else:
+        return location.name
