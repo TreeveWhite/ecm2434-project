@@ -21,7 +21,6 @@ let green_counter = 0
 let history = []
 let score = 0
 /**
- * @author Ethan Gallagher
  * This function initiates the grid on the page and adds a keyboard listener to the window
  */
 function startGame(){
@@ -31,7 +30,6 @@ function startGame(){
     window.addEventListener('keydown', handleKeyDown)
 }
 /**
- * @author Ethan Gallagher
  * @param {event} e the key pressed by the user
  * @returns null if the user presses enter before the word is finished or the word isn't in the word list
  * Checks which key is pressed and if its a letter enters it onto the grid
@@ -190,7 +188,6 @@ function handleKeyDown(e) {
 }
 
 /**
- * @author Ethan Gallagher
  * function checks if the user has had 6 attempts and still hasn't got the word
  */
 function check_if_lost(){
@@ -200,7 +197,6 @@ function check_if_lost(){
 }
 
 /**
- * @author Ethan Gallagher
  * Function builds 6 rows and 6 columns with DOM
  */
 function buildGrid() {
@@ -217,7 +213,6 @@ function buildGrid() {
 }
 
 /**
- * @author Ethan Gallagher
  * Function puts the word onto the grid
  */
 function updateGrid() {
@@ -230,7 +225,6 @@ function updateGrid() {
 }
 
 /**
- * @author Ethan Gallagher
  * @param {DOM Element} row the row being drawn
  * @param {String} attempt the string guessed
  * @param {Boolean} isCurrent checks whether the user is still guessing or the guess has finished
@@ -258,7 +252,6 @@ function drawAttempt(row, attempt, isCurrent) {
 }
 
 /**
- * @author Ethan Gallagher
  * @param {String} attempt the word being checked
  * @param {String} i the index letter guess of the word
  * @returns different colour codes for the cells to change to
