@@ -26,7 +26,12 @@ function showPosition(position) {
 
     xhttp.onreadystatechange = function() {
         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            window.alert(xhttp.responseText)
+            if (confirm(xhttp.responseText)) {
+                window.location.reload();
+            }
+            else {
+                window.location.reload();
+            }
         }
     }
 
