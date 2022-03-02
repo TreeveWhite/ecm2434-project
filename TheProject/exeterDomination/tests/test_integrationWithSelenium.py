@@ -92,9 +92,6 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
     """
     fixtures = ['../fixtures/coordinates.json', '../fixtures/locations.json']
 
-    def setUp(self):
-        pass
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
