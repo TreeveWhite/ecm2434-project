@@ -1,3 +1,7 @@
+"""
+This test file does the base cases
+for the exeterDomination project.
+"""
 from django.urls import reverse
 from django.test import SimpleTestCase
 

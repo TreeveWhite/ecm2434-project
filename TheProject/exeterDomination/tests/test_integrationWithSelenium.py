@@ -1,10 +1,15 @@
+"""
+This test file is an integration
+test. Many aspects of the site
+are tested as one.
+"""
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from django.test import TestCase
 
 
 # Insert geckodriver executable here
-pathToGeckodriver = "/Users/faris/downloads/geckodriver"
+pathToGeckodriver = "/Users/faris/Downloads/geckodriver"
 
 
 class SeleniumLoginTest(StaticLiveServerTestCase, TestCase):
@@ -86,9 +91,6 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
     in time for release.
     """
     fixtures = ['../fixtures/coordinates.json', '../fixtures/locations.json']
-
-    def setUp(self):
-        pass
 
     @classmethod
     def setUpClass(cls):
