@@ -47,11 +47,14 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Exeter Domination",
     "site_logo": "exeter_logo.png",
     "user_avatar": None,
+    "topmenu_links": [
+        {"name": "View Site", "url": "index"}
+    ]
 
 }
 
 JAZZMIN_UI_TWEAKS = {
-    "theme": "cyborg",
+    "theme": "darkly",
 }
 
 MIDDLEWARE = [
