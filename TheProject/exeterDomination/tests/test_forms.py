@@ -18,8 +18,7 @@ class SignUpFormTest(TestCase):
         but ultimately too-short password.
 
         The expected result:
-        password length < 8 characters -- will return false
-            when its validity is checked.
+        password length < 8 characters -- will return false when its validity is checked.
         """
         form = SignUpForm(data={
             "username": "validTestUsername",
@@ -36,8 +35,7 @@ class SignUpFormTest(TestCase):
         numbers.
 
         The expected result:
-        password length > 8 characters -- will return true
-            when its validity is checked.
+        password length > 8 characters -- will return true when its validity is checked.
         """
         form = SignUpForm(
             data={
@@ -53,8 +51,7 @@ class SignUpFormTest(TestCase):
         appended to it.
 
         The expected result:
-        password very similar to username -- will return false
-            when its validity is checked.
+        password very similar to username -- will return false when its validity is checked.
         """
         form = SignUpForm(data={
             "username": "validTestUsername",
@@ -71,8 +68,7 @@ class SignUpFormTest(TestCase):
         the word invalid appended to the end of it.
 
         The expected result:
-        username contains forbidden characters -- will return false
-            when its validity is checked.
+        username contains forbidden characters -- will return false when its validity is checked.
         """
         form = SignUpForm(data={
             "username": "invalid)=`&3,\\_<,`4~$2",
@@ -88,8 +84,7 @@ class SignUpFormTest(TestCase):
         up solely of numbers.
 
         The expected result:
-        password contains only numbers -- will return false
-            when its validity is checked.
+        password contains only numbers -- will return false when its validity is checked.
         """
         form = SignUpForm(data={
             "username": "validTestUsername",
@@ -104,8 +99,7 @@ class SignUpFormTest(TestCase):
         This function will test a valid username with a very bad password.
         The password is simply, password.
 
-        password is easily guessable -- will return
-            false when its validity is checked.
+        password is easily guessable -- will return false when its validity is checked.
         """
         form = SignUpForm(data={
             "username": "validTestUsername",
