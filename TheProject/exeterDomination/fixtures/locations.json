@@ -5,8 +5,8 @@
         "fields": {
             "name" : "harrison",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 1,
-            "trCoOrd_id" : 2
+            "bottomLeftCoordinate_id" : 1,
+            "topRightCoordinate_id" : 2
         }
     },
     {
@@ -15,8 +15,8 @@
         "fields": {
             "name" : "innovation1",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 3,
-            "trCoOrd_id" : 4
+            "bottomLeftCoordinate_id" : 3,
+            "topRightCoordinate_id" : 4
         }
     },
     {
@@ -25,8 +25,8 @@
         "fields": {
             "name" : "innovation2",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 5,
-            "trCoOrd_id" : 6
+            "bottomLeftCoordinate_id" : 5,
+            "topRightCoordinate_id" : 6
         }
     },
     {
@@ -35,8 +35,8 @@
         "fields": {
             "name" : "laver",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 7,
-            "trCoOrd_id" : 8        }
+            "bottomLeftCoordinate_id" : 7,
+            "topRightCoordinate_id" : 8        }
     },
     {
         "model" : "exeterDomination.locations",
@@ -44,8 +44,8 @@
         "fields": {
             "name" : "amory",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 9,
-            "trCoOrd_id" : 10
+            "bottomLeftCoordinate_id" : 9,
+            "topRightCoordinate_id" : 10
         }
     },
     {
@@ -54,8 +54,8 @@
         "fields": {
             "name" : "forum",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 11,
-            "trCoOrd_id" : 12
+            "bottomLeftCoordinate_id" : 11,
+            "topRightCoordinate_id" : 12
         }
     },
     {
@@ -64,8 +64,8 @@
         "fields": {
             "name" : "INTO",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 13,
-            "trCoOrd_id" : 14
+            "bottomLeftCoordinate_id" : 13,
+            "topRightCoordinate_id" : 14
         }
     },
     {
@@ -74,8 +74,8 @@
         "fields": {
             "name" : "streatham",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 15,
-            "trCoOrd_id" : 16
+            "bottomLeftCoordinate_id" : 15,
+            "topRightCoordinate_id" : 16
         }
     },
     {
@@ -84,8 +84,8 @@
         "fields": {
             "name" : "newman",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 17,
-            "trCoOrd_id" : 18
+            "bottomLeftCoordinate_id" : 17,
+            "topRightCoordinate_id" : 18
         }
     },
     {
@@ -94,8 +94,8 @@
         "fields": {
             "name" : "Sports Park",
             "claimedBy_id" : null,
-            "blCoOrd_id" : 19,
-            "trCoOrd_id" : 20
+            "bottomLeftCoordinate_id" : 19,
+            "topRightCoordinate_id" : 20
         }
     }
 ]

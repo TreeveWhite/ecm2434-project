@@ -1,7 +1,7 @@
 """
 alarms.py
 =======================================
-This file holds all the functions related to locations in articular when 
+This file holds all the functions related to locations in articular when
 handling the function which determins if a players longitude and lattude
 are inside that of ay building in the system.
 """
@@ -29,30 +29,41 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
     """
     claimed = False
 
-    #Compares users long and lat to every building in system.
+    # Compares users long and lat to every building in system.
     for location in Locations.objects.all():
 
         print(location.name)
         print("Player Lat:", posLat)
         print("Player Long:", posLong)
-        print("Location Lat Top:", location.trCoOrd.latitude, " Location Lat Bottom: ", location.blCoOrd.latitude)
-        print(posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude)
+        print(
+            "Location Lat Top:",
+            location.topRightCoordinate.latitude,
+            " Location Lat Bottom: ",
+            location.bottomLeftCoordinate.latitude)
+        print(location.topRightCoordinate.latitude >=
+              posLat >= location.bottomLeftCoordinate.latitude)
 
-        print("Location Long left:", location.blCoOrd.longitude, " Location Long Right: ", location.trCoOrd.longitude)
-        print(posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)
+        print(
+            "Location Long left:",
+            location.bottomLeftCoordinate.longitude,
+            " Location Long Right: ",
+            location.topRightCoordinate.longitude)
+        print(location.topRightCoordinate.longitude >=
+              posLong >= location.bottomLeftCoordinate.longitude)
         print()
 
-        if ((posLat <= location.trCoOrd.latitude and posLat >= location.blCoOrd.latitude) and (posLong <= location.trCoOrd.longitude and posLong >= location.blCoOrd.longitude)):
-            #Users position is inside location
+        if (location.topRightCoordinate.latitude >= posLat >= location.bottomLeftCoordinate.latitude) and (
+                location.topRightCoordinate.longitude >= posLong >= location.bottomLeftCoordinate.longitude):
+            # Users position is inside location
             location.claimedBy = User.objects.get(pk=userID)
             location.save()
             claimed = True
-        
+
             break
 
-    if claimed == False:
-        #The player is not inside any recognised building.
+    if not claimed:
+        # The player is not inside any recognised building.
         return ""
     else:
-        #The player has claimed a building.
+        # The player has claimed a building.
         return location.name

@@ -6,6 +6,7 @@ the coordinates and locations tables.
 """
 from django.conf import settings
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Locations(models.Model):
@@ -25,22 +26,25 @@ class Locations(models.Model):
 
     name = models.TextField()
 
-    trCoOrd = models.ForeignKey(
+    topRightCoordinate = models.ForeignKey(
         'CoOrds',
         on_delete=models.SET_NULL,
         null=True,
-        related_name='topRigh')
+        related_name='topRigh',
+        verbose_name="Top Right Coordinate")
 
-    blCoOrd = models.ForeignKey(
+    bottomLeftCoordinate = models.ForeignKey(
         'CoOrds',
         on_delete=models.SET_NULL,
         null=True,
-        related_name='bottomLeft')
+        related_name='bottomLeft',
+        verbose_name="Bottom Left Coordinate")
 
     claimedBy = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
-        null=True)
+        null=True,
+        verbose_name="Claimed By")
 
     def __str__(self) -> str:
         """
@@ -49,15 +53,19 @@ class Locations(models.Model):
         """
         return f"{self.name}"
 
+    class Meta:
+        verbose_name = _("Location")
+        verbose_name_plural = _("Locations")
+
 
 class CoOrds(models.Model):
     """
     This is the class which inherits from models.Model and is used
-    to create a model for all the CoOrds in the Server.
+    to create a model for all the Coord in the Server.
 
     Django then uses this class to create a table in the database.
 
-    The attribute of CoOrds (each column in the table are):
+    The attribute of Coord (each column in the table are):
 
     * longitude - the longitudinal value
     * latitude - the latitudinal value
@@ -69,7 +77,11 @@ class CoOrds(models.Model):
 
     def __str__(self) -> str:
         """
-        This function returns the CoOrds in a neat
+        This function returns the Coord in a neat
         string format.
         """
         return f"Long: {self.longitude}, Lat: {self.latitude}"
+
+    class Meta:
+        verbose_name = _("Coordinate")
+        verbose_name_plural = _("Coordinates")
