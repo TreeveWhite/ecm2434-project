@@ -34,7 +34,9 @@ class CustomUserAdmin(UserAdmin):
                            len(Locations.objects.filter(claimedBy_id=obj.id)))
 
 
+
 admin.site.unregister(User)
+CustomUserAdmin.claimedBy.short_description = "Current Claims"
 admin.site.register(User, CustomUserAdmin)
 
 
