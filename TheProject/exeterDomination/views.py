@@ -18,6 +18,7 @@ from exeterDomination.models import Locations
 
 from .location import posInRec
 
+
 def index(request: request) -> HttpResponse:
     """
     This is the index view. It renders the home

@@ -5,13 +5,36 @@ This module contains the classes which register Locations and Coord to the
 django Admin framework which allows superusers to modify and edit data sorted in
 the database tables created from the models.
 """
-
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.http import urlencode
 from django.utils.safestring import SafeString
 from exeterDomination.models import Locations, CoOrds
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+
+
+class CustomUserAdmin(UserAdmin):
+    list_display = ['id', 'username', 'is_active', 'date_joined', 'is_staff', "claimedBy"]
+
+    def claimedBy(self, obj):
+        claimedIDs = Locations.objects.filter(claimedBy_id=obj.id).values("id")
+        k = []
+        for claim in claimedIDs:
+            k.append(("id", claim['id']))
+        url = (
+                reverse("admin:exeterDomination_locations_changelist")
+                # + "?"
+                # + urlencode(k)
+        )
+        print(url)
+        return format_html('<a href="{}">{} Locations Claimed</a>', url,
+                           len(Locations.objects.filter(claimedBy_id=obj.id)))
+
+
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
 
 
 @admin.register(Locations)
@@ -29,9 +52,9 @@ class LocationsAdmin(admin.ModelAdmin):
 
     def claimedLink(self, obj):
         url = (
-            reverse("admin:auth_user_changelist")
-            + "?"
-            + urlencode({"username": f"{obj.claimedBy}"})
+                reverse("admin:auth_user_changelist")
+                + "?"
+                + urlencode({"username": f"{obj.claimedBy}"})
         )
         return format_html('<a href="{}">{}</a>', url, obj.claimedBy)
 
@@ -52,9 +75,9 @@ class CoOrdsAdmin(admin.ModelAdmin):
             bottomLeftCoordinate_id=obj.id)) == 1 else "topRightCoordinate_id"
         if len(Locations.objects.filter(bottomLeftCoordinate_id=obj.id)) == 1:
             url = (
-                reverse("admin:exeterDomination_locations_changelist")
-                + "?"
-                + urlencode({"bottomLeftCoordinate_id": f"{obj.id}"})
+                    reverse("admin:exeterDomination_locations_changelist")
+                    + "?"
+                    + urlencode({"bottomLeftCoordinate_id": f"{obj.id}"})
             )
             return format_html(
                 '<a href="{}">{}</a>',
@@ -63,13 +86,14 @@ class CoOrdsAdmin(admin.ModelAdmin):
                     bottomLeftCoordinate=obj.id).name)
         elif len(Locations.objects.filter(topRightCoordinate_id=obj.id)):
             url = (
-                reverse("admin:exeterDomination_locations_changelist")
-                + "?"
-                + urlencode({"topRightCoordinate_id": f"{obj.id}"})
+                    reverse("admin:exeterDomination_locations_changelist")
+                    + "?"
+                    + urlencode({"topRightCoordinate_id": f"{obj.id}"})
             )
             return format_html(
                 '<a href="{}">{}</a>',
                 url,
                 Locations.objects.get(
                     topRightCoordinate_id=obj.id).name)
+
     pass
