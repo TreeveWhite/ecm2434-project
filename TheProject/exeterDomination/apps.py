@@ -15,3 +15,5 @@ class ExeterdominationConfig(AppConfig):
 
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'exeterDomination'
+    verbose_name = "Exeter Domination"
+

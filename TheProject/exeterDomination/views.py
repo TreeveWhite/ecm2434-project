@@ -6,7 +6,7 @@ the correct content on the page a user navigates
 to.
 """
 from urllib import request
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as k
@@ -17,7 +17,6 @@ from .forms import SignUpForm
 from exeterDomination.models import Locations
 
 from .location import posInRec
-
 
 def index(request: request) -> HttpResponse:
     """
