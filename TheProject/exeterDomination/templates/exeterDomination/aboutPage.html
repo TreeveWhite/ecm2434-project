@@ -13,45 +13,7 @@
     <title>About | Exeter Domination</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm myNavbar navbar-dark">
-        <div class="container-fluid justify-content-end">
-            <ul class="navbar-nav">
-                {% if request.user.is_authenticated %}
-                <li class="nav-item px-3">
-                    <a class="nav-link " href="/">Home</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link" href="leaderboard">Leaderboard</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" type="button" id="dropDownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username }}</a>
-                    <ul class = "dropdown-menu dropdown-menu-end" aria-labelledby="dropDownMenuButton1">
-                        {% if request.user.is_staff or request.user.is_superuser %}
-                            <li><a class="dropdown-item" href="admin">Admin</a></li>
-                        {% endif %}
-                        <li><a class="dropdown-item" href="logout">Logout</a></li>
-
-                    </ul>
-                </li>
-                {% endif %}
-                {% if not request.user.is_authenticated %}
-                <li class="nav-item px-3">
-                    <a class="nav-link " href="/">Home</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link" href="admin">Admin</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link " href="login">Login</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link" href="signup">Sign Up</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
-
+    {% block nav %} {% include 'exeterDomination/navbar.html' %} {% endblock nav %}
     <div class="container-fluid pt-5 main">
         <div class="d-flex flex-fill">
             <h1 class="arcade-font h-5">What is Exeter Domination?</h1>
