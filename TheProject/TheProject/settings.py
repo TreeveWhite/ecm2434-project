@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'jazzmin',
+    'jazzmin',
     'exeterDomination.apps.ExeterdominationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-"""JAZZMIN_SETTINGS = {
+JAZZMIN_SETTINGS = {
     "site_header": "Exeter Domination",
     "site_title": "Exeter Domination",
     "site_brand": "Exeter Domination",
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "cyborg",
-}"""
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
