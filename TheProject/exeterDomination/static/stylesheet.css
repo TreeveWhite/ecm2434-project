@@ -7,6 +7,19 @@
     --lowContrast: #776472;
 }
 
+.navbar-nav > li > .dropdown-menu {
+    background-color: var(--dark1Contrast);
+}
+
+.navbar-nav > li > .dropdown-menu a {
+    color: var(--background);
+}
+
+.navbar-nav > li > .dropdown-menu a:hover {
+    background-color: var(--dark1Contrast);
+    color: rgba(255,255,255,.85);
+}
+
 html {
     background-color: var(--background);
 }
