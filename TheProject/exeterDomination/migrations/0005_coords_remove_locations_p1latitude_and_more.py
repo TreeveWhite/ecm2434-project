@@ -30,12 +30,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='locations', name='blCoOrd', field=models.ForeignKey(
                 null=True, on_delete=django.db.models.deletion.SET_NULL,
-                related_name='bottomLeft', to='exeterDomination.CoOrds'),),
+                related_name='bottomLeft', to='exeterDomination.coords'),),
         migrations.AddField(
             model_name='locations', name='trCoOrd', field=models.ForeignKey(
                 null=True, on_delete=django.db.models.deletion.SET_NULL,
-                related_name='topRigh', to='exeterDomination.CoOrds'),),
+                related_name='topRigh', to='exeterDomination.coords'),),
         migrations.AddField(
             model_name='users', name='lastPos', field=models.ForeignKey(
                 null=True, on_delete=django.db.models.deletion.SET_NULL,
-                to='exeterDomination.CoOrds'),), ]
+                to='exeterDomination.coords'),), ]
