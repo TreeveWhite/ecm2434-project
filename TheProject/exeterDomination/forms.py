@@ -1,7 +1,7 @@
 """
 forms.py
 =======================================
-This module contains the forms classes that enables us to display http forms on the 
+This module contains the forms classes that enables us to display http forms on the
 frontend and pass data to the database when the forms ae sent to the server.
 """
 from django import forms
@@ -43,5 +43,5 @@ class Meta:
     """
     This class describes the Meta data of the forms.
     """
-    
+
     fields = ['username', 'password1', 'password2']

@@ -26,7 +26,7 @@ def index(request: request) -> HttpResponse:
 
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -41,7 +41,7 @@ def about(request: request) -> HttpResponse:
 
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -66,7 +66,7 @@ def login(request: request) -> HttpResponse:
 
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -100,10 +100,10 @@ def signup(request: request) -> HttpResponse:
             and then the user is added to the database.
             Finally, the user is logged in and redirected
             to the home page.
-    
+
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -146,7 +146,7 @@ def game(request: request) -> HttpResponse:
 
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -161,23 +161,25 @@ def leaderboard(request: request) -> HttpResponse:
 
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
 
-    claimedLocations = Locations.objects.select_related('claimedBy').exclude(claimedBy__isnull=True)
+    claimedLocations = Locations.objects.select_related(
+        'claimedBy').exclude(claimedBy__isnull=True)
     numClaimed = claimedLocations.count()
     numLocations = Locations.objects.all().count()
 
     playerScores = {}
     for location in claimedLocations:
         if location.claimedBy.username in playerScores.keys():
-            playerScores[location.claimedBy.username] += 1/numLocations*100
+            playerScores[location.claimedBy.username] += 1 / numLocations * 100
         else:
-            playerScores[location.claimedBy.username] = 1/numLocations*100
-    
-    playerScores["Unclaimed"] = (numLocations-numClaimed)/numLocations*100
+            playerScores[location.claimedBy.username] = 1 / numLocations * 100
+
+    playerScores["Unclaimed"] = (
+        numLocations - numClaimed) / numLocations * 100
 
     context = {'player_scores': playerScores}
     return render(request, "exeterDomination/leaderboardPage.html", context)
@@ -192,7 +194,7 @@ def locations(request: request) -> HttpResponse:
 
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -219,7 +221,7 @@ def claim(request: request) -> HttpResponse:
 
     :param request: the Http Request the server has recived
     :type request: HttpRequest
-    
+
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -231,11 +233,14 @@ def claim(request: request) -> HttpResponse:
         # print(playerLat)
         # print(playerLong)
 
-        locationName = posInRec(request.user.id, float(playerLong), float(playerLat))
+        locationName = posInRec(
+            request.user.id,
+            float(playerLong),
+            float(playerLat))
 
         if locationName != "":
             msg = f"Congratulations, you have claimed the {locationName} building."
-        
+
         else:
             msg = "Unfortunatly you are not close enough to claim any building. Please move to a building accepted by the game and try again. See locations page for all buildings."
 
