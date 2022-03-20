@@ -5,11 +5,9 @@ This file holds all the functions related to locations in articular when
 handling the function which determins if a players longitude and lattude
 are inside that of ay building in the system.
 """
-import datetime
 
 from django.contrib.auth.models import User
 from exeterDomination.models import Locations
-import django
 
 
 def posInRec(userID: int, posLat: int, posLong: int) -> bool:
@@ -58,7 +56,6 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
                 location.topRightCoordinate.longitude >= posLong >= location.bottomLeftCoordinate.longitude):
             # Users position is inside location
             location.claimedBy = User.objects.get(pk=userID)
-            location.lastClaimedTime = datetime.datetime.now()
             location.save()
             claimed = True
 
