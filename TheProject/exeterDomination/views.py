@@ -6,6 +6,8 @@ the correct content on the page a user navigates
 to.
 """
 from urllib import request
+
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
@@ -151,6 +153,15 @@ def game(request: request) -> HttpResponse:
     :rtype: HttpResponse
     """
     context = {}
+
+    if request.user.groups.filter(name="Game Masters").exists():
+        if not request.user.is_staff:
+            request.user.is_staff = True
+            request.user.save()
+    else:
+        if request.user.is_staff:
+            request.user.is_staff = False
+
     return render(request, "exeterDomination/gamePage.html", context)
 
 
