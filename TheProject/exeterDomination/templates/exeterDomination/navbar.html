@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <nav class="navbar navbar-expand-sm myNavbar navbar-dark">
+        {% if request.user.is_staff %}
+        <div class="navbar-header">
+            <a class="navbar-brand" style="padding-left: 15px; color: var(--background)">Game Master</a>
+        </div>
+        {% endif %}
         <div class="container-fluid justify-content-end">
             <ul class="navbar-nav">
                 {% if request.user.is_authenticated %}
