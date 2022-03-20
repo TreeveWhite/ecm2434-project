@@ -1,0 +1,5 @@
+django
+psycopg2
+django-jazzmin
+selenium
+psycopg2-binary
