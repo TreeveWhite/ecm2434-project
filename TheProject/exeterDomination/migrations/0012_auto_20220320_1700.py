@@ -21,7 +21,6 @@ def apply_migration(apps, schema_editor):
     group2 = Group.objects.get(name="Game Masters")
     print(group2)
     l1 = ["add_locations", "view_locations", "view_users", "add_coords", "view_coords"]
-    ct = ContentType.objects.get_for_model()
     for l in l1:
         group2.permissions.add(Permissions.objects.get(codename=l))
 
