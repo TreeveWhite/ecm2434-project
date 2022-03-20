@@ -159,8 +159,9 @@ def game(request: request) -> HttpResponse:
             request.user.is_staff = True
             request.user.save()
     else:
-        if request.user.is_staff:
+        if request.user.is_staff and not request.user.is_superuser and request.user.groups.filter(name="Game Masters").exists():
             request.user.is_staff = False
+            request.user.save()
 
     return render(request, "exeterDomination/gamePage.html", context)
 
