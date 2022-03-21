@@ -23,7 +23,8 @@ class SignUpFormTest(TestCase):
         form = SignUpForm(data={
             "username": "validTestUsername",
             "password1": "s062k@",
-            "password2": "s062k@"
+            "password2": "s062k@",
+            "teamName": 9999
         })
         self.assertFalse(form.is_valid())
 
@@ -41,7 +42,9 @@ class SignUpFormTest(TestCase):
             data={
                 "username": "validTestUsername",
                 "password1": "@3qgqbq?e24dGnJ7UeBY-TWAp$c&Z8ywjNpULL@!CANL+#zvDM739s_Yth?kd^eN@",
-                "password2": "@3qgqbq?e24dGnJ7UeBY-TWAp$c&Z8ywjNpULL@!CANL+#zvDM739s_Yth?kd^eN@"})
+                "password2": "@3qgqbq?e24dGnJ7UeBY-TWAp$c&Z8ywjNpULL@!CANL+#zvDM739s_Yth?kd^eN@",
+                "teamName": 9999
+            })
         self.assertTrue(form.is_valid())
 
     def testSimilarUsernameAndPassword(self):

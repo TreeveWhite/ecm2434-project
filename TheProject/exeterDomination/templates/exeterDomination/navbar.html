@@ -6,6 +6,11 @@
             <a class="navbar-brand" style="padding-left: 15px; color: var(--background)">Game Master</a>
         </div>
         {% endif %}
+        {% if request.user.groups.all.0 %}
+        <div class="navbar-header">
+            <a class="navbar-brand" style="padding-left: 15px; color: var(--background)">{{ request.user.groups.all.0.name }}</a>
+        </div>
+        {% endif %}
         <div class="container-fluid justify-content-end">
             <ul class="navbar-nav">
                 {% if request.user.is_authenticated %}
@@ -21,6 +26,7 @@
                         {% if request.user.is_staff or request.user.is_superuser %}
                             <li><a class="dropdown-item" href="admin">Admin</a></li>
                         {% endif %}
+                        <li><a class="dropdown-item" href="teams">Teams</a></li>
                         <li><a class="dropdown-item" href="logout">Logout</a></li>
 
                     </ul>
