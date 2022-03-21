@@ -54,6 +54,22 @@
                 </tbody>
             </thead>
         </table>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Team Domination Percent</th>
+                </tr>
+                <tbody>
+                    {% for team,score in team_scores.items %}
+                        <tr>
+                        <td>{{ team }}</td>
+                        <td>{{ score }}%</td>
+                        </tr>         
+                    {% endfor %}
+                </tbody>
+            </thead>
+        </table>
     </div>
 </body>
 </html>
