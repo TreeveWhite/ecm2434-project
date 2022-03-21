@@ -2,7 +2,7 @@
 # SPRINT 2
 
 Note from faris:
-    Make it clear that adding a user to the Game Masters group automatically adds them to staff, and removing them from the Game Masters group will automatically remove them from the staff.
+    Make it clear that adding a user to the Game Masters group automatically adds them to staff, and removing them from the Game Masters group will automatically remove them from the staff
 
 
 
