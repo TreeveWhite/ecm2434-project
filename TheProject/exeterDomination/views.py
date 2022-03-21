@@ -204,6 +204,22 @@ def leaderboard(request: request) -> HttpResponse:
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
 
+def teams(request : request) -> HttpRequest:
+    """
+    This is the teams view. It renders
+    the page which allows users to create
+    or join differet teams.
+
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+
+    :return: the rendered template for this page
+    :rtype: HttpResponse
+    """
+
+    context = {}
+    return render(request, "exeterDomination/teamsPage.html", context)
+
 def locations(request: request) -> HttpResponse:
     """
     This is the locations view. It queries the
