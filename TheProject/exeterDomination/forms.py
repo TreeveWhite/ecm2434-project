@@ -39,14 +39,17 @@ class SignUpForm(UserCreationForm):
             'placeholder': 'Repeat Password'
         }))
 
-    choices = Group.objects.exclude(name="Game Masters")
-    listOfList = [[9999, "No Team"]]
-    for choice in choices:
-        listOfList.append([choice.id, choice.name])
+    try:
+        choices = Group.objects.exclude(name="Game Masters")
+        listOfList = [[9999, "No Team"]]
+        for choice in choices:
+            listOfList.append([choice.id, choice.name])
 
-    my_tuple = tuple((tuple(i) for i in listOfList))
+        my_tuple = tuple((tuple(i) for i in listOfList))
 
-    teamName = forms.ChoiceField(widget=forms.Select, choices=my_tuple)
+        teamName = forms.ChoiceField(widget=forms.Select, choices=my_tuple)
+    except Exception:
+        pass
 
 
 class Meta:
