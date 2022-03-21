@@ -41,6 +41,7 @@ class SignUpForm(UserCreationForm):
 
     try:
         choices = Group.objects.exclude(name="Game Masters")
+        listOfList = []
         for choice in choices:
             listOfList.append([choice.id, choice.name])
 
