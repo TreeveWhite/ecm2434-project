@@ -242,8 +242,9 @@ def teams(request : request) -> HttpRequest:
             #return render(request, "exeterDomination/teamsPage.html", context)
         elif "create_team" in request.POST:
             group2 = request.POST["teamName2"]
+            print(createTeamForm.errors)
             if createTeamForm.is_valid():
-                newGroup, yesno = Group.objects.get_or_create(id=group2)
+                newGroup, yesno = Group.objects.get_or_create(name=group2)
                 if yesno:
                     newGroup.user_set.add(User.objects.get(id=request.user.id))
                     newGroup.save()
