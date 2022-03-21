@@ -23,12 +23,15 @@
             <h1 class="arcade-font h-5">Exeter Domination</h1>
         </div>
 
-        <div class="fluid-container p-3 d-flex flex-column justify-content-center">
+        <div class="fluid-container p-3 d-flex flex-column justify-content-center" id="gameContainer">
             <h3 class="Codle">Compete to Claim Building</h1>
-            <p class="Codle">Please enter Computer Science related words until you get the correct answer. <br> Only then will you be able to claim the building.</p>
+            <p class="Codle" id="gameText"></p>
+            <p class="Codle" id="playerScore"></p>
+            <p class="Codle" id="computerScore"></p>
+            <p class="Codle" id="totalMoves"></p>
             <div id="grid"></div>
             {% load static %}
-            <script src="{% static 'compSciWordle.js' %}"></script>  
+            <script src="{% static 'randomGame.js' %}"></script>  
         </div>
 
         <div class="d-flex p-2 flex-fill justify-content-center">

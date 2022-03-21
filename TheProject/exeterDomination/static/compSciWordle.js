@@ -45,7 +45,9 @@ let score = 0
  * This function initiates the grid on the page and adds a keyboard listener to the window
  */
 function startGame(){
-    let grid = document.getElementById('grid')
+    let grid = document.createElement('div')
+    grid.id = 'grid'
+    let paragraph = document.createElement('p')
     buildGrid()
     updateGrid()
     window.addEventListener('keydown', handleKeyDown)
@@ -220,6 +222,8 @@ function check_if_lost(){
  * Function builds 6 rows and 6 columns with DOM
  */
 function buildGrid() {
+  let paragraph = document.getElementById('gameText')
+  paragraph.innerHTML = "Please enter Computer Science related words until you get the correct answer. <br> Only then will you be able to claim the building.";
   for (let i = 0; i < 6; i++) {
     let row = document.createElement('div')
     for (let j = 0; j < 5; j++) {
@@ -297,13 +301,3 @@ function getBgColor(attempt, i) {
 
 
 startGame();
-
-//this section creates the restart button which reloads the window
-let restartBtn = document.createElement('button');
-restartBtn.id='restart';
-restartBtn.innerHTML = "Restart"
-restartBtn.addEventListener("click", function restartGame(){
-    location.reload();
-});
-grid.append(restartBtn);
-
