@@ -54,12 +54,17 @@ function game(element){
     var playerCount = document.getElementById('playerScore');
     var computerScoreText = document.getElementById('computerScore');
     var totalMoves = document.getElementById('totalMoves');
-    if (winCounter==3&&totalCounter<=5){
-        alert("YOU HAVE WON! CLAIM THE BUILDING")
-        document.getElementById('claimButton').disabled = false;
-    } else if (computerScore==3 && totalCounter<=5){
-        alert("You have lost, the page will now reload and you can try again.");
-        location.reload();
+    if (totalCounter==5){
+        if (winCounter > computerScore){
+            alert("YOU HAVE WON! CLAIM THE BUILDING")
+            document.getElementById('claimButton').disabled = false;
+        } else if (computerScore > winCounter){
+            alert("YOU HAVE LOST. THE PAGE WILL RELOAD AND YOU CAN TRY AGAIN");
+            location.reload();
+        } else {
+            alert("YOU HAVE DRAWN. THE PAGE WILL RELOAD AND YOU CAN TRY AGAIN");
+            location.reload();
+        }
     } else {
         var computerMoves = ['Rock', 'Paper', 'Scissors']
         var index = Math.floor(Math.random()*computerMoves.length);
