@@ -6,6 +6,7 @@ frontend and pass data to the database when the forms ae sent to the server.
 """
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group
 
 
 class SignUpForm(UserCreationForm):
@@ -19,14 +20,14 @@ class SignUpForm(UserCreationForm):
         required=True,
         help_text='Username: ',
         widget=forms.TextInput(attrs={
-            'name': 'username',
+            'name'       : 'username',
             'placeholder': 'Username'}))
 
     password1 = forms.CharField(
         help_text='Password: ',
         required=True,
         widget=forms.PasswordInput(attrs={
-            'name': 'password',
+            'name'       : 'password',
             'placeholder': 'Password'
         }))
 
@@ -34,9 +35,18 @@ class SignUpForm(UserCreationForm):
         help_text='Re-Enter Password: ',
         required=True,
         widget=forms.PasswordInput(attrs={
-            'name': 'psw-repeat',
+            'name'       : 'psw-repeat',
             'placeholder': 'Repeat Password'
         }))
+
+    choices = Group.objects.exclude(name="Game Masters")
+    listOfList = [[9999, "No Team"]]
+    for choice in choices:
+        listOfList.append([choice.id, choice.name])
+
+    my_tuple = tuple((tuple(i) for i in listOfList))
+
+    teamName = forms.ChoiceField(widget=forms.Select, choices=my_tuple)
 
 
 class Meta:
@@ -44,4 +54,4 @@ class Meta:
     This class describes the Meta data of the forms.
     """
 
-    fields = ['username', 'password1', 'password2']
+    fields = ['username', 'password1', 'password2', 'teamName']

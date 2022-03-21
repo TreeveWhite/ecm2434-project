@@ -7,7 +7,7 @@ to.
 """
 from urllib import request
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
@@ -118,13 +118,18 @@ def signup(request: request) -> HttpResponse:
             form = SignUpForm(request.POST)
             username = request.POST['username']
             password = request.POST['password1']
+            group = request.POST["teamName"]
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('username')
                 user2 = authenticate(
                     request, username=username, password=password)
                 if user2 is not None:
+                    print(group)
                     k(request, user2)
+                    grp = Group.objects.get(id=group)
+                    grp.user_set.add(User.objects.get(id=request.user.id))
+                    grp.save()
                 return redirect(reverse('index'))
             else:
                 print('Form is not valid')
@@ -198,6 +203,22 @@ def leaderboard(request: request) -> HttpResponse:
     context = {'player_scores': playerScores}
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
+
+def teams(request : request) -> HttpRequest:
+    """
+    This is the teams view. It renders
+    the page which allows users to create
+    or join differet teams.
+
+    :param request: the Http Request the server has recived
+    :type request: HttpRequest
+
+    :return: the rendered template for this page
+    :rtype: HttpResponse
+    """
+
+    context = {}
+    return render(request, "exeterDomination/teamsPage.html", context)
 
 def locations(request: request) -> HttpResponse:
     """

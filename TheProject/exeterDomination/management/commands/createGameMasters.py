@@ -9,6 +9,7 @@ class Command(BaseCommand):
         newGroup, created = Group.objects.get_or_create(name="Game Masters")
         coordsCT = ContentType.objects.get_for_model(CoOrds)
         locationsCT = ContentType.objects.get_for_model(Locations)
+        noTeam, created2 = Group.objects.get_or_create(name="No Team")
 
         if created:
             perm1 = Permission.objects.create(codename="can_add_locations", name="Can add locations", content_type=locationsCT)
@@ -23,6 +24,9 @@ class Command(BaseCommand):
 
             newGroup.save()
             print("Success")
+            if created2:
+                noTeam.save()
+
         else:
             print("Done")
             pass
