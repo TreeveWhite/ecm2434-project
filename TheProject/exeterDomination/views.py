@@ -177,21 +177,23 @@ def leaderboard(request: request) -> HttpResponse:
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
+    try:
+        claimedLocations = Locations.objects.select_related(
+            'claimedBy').exclude(claimedBy__isnull=True)
+        numClaimed = claimedLocations.count()
+        numLocations = Locations.objects.all().count()
 
-    claimedLocations = Locations.objects.select_related(
-        'claimedBy').exclude(claimedBy__isnull=True)
-    numClaimed = claimedLocations.count()
-    numLocations = Locations.objects.all().count()
+        playerScores = {}
+        for location in claimedLocations:
+            if location.claimedBy.username in playerScores.keys():
+                playerScores[location.claimedBy.username] += 1 / numLocations * 100
+            else:
+                playerScores[location.claimedBy.username] = 1 / numLocations * 100
 
-    playerScores = {}
-    for location in claimedLocations:
-        if location.claimedBy.username in playerScores.keys():
-            playerScores[location.claimedBy.username] += 1 / numLocations * 100
-        else:
-            playerScores[location.claimedBy.username] = 1 / numLocations * 100
-
-    playerScores["Unclaimed"] = (
-        numLocations - numClaimed) / numLocations * 100
+        playerScores["Unclaimed"] = (
+            numLocations - numClaimed) / numLocations * 100
+    except Exception:
+        playerScores = {"Unclaimed": 100}
 
     context = {'player_scores': playerScores}
     return render(request, "exeterDomination/leaderboardPage.html", context)
