@@ -15,7 +15,7 @@ from django.contrib.auth import login as k
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .forms import SignUpForm
+from .forms import SignUpForm, JoinTeamForm, CreateTeamForm
 from exeterDomination.models import Locations
 
 from .location import posInRec
@@ -204,6 +204,7 @@ def leaderboard(request: request) -> HttpResponse:
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
 
+@login_required
 def teams(request : request) -> HttpRequest:
     """
     This is the teams view. It renders
@@ -216,9 +217,39 @@ def teams(request : request) -> HttpRequest:
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
+    queryForName = Group.objects.filter(user=request.user).exclude(name="Game Masters").first()
+    finalTeamName = queryForName.name if queryForName is not None else "No Team"
+    joinTeamForm = JoinTeamForm()
+    createTeamForm = CreateTeamForm()
+    context = {"teamName": finalTeamName, 'form': joinTeamForm, 'form2': createTeamForm}
+    if request.method == 'GET':
+        return render(request, "exeterDomination/teamsPage.html", context)
+    elif request.method == 'POST':
+        joinTeamForm = JoinTeamForm(request.POST or None)
+        createTeamForm = CreateTeamForm(request.POST or None)
+        if "join_team" in request.POST:
+            group = request.POST["teamName"]
+            if joinTeamForm.is_valid():
+                if len(Group.objects.filter(user=User.objects.get(id=request.user.id))) > 0:
+                    groupToRemoveUserFrom = Group.objects.get(user=User.objects.get(id=request.user.id))
+                    groupToRemoveUserFrom.user_set.remove(request.user.id)
+                    groupToRemoveUserFrom.save()
 
-    context = {}
+                groupToJoin = Group.objects.get(id=group)
+                groupToJoin.user_set.add(User.objects.get(id=request.user.id))
+                groupToJoin.save()
+                return redirect(reverse("index"))
+            #return render(request, "exeterDomination/teamsPage.html", context)
+        elif "create_team" in request.POST:
+            group2 = request.POST["teamName2"]
+            if createTeamForm.is_valid():
+                newGroup, yesno = Group.objects.get_or_create(id=group2)
+                if yesno:
+                    newGroup.user_set.add(User.objects.get(id=request.user.id))
+                    newGroup.save()
+                    return redirect(reverse("index"))
     return render(request, "exeterDomination/teamsPage.html", context)
+
 
 def locations(request: request) -> HttpResponse:
     """

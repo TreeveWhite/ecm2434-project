@@ -41,7 +41,6 @@ class SignUpForm(UserCreationForm):
 
     try:
         choices = Group.objects.exclude(name="Game Masters")
-        listOfList = [[9999, "No Team"]]
         for choice in choices:
             listOfList.append([choice.id, choice.name])
 
@@ -52,9 +51,30 @@ class SignUpForm(UserCreationForm):
         pass
 
 
+class JoinTeamForm(forms.Form):
+    choices = Group.objects.exclude(name="Game Masters")
+    listOfList = []
+    for choice in choices:
+        listOfList.append([choice.id, choice.name])
+
+    my_tuple = tuple((tuple(i) for i in listOfList))
+
+    teamName = forms.ChoiceField(widget=forms.Select, choices=my_tuple)
+
+
+class CreateTeamForm(forms.Form):
+    teamName2 = forms.CharField(
+            max_length=128,
+            required=True,
+            help_text='Team Name: ',
+            widget=forms.TextInput(attrs={
+                'name'       : 'teamName2',
+                'placeholder': 'Team Name: '}))
+
+
 class Meta:
     """
     This class describes the Meta data of the forms.
     """
 
-    fields = ['username', 'password1', 'password2', 'teamName']
+    fields = ['username', 'password1', 'password2', 'teamName', 'teamName2']
