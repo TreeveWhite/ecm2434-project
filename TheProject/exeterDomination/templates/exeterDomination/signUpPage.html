@@ -72,8 +72,17 @@
             {% endif %}
           <label for="psw-repeat"><b>Re-enter Password: </b></label>
             {{ form.password2 }}
-          <br>
           <br><br>
+         {% if form.teamName.errors %}
+                {% for error in form.teamName.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+          <label for="teamName"><b>Team Name:</b></label>
+            {{ form.teamName }}
+        <br><br>
           <div>
             <input type="submit" class="formButton arcade-font" value="Sign Up">
             <input type="reset" value="Cancel" class="cancelButton arcade-font">
