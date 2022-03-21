@@ -309,6 +309,6 @@ def claim(request: request) -> HttpResponse:
             msg = f"Congratulations, you have claimed the {locationName} building."
 
         else:
-            msg = "Unfortunatly you are not close enough to claim any building. Please move to a building accepted by the game and try again. See locations page for all buildings."
+            msg = "Unfortunately you are not close enough to claim any building. Please move to a building accepted by the game and try again. See locations page for all buildings."
 
         return HttpResponse(msg)
