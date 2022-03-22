@@ -7,6 +7,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.webdriver import WebDriver
 from django.test import TestCase
+from selenium.webdriver.support.ui import Select
 from get_gecko_driver import GetGeckoDriver
 
 
@@ -123,63 +124,3 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         homeButton.click()
         assert self.selenium.title == "Home | Exeter Domination"
         assert self.selenium.current_url == self.live_server_url + "/"
-
-"""    def testHomeToLeaderboardToHome(self):
-        \"""
-        This function tests that the navigation buttons from the home
-        page to the leaderboard page and back are in working order.
-        \"""
-        self.selenium.get(self.live_server_url + "/")
-        leaderboardButton = self.selenium.find_element_by_xpath(
-            "//input[@class='arcade-font button3']")
-        leaderboardButton.click()
-        assert self.selenium.title == "Leaderboards | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/leaderboard"
-        homeButton = self.selenium.find_element_by_xpath(
-            "//a[contains(@href, '/')]")
-        homeButton.click()
-        assert self.selenium.title == "Home | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/"
-
-    def testLeaderboardToLogin(self):
-        \"""
-        This function tests a likely path for a returning user, who may
-        check the leaderboard and then move to the login page.
-        \"""
-        self.selenium.get(self.live_server_url + "/leaderboard")
-        loginButton = self.selenium.find_element_by_xpath(
-            "//a[contains(@href, 'login')]")
-        loginButton.click()
-        assert self.selenium.title == "Log In | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/login"
-
-    def testLeaderboardToSignUp(self):
-        \"""
-        This function tests the most likely path for a new user, who may
-        have originally been curious about who was topping the leaderboard,
-        and has subsequently navigated to the sign up page.
-        \"""
-        self.selenium.get(self.live_server_url + "/leaderboard")
-        signUpButton = self.selenium.find_element_by_xpath(
-            "//a[contains(@href, 'signup')]")
-        signUpButton.click()
-        assert self.selenium.title == "Sign Up | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/signup"
-
-    '''def testHomeToLocationsAndBack(self):
-        \"""
-        This function tests the path a user would take when checking the
-        current locations, and then returning to the home page.
-        \"""
-        self.selenium.get(self.live_server_url + "/play")
-        locationsButton = self.selenium.find_element_by_xpath(
-            "//input[@class='arcade-font button4']")
-        locationsButton.click()
-        assert self.selenium.title == "Locations | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/play/leaderboard"
-        homeButton = self.selenium.find_element_by_xpath(
-            "//a[contains(@href, '/play')]")
-        homeButton.click()
-        assert self.selenium.title == "Home | Exeter Domination"
-        assert self.selenium.current_url == self.live_server_url + "/play/"'''
-"""

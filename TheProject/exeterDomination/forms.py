@@ -10,13 +10,16 @@ from django.contrib.auth.models import Group
 
 
 def getMyChoices():
-    listOfList = []
-    choices = Group.objects.exclude(name="Game Masters")
-    for choice in choices:
-        listOfList.append([choice.id, choice.name])
+    try:
+        listOfList = []
+        choices = Group.objects.exclude(name="Game Masters")
+        for choice in choices:
+            listOfList.append([choice.id, choice.name])
 
-    my_tuple = tuple((tuple(i) for i in listOfList))
-    return my_tuple
+        my_tuple = tuple((tuple(i) for i in listOfList))
+        return my_tuple
+    except Exception:
+        return ((0, "None"), (1, "Domination"))
 
 
 class SignUpForm(UserCreationForm):
@@ -29,6 +32,8 @@ class SignUpForm(UserCreationForm):
         super(SignUpForm, self).__init__(*args, **kwargs)
         choices = Group.objects.exclude(name="Game Masters")
         self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
+        if len(self.fields['teamName'].choices) == 0:
+            self.fields['teamName'].choices = ((0, "None"),)
 
     username = forms.CharField(
         max_length=128,
@@ -62,10 +67,12 @@ class JoinTeamForm(forms.Form):
         super(JoinTeamForm, self).__init__(*args, **kwargs)
         choices = Group.objects.exclude(name="Game Masters")
         self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
+        if len(self.fields['teamName'].choices) == 0:
+            self.fields['teamName'].choices = ((0, "None"))
     try:
         teamName = forms.ChoiceField(widget=forms.Select, choices=getMyChoices())
     except Exception:
-        pass
+        teamName = forms.ChoiceField(widget=forms.Select, choices=((0, "None")))
 
 
 class CreateTeamForm(forms.Form):
