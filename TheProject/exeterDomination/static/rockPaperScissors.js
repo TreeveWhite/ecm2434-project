@@ -20,7 +20,7 @@ function loadGame(){
     var scissors = document.createElement('button')
     scissors.innerHTML = "Scissors"
     scissors.id='scissors'
-    document.getElementById('grid').appendChild(playerCount);
+    document.getElementById('gameContainer').appendChild(playerCount);
     document.getElementById('grid').appendChild(computerScoreP);
     document.getElementById('grid').appendChild(totalMoves);
     document.getElementById('grid').appendChild(rock);
