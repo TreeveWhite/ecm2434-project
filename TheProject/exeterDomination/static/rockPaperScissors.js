@@ -2,27 +2,33 @@ var winCounter = 0;
 var totalCounter = 0;
 var computerScore = 0;
 
+function updateText(winCounter, computerScore, totalCounter) {
+    var paragraph = document.getElementById("gameText");
+    paragraph.style.textAlign = "center";
+    paragraph.innerHTML = "";
+    paragraph.innerHTML += "Please play Rock, Paper, Scissors against the computer in a Best of 5 fashion until you win. Only then will you be able to claim the building.";
+    paragraph.innerHTML += "<br><br>";
+    paragraph.innerHTML += "Player score: " + winCounter;
+    paragraph.innerHTML += "<br>";
+    paragraph.innerHTML += "Computer score: " + computerScore;
+    paragraph.innerHTML += "<br>";
+    paragraph.innerHTML += "Total moves: " + totalCounter;
+}
+
 function loadGame(){
-    var paragraph = document.getElementById('gameText');
-    paragraph.innerHTML = "Please play Rock, Paper, Scissors against the computer in a Best of 5 fashion until you win <br> Only then will you be able to claim the building.";
-    var playerCount = document.getElementById('playerScore')
-    playerCount.innerHTML = "Player score: " + winCounter
-    var computerScoreP = document.getElementById('computerScore');
-    computerScoreP.innerHTML = "Computer score: " + computerScore;
-    var totalMoves = document.getElementById('totalMoves')
-    totalMoves.innerHTML = "Total moves: " + totalCounter;
-    var rock = document.createElement('button')
+    updateText(winCounter, computerScore, totalCounter);
+    var rock = document.createElement('button');
+    rock.className = "gameButton"
     rock.id = 'rock'
     rock.innerHTML = "Rock";
-    var paper = document.createElement('button')
+    var paper = document.createElement('button');
+    paper.className = "gameButton"
     paper.innerHTML = "Paper"
     paper.id = 'paper'
-    var scissors = document.createElement('button')
+    var scissors = document.createElement('button');
+    scissors.className = "gameButton"
     scissors.innerHTML = "Scissors"
     scissors.id='scissors'
-    document.getElementById('grid').appendChild(playerCount);
-    document.getElementById('grid').appendChild(computerScoreP);
-    document.getElementById('grid').appendChild(totalMoves);
     document.getElementById('grid').appendChild(rock);
     document.getElementById('grid').appendChild(paper);
     document.getElementById('grid').appendChild(scissors);
@@ -51,9 +57,6 @@ function buttonPress(){
 }
 
 function game(element){
-    var playerCount = document.getElementById('playerScore');
-    var computerScoreText = document.getElementById('computerScore');
-    var totalMoves = document.getElementById('totalMoves');
     if (totalCounter==5){
         if (winCounter > computerScore){
             alert("YOU HAVE WON! CLAIM THE BUILDING")
@@ -71,52 +74,40 @@ function game(element){
         var computerMove = computerMoves[index];
         if (element==computerMove){
             totalCounter++;
-            totalMoves.innerHTML = "Total moves: " + totalCounter;
             alert("Draw")
         } else if (element=='Rock'){
             if(computerMove=='Paper'){
                 alert("Lost");
                 totalCounter++;
-                totalMoves.innerHTML = "Total moves: " + totalCounter;
                 computerScore++;
-                computerScoreText.innerHTML = "Computer score: " + computerScore;
                 
             } else {
                 alert("Won")
                 winCounter++;
-                playerCount.innerHTML = "Player score: " + winCounter
                 totalCounter++;
-                totalMoves.innerHTML = "Total moves: " + totalCounter;
             }
         } else if (element=='Paper'){
             if(computerMove=='Scissors'){
                 alert("Lost");
                 totalCounter++;
-                totalMoves.innerHTML = "Total moves: " + totalCounter;
                 computerScore++;
-                computerScoreText.innerHTML = "Computer score: " + computerScore;
             } else {
                 alert("Won")
                 winCounter++;
-                playerCount.innerHTML = "Player score: " + winCounter
                 totalCounter++;
-                totalMoves.innerHTML = "Total moves: " + totalCounter;
             }
         } else if (element=='Scissors'){
             if(computerMove=='Rock'){
                 alert("Lost");
                 totalCounter++;
-                totalMoves.innerHTML = "Total moves: " + totalCounter;
                 computerScore++;
-                computerScoreText.innerHTML = "Computer score: " + computerScore;
             } else {
                 alert("Won")
                 winCounter++;
-                playerCount.innerHTML = "Player score: " + winCounter
                 totalCounter++;
-                totalMoves.innerHTML = "Total moves: " + totalCounter;
             }
         }
+    updateText(winCounter, computerScore, totalCounter);
     }
 }
 loadGame()

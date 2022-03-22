@@ -33,12 +33,12 @@ html {
 }
 
 .mainTitle {
-    color: var(--background);
+    color: var(--dark1Contrast);
     font-size: 5vw;
 }
 
 .pageTitle {
-    color: var(--background);
+    color: var(--dark1Contrast);
     font-size: 3vw;
 }
 
@@ -88,14 +88,30 @@ html {
 
 .formButton {
     background-color: var(--med1Contrast);
-    width: 20vw;
-    height: 10vh;
+    width: 15vw;
+    height: 8vh;
+    font-size: 1.5vw;
+}
+
+.claimBuilding {
+    background-color: var(--med1Contrast);
+    width: 15vw;
+    height: 8vh;
+    font-size: 1.25vw;
 }
 
 .cancelButton {
     background-color: red;
-    width: 20vw;
-    height: 10vh;
+    width: 15vw;
+    height: 8vh;
+    font-size: 1.5vw;
+}
+
+.gameButton {
+    background-color: var(--dark2Contrast);
+    width: 8vw;
+    height: 4vh;
+    font-size: 1vw;
 }
 
 .arcade-font {
@@ -113,23 +129,23 @@ html {
 }
 
 .cell {
-    width: 60px;
-    height: 60px;
+    width: 3vw;
+    height: 5vh;
     line-height: 60px;
     border: 1px solid #aaa;
     display: inline-block;
     margin: 10px;
-    font-size: 40px;
+    font-size: 1vw;
     font-weight: bold;
 }
 
 .map {
-    width: 500px; 
-    height: 300px;
+    width: 70vw; 
+    height: 60vh;
 }
 
 .backGroundImg{
-    background-image: url("/static/campus.jpg");
+    background-image: url("/static/campusOpaic.png");
     height: 94vh;
 }
 
