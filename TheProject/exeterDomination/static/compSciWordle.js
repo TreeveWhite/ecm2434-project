@@ -11,26 +11,26 @@ let wordList = [
   'codes',
   'apple',
   'debug',
-  //'admin',
-  //'cache',
-  //'click',
-  //'email',
-  //'input',
-  //'logic',
-  //'mouse',
-  //'pixel',
-  //'queue',
-  //'reset',
-  //'robot',
-  //'abort',
-  //'write',
-  //'proxy',
-  //'micro',
-  //'lines',
-  //'https',
-  //'merge',
-  //'tests',
-  //'login',
+  'admin',
+  'cache',
+  'click',
+  'email',
+  'input',
+  'logic',
+  'mouse',
+  'pixel',
+  'queue',
+  'reset',
+  'robot',
+  'abort',
+  'write',
+  'proxy',
+  'micro',
+  'lines',
+  'https',
+  'merge',
+  'tests',
+  'login',
 ];
 //selection of a random word
 let randomIndex = Math.floor(Math.random() * wordList.length) 
@@ -41,6 +41,7 @@ let counter = 0
 let green_counter = 0
 let history = []
 let score = 0
+
 /**
  * This function initiates the grid on the page and adds a keyboard listener to the window
  */
@@ -221,12 +222,16 @@ function check_if_lost(){
  * Function builds 6 rows and 6 columns with DOM
  */
 function buildGrid() {
-  let paragraph = document.getElementById('gameText')
+  var paragraph = document.getElementById("gameText");
+  paragraph.style.textAlign = "center";
   paragraph.innerHTML = "Please enter Computer Science related words until you get the correct answer. <br> Only then will you be able to claim the building.";
+
   for (let i = 0; i < 6; i++) {
     let row = document.createElement('div')
     for (let j = 0; j < 5; j++) {
-      let cell = document.createElement('div')
+      let cell = document.createElement('div');
+      // cell.setAttribute("type", "text");
+      // cell.style.color = "white"
       cell.className = 'cell'
       cell.textContent = ''
       row.appendChild(cell)

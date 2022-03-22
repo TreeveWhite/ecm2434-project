@@ -88,14 +88,30 @@ html {
 
 .formButton {
     background-color: var(--med1Contrast);
-    width: 20vw;
-    height: 10vh;
+    width: 15vw;
+    height: 8vh;
+    font-size: 1.5vw;
+}
+
+.claimBuilding {
+    background-color: var(--med1Contrast);
+    width: 15vw;
+    height: 8vh;
+    font-size: 1.25vw;
 }
 
 .cancelButton {
     background-color: red;
-    width: 20vw;
-    height: 10vh;
+    width: 15vw;
+    height: 8vh;
+    font-size: 1.5vw;
+}
+
+.gameButton {
+    background-color: var(--dark2Contrast);
+    width: 8vw;
+    height: 4vh;
+    font-size: 1vw;
 }
 
 .arcade-font {
