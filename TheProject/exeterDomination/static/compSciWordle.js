@@ -47,7 +47,6 @@ let score = 0
 function startGame(){
     let grid = document.createElement('div')
     grid.id = 'grid'
-    let paragraph = document.createElement('p')
     buildGrid()
     updateGrid()
     window.addEventListener('keydown', handleKeyDown)
