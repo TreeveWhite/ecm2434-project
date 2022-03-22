@@ -10,9 +10,10 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.http import urlencode
 from django.utils.safestring import SafeString
-from exeterDomination.models import Locations, CoOrds
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
+from exeterDomination.models import Locations, CoOrds
+
 
 
 class CustomUserAdmin(UserAdmin):

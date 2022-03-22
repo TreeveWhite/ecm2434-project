@@ -12,8 +12,8 @@ from exeterDomination.models import Locations
 
 def posInRec(userID: int, posLat: int, posLong: int) -> bool:
     """
-    This function is used to check if a position is within a rectangle defined by its top west and bottom
-    east corners.
+    This function is used to check if a position is within a rectangle defined by its top
+    west and bottom east corners.
 
     All positions use longitude and latitude coordinates.
 
@@ -53,7 +53,7 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
         print()
 
         if (location.topRightCoordinate.latitude >= posLat >= location.bottomLeftCoordinate.latitude) and (
-                location.topRightCoordinate.longitude >= posLong >= location.bottomLeftCoordinate.longitude):
+            location.topRightCoordinate.longitude >= posLong >= location.bottomLeftCoordinate.longitude):
             # Users position is inside location
             location.claimedBy = User.objects.get(pk=userID)
             location.save()
@@ -64,6 +64,6 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
     if not claimed:
         # The player is not inside any recognised building.
         return ""
-    else:
-        # The player has claimed a building.
-        return location.name
+    # The player has claimed a building.
+    return location.name
+    

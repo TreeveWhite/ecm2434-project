@@ -6,12 +6,11 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.test import Client
-from ..models import Locations
 
 
 class TestGame(TestCase):
     """
-    This class tests the 'game' view, where the user can play a wordle
+    This class tests the 'game' view, where the user can play a Wordle
     like game to capture a point. Anything to do with the login
     code is merely a placeholder until the login implementation is
     complete.
@@ -40,7 +39,7 @@ class TestGame(TestCase):
         access it while being logged in already.
         """
         c = Client()
-        logged_in = c.login(
+        c.login(
             username="testuser",
             password="abdlklnkf3-3432r@dd")
         # Logs in with the test user information
@@ -78,7 +77,7 @@ class TestLoginPage(TestCase):
         page and are already logged in.
         """
         c = Client()
-        logged_in = c.login(
+        c.login(
             username="testuser",
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('login'))
@@ -107,7 +106,7 @@ class TestSignUpPage(TestCase):
         signup page while already logged in.
         """
         c = Client()
-        logged_in = c.login(
+        c.login(
             username="testuser",
             password="abdlklnkf3-3432r@dd")
         resp = c.get(reverse('signup'))
