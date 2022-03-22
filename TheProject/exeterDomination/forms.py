@@ -10,13 +10,16 @@ from django.contrib.auth.models import Group
 
 
 def getMyChoices():
-    listOfList = []
-    choices = Group.objects.exclude(name="Game Masters")
-    for choice in choices:
-        listOfList.append([choice.id, choice.name])
+    try:
+        listOfList = []
+        choices = Group.objects.exclude(name="Game Masters")
+        for choice in choices:
+            listOfList.append([choice.id, choice.name])
 
-    my_tuple = tuple((tuple(i) for i in listOfList))
-    return my_tuple
+        my_tuple = tuple((tuple(i) for i in listOfList))
+        return my_tuple
+    except Exception:
+        return ((0, "None"), (1, "Domination"))
 
 
 class SignUpForm(UserCreationForm):
