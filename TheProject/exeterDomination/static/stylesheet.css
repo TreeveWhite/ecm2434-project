@@ -32,6 +32,16 @@ html {
     background-color: var(--background);
 }
 
+.mainTitle {
+    color: var(--background);
+    font-size: 5vw;
+}
+
+.pageTitle {
+    color: var(--background);
+    font-size: 3vw;
+}
+
 .flexColumn {
     min-height: 70vh;
     display: flex;
@@ -43,6 +53,13 @@ html {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.box {
+    background-color: var(--background);
+    padding: 2vw;
+    border: 2px solid var(--med1Contrast);
+    border-radius: 20px;
 }
 
 .button1 {
@@ -109,4 +126,9 @@ html {
 .map {
     width: 500px; 
     height: 300px;
+}
+
+.backGroundImg{
+    background-image: url("/static/campus.jpg");
+    height: 94vh;
 }

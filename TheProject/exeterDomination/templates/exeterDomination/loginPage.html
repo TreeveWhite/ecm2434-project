@@ -14,24 +14,24 @@
 </head>
 <body>
   {% block nav %} {% include 'exeterDomination/navbar.html' %} {% endblock nav %}
-  <div class="container-fluid pt-5 main">
-    <div class="d-flex flex-fill justify-content-center">
-      <h1 class="arcade-font h-5">Exeter Domination Login</h1>
+  <div class="bg-image d-flex flex-column justify-content-center align-items-center backGroundImg">
+    <div class="d-flex">
+      <h1 class="arcade-font pageTitle">Exeter Domination Login</h1>
+    </div class="d-flex">
+    <div>
+      <br><br><br>
     </div>
-
-    <div class="fluid-container p-5">
-      <div class="d-flex flex-fill justify-content-center">
-        <form action="" method="post">
-          {% csrf_token %}
-          <label for="usrname"><b>Username: </b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-          <br><br>
-          <label for="psw"><b>Password: </b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-          <br><br>
-          <input class="formButton arcade-font" type="submit" value="Login" id="login_Button">
-        </form>
-      </div>
+    <div class="d-flex box">
+      <form action="" method="post">
+      {% csrf_token %}
+      <label for="usrname"><b>Username: </b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+      <br><br>
+      <label for="psw"><b>Password: </b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <br><br>
+      <input class="formButton arcade-font" type="submit" value="Login" id="login_Button">
+    </form>
     </div>
   </div>
 </body>
