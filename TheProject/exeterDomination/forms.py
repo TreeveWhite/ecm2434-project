@@ -9,11 +9,26 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group
 
 
+def getMyChoices():
+    listOfList = []
+    choices = Group.objects.exclude(name="Game Masters")
+    for choice in choices:
+        listOfList.append([choice.id, choice.name])
+
+    my_tuple = tuple((tuple(i) for i in listOfList))
+    return my_tuple
+
+
 class SignUpForm(UserCreationForm):
     """
     This class allows us to display a form that
     lets a user create an account.
     """
+
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        choices = Group.objects.exclude(name="Game Masters")
+        self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
 
     username = forms.CharField(
         max_length=128,
@@ -39,40 +54,28 @@ class SignUpForm(UserCreationForm):
             'placeholder': 'Repeat Password'
         }))
 
-    try:
-        choices = Group.objects.exclude(name="Game Masters")
-        for choice in choices:
-            listOfList.append([choice.id, choice.name])
-
-        my_tuple = tuple((tuple(i) for i in listOfList))
-
-        teamName = forms.ChoiceField(widget=forms.Select, choices=my_tuple)
-    except Exception:
-        pass
+    teamName = forms.ChoiceField(widget=forms.Select, choices=getMyChoices())
 
 
 class JoinTeamForm(forms.Form):
-    try:
+    def __init__(self, *args, **kwargs):
+        super(JoinTeamForm, self).__init__(*args, **kwargs)
         choices = Group.objects.exclude(name="Game Masters")
-        listOfList = []
-        for choice in choices:
-            listOfList.append([choice.id, choice.name])
-
-        my_tuple = tuple((tuple(i) for i in listOfList))
-
-        teamName = forms.ChoiceField(widget=forms.Select, choices=my_tuple)
+        self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
+    try:
+        teamName = forms.ChoiceField(widget=forms.Select, choices=getMyChoices())
     except Exception:
         pass
 
 
 class CreateTeamForm(forms.Form):
     teamName2 = forms.CharField(
-            max_length=128,
-            required=True,
-            help_text='Team Name: ',
-            widget=forms.TextInput(attrs={
-                'name'       : 'teamName2',
-                'placeholder': 'Team Name: '}))
+        max_length=128,
+        required=True,
+        help_text='Team Name: ',
+        widget=forms.TextInput(attrs={
+            'name'       : 'teamName2',
+            'placeholder': 'Team Name: '}))
 
 
 class Meta:

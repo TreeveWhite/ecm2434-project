@@ -230,13 +230,20 @@ def teams(request : request) -> HttpRequest:
         if "join_team" in request.POST:
             group = request.POST["teamName"]
             if joinTeamForm.is_valid():
-                if len(Group.objects.filter(user=User.objects.get(id=request.user.id))) > 0:
-                    groupToRemoveUserFrom = Group.objects.get(user=User.objects.get(id=request.user.id))
-                    groupToRemoveUserFrom.user_set.remove(request.user.id)
-                    groupToRemoveUserFrom.save()
+                print("jointTeamForm is valid")
+                meow = Group.objects.filter(user=User.objects.get(id=request.user.id))
+                if len(meow) > 0:
+                    print("More than 0 group objects - after joinTeamForm")
+                    for i in meow:
+                        groupToRemoveUserFrom = Group.objects.get(id=i.id)
+                        if groupToRemoveUserFrom.name != "Game Masters":
+                            groupToRemoveUserFrom.user_set.remove(request.user.id)
+                            groupToRemoveUserFrom.save()
 
                 groupToJoin = Group.objects.get(id=group)
+                print(groupToJoin)
                 groupToJoin.user_set.add(User.objects.get(id=request.user.id))
+                print(groupToJoin.user_set, groupToJoin.name)
                 groupToJoin.save()
                 return redirect(reverse("index"))
             #return render(request, "exeterDomination/teamsPage.html", context)
@@ -245,10 +252,22 @@ def teams(request : request) -> HttpRequest:
             print(createTeamForm.errors)
             if createTeamForm.is_valid():
                 newGroup, yesno = Group.objects.get_or_create(name=group2)
+                newGroup.save()
                 if yesno:
-                    newGroup.user_set.add(User.objects.get(id=request.user.id))
-                    newGroup.save()
-                    return redirect(reverse("index"))
+                    meow2 = request.user.groups.filter(user=User.objects.get(id=request.user.id))
+                    if len(meow2) > 0:
+                        for i in meow2:
+                            groupToRemoveUserFrom = request.user.groups.get(id=i.id)
+                            if groupToRemoveUserFrom.name != "Game Masters":
+                                groupToRemoveUserFrom.user_set.remove(request.user.id)
+                                groupToRemoveUserFrom.save()
+                        nan = Group.objects.get(name=group2)
+                        nan.user_set.add(User.objects.get(id=request.user.id))
+                        nan.save()
+                        nan.refresh_from_db()
+                        request.user.groups.add(nan)
+                        request.user.groups.update()
+                        return redirect(reverse("index"))
     return render(request, "exeterDomination/teamsPage.html", context)
 
 
