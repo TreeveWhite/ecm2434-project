@@ -33,12 +33,12 @@ html {
 }
 
 .mainTitle {
-    color: var(--background);
+    color: var(--dark1Contrast);
     font-size: 5vw;
 }
 
 .pageTitle {
-    color: var(--background);
+    color: var(--dark1Contrast);
     font-size: 3vw;
 }
 
@@ -113,13 +113,13 @@ html {
 }
 
 .cell {
-    width: 5vw;
-    height: 7vh;
+    width: 3vw;
+    height: 5vh;
     line-height: 60px;
     border: 1px solid #aaa;
     display: inline-block;
     margin: 10px;
-    font-size: 3vw;
+    font-size: 1vw;
     font-weight: bold;
 }
 
@@ -129,7 +129,7 @@ html {
 }
 
 .backGroundImg{
-    background-image: url("/static/campus.jpg");
+    background-image: url("/static/campusOpaic.png");
     height: 94vh;
 }
 
