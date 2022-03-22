@@ -23,6 +23,9 @@
             <li class="nav-item px-3">
                 <a class="nav-link " href="game">Play</a>
             </li>
+            <li class="nav-item px-3">
+                <a class="nav-link " href="about">About</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" type="button" id="dropDownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username }}</a>
                 <ul class = "dropdown-menu dropdown-menu-end" aria-labelledby="dropDownMenuButton1">
@@ -39,6 +42,9 @@
             {% if not request.user.is_authenticated %}
             <li class="nav-item px-3">
                 <a class="nav-link " href="/">Home</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link " href="about">About</a>
             </li>
             <li class="nav-item px-3">
                 <a class="nav-link " href="login">Login</a>
