@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<nav class="navbar navbar-expand-sm myNavbar navbar-dark">
-        {% if request.user.is_staff %}
-        <div class="navbar-header">
-            <a class="navbar-brand" style="padding-left: 15px; color: var(--background)">Game Master</a>
-        </div>
-        {% endif %}
-        {% if request.user.groups.all.0 %}
-        <div class="navbar-header">
-            <a class="navbar-brand" style="padding-left: 15px; color: var(--background)">{{ request.user.groups.all.0.name }}</a>
-        </div>
-        {% endif %}
-        <div class="container-fluid justify-content-end">
-            <ul class="navbar-nav">
-            {% if request.user.is_authenticated %}
-                <li class="nav-item px-3">
-                    <a class="nav-link " href="/">Home</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link " href="game">Play</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" type="button" id="dropDownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username }}</a>
-                    <ul class = "dropdown-menu dropdown-menu-end" aria-labelledby="dropDownMenuButton1">
-                        {% if request.user.is_staff or request.user.is_superuser %}
-                            <li><a class="dropdown-item" href="admin">Admin</a></li>
-                        {% endif %}
-                        <li><a class="dropdown-item" href="leaderboard">Leaderboard</a></li>
-                        <li><a class="dropdown-item" href="teams">Teams</a></li>
-                        <li><a class="dropdown-item" href="logout">Logout</a></li>
-
-                    </ul>
-                </li>
-                {% endif %}
-                {% if not request.user.is_authenticated %}
-                <li class="nav-item px-3">
-                    <a class="nav-link " href="/">Home</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link" href="admin">Admin</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link " href="login">Login</a>
-                </li>
-                <li class="nav-item px-3">
-                    <a class="nav-link" href="signup">Sign Up</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg myNavbar navbar-dark static-top">
+    {% if request.user.is_staff %}
+    <div class="navbar-header">
+        <a class="navbar-brand" style="padding-left: 15px; color: var(--background)">Game Master</a>
+    </div>
+    {% endif %}
+    {% if request.user.groups.all.0 %}
+    <div class="navbar-header">
+        <a class="navbar-brand" style="padding-left: 15px; color: var(--background)">{{ request.user.groups.all.0.name }}</a>
+    </div>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav">
+        {% if request.user.is_authenticated %}
+            <li class="nav-item px-3">
+                <a class="nav-link " href="/">Home</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link " href="game">Play</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" type="button" id="dropDownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ request.user.username }}</a>
+                <ul class = "dropdown-menu dropdown-menu-end" aria-labelledby="dropDownMenuButton1">
+                    {% if request.user.is_staff or request.user.is_superuser %}
+                        <li><a class="dropdown-item" href="admin">Admin Page</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="leaderboard">Leaderboard</a></li>
+                    <li><a class="dropdown-item" href="teams">Teams</a></li>
+                    <li><a class="dropdown-item" href="logout">Logout</a></li>
+                </ul>
+            </li>
+            {% endif %}
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item px-3">
+                <a class="nav-link " href="/">Home</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link " href="login">Login</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" href="signup">Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

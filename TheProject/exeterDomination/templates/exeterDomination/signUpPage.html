@@ -16,32 +16,19 @@
 <body>
 
   {% block nav %} {% include 'exeterDomination/navbar.html' %} {% endblock nav %}
-  <div class="container-fluid pt-5 main">
-    <div class="d-flex flex-fill justify-content-center">
-      <h1 class="arcade-font h-5">Exeter Domination Sign Up</h1>
+  <div class="bg-image d-flex flex-column justify-content-center align-items-center backGroundImg">
+    <div class="d-flex">
+      <h1 class="arcade-font pageTitle">Exeter Domination Sign Up</h1>
+    </div class="d-flex">
+    <div>
+      <br><br><br>
     </div>
-
-    <div class="fluid-container p-5">
-      <div class="d-flex flex-fill justify-content-center">
-        <form action="" method="post">
-          {% csrf_token %}
-          <p>Fill in this form to create an account.</p>
-            <!--{#% if form.errors %#}
-                {#% for field in form %#}
-                {#% for error in field.errors %#}
-                <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-                <strong>{{ field|escape }}</strong>
-                </div>
-                {#% endfor %#}
-                {#% endfor %#}
-                {#% for error in form.non_field_errors %#}
-                <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-                </div>
-                {#% endfor %#}-->
-            {#% endif %#}
-          <br>
+    <div class="d-flex box">
+      <form action="" method="post">
+        {% csrf_token %}
+        <p>Fill in this form to create an account.</p>
+        <div class="form-group">
+          <label for="username"><b>Username: </b></label>
             {% if form.username.errors %}
                 {% for error in form.username.errors %}
                     <div class="alert alert-danger" role="alert">
@@ -49,10 +36,9 @@
                     </div>
                 {% endfor %}
             {% endif %}
-          <label for="username"><b>Username: </b></label>
-
             {{ form.username }}
-          <br><br>
+        </div>
+        <div class="form-group">
           <label for="password"><b>Password: </b></label>
             {% if form.password1.errors %}
                 {% for error in form.password1.errors %}
@@ -62,34 +48,36 @@
                 {% endfor %}
             {% endif %}
             {{ form.password1 }}
-          <br><br>
-            {% if form.password2.errors %}
-                {% for error in form.password2.errors %}
-                    <div class="alert alert-danger" role="alert">
-                        <strong>{{ error|escape }}</strong>
-                    </div>
-                {% endfor %}
-            {% endif %}
-          <label for="psw-repeat"><b>Re-enter Password: </b></label>
-            {{ form.password2 }}
-          <br><br>
-         {% if form.teamName.errors %}
-                {% for error in form.teamName.errors %}
-                    <div class="alert alert-danger" role="alert">
-                        <strong>{{ error|escape }}</strong>
-                    </div>
-                {% endfor %}
-            {% endif %}
+        </div>
+        <div class="form-group">
+        <label for="psw-repeat"><b>Re-enter Password: </b></label>
+          {% if form.password2.errors %}
+              {% for error in form.password2.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endif %}
+          {{ form.password2 }}
+        </div>
+       {% if form.teamName.errors %}
+              {% for error in form.teamName.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      <strong>{{ error|escape }}</strong>
+                  </div>
+              {% endfor %}
+          {% endif %}
+        <div class="form-group">
           <label for="teamName"><b>Team Name:</b></label>
             {{ form.teamName }}
-        <br><br>
-          <div>
-            <input type="submit" class="formButton arcade-font" value="Sign Up">
-            <input type="reset" value="Cancel" class="cancelButton arcade-font">
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+        <br>
+        <div>
+          <input type="submit" class="formButton arcade-font" value="Sign Up">
+          <input type="reset" value="Cancel" class="cancelButton arcade-font">
+        </div>
+      </form>
+    </div>      
   </div>
 </body>
 

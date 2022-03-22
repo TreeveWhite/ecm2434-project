@@ -61,6 +61,10 @@ class SignUpForm(UserCreationForm):
 
     teamName = forms.ChoiceField(widget=forms.Select, choices=getMyChoices())
 
+    def __init__(self, *args, **kwargs) -> None:
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
 class JoinTeamForm(forms.Form):
     def __init__(self, *args, **kwargs):
@@ -74,16 +78,27 @@ class JoinTeamForm(forms.Form):
     except Exception:
         teamName = forms.ChoiceField(widget=forms.Select, choices=((0, "None")))
 
+    def __init__(self, *args, **kwargs) -> None:
+        super(JoinTeamForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-select'
+
 
 class CreateTeamForm(forms.Form):
     teamName2 = forms.CharField(
-        max_length=128,
-        required=True,
-        help_text='Team Name: ',
-        widget=forms.TextInput(attrs={
-            'name'       : 'teamName2',
-            'placeholder': 'Team Name: '}))
-
+      
+            max_length=128,
+            required=True,
+            help_text='Team Name: ',
+            widget=forms.TextInput(attrs={
+                'name'       : 'teamName2',
+                'placeholder': 'Team Name: '}))
+            
+    
+    def __init__(self, *args, **kwargs) -> None:
+        super(CreateTeamForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
 class Meta:
     """
