@@ -51,6 +51,10 @@ class SignUpForm(UserCreationForm):
     except Exception:
         pass
 
+    def __init__(self, *args, **kwargs) -> None:
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
 class JoinTeamForm(forms.Form):
     try:
@@ -65,6 +69,11 @@ class JoinTeamForm(forms.Form):
     except Exception:
         pass
 
+    def __init__(self, *args, **kwargs) -> None:
+        super(JoinTeamForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-select'
+
 
 class CreateTeamForm(forms.Form):
     teamName2 = forms.CharField(
@@ -74,6 +83,12 @@ class CreateTeamForm(forms.Form):
             widget=forms.TextInput(attrs={
                 'name'       : 'teamName2',
                 'placeholder': 'Team Name: '}))
+            
+    
+    def __init__(self, *args, **kwargs) -> None:
+        super(CreateTeamForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
 
 class Meta:

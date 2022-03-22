@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+    {% load static %}
+    <script src="{% static 'leaderboards.js' %}"></script>  
     <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -14,62 +16,62 @@
 </head>
 <body>
     {% block nav %} {% include 'exeterDomination/navbar.html' %} {% endblock nav %}
-    <div class="container-fluid pt-5 main justify-content-center fillPage">
-        <div class="d-flex flex-fill">
-            <h1 class="arcade-font display-5">Exeter Domination</h1>
+    <div class="bg-image d-flex flex-column justify-content-center align-items-center backGroundImg">
+        <div class="d-flex">
+          <h1 class="arcade-font pageTitle">Exeter Domination Leaderboards</h1>
+        </div class="d-flex">
+        <div>
+            <br><br>
         </div>
-
-        <p>These are the live current leaderboards for the game!</p>
-        <br>
-
-        {% if request.user.is_authenticated %}
-        <table class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th>Your Name</th>
-                    <th>Your Domination Percent</th>
-                </tr>
-                <tbody>
+        <div class="d-flex box flex-column">
+            <p>These are the live current leaderboards for the game!</p>
+            <select class="form-select" id="leaderboardSelect" onchange="showDiv()">
+                <option value=""></option>
+                <option value="playersDiv">Players Leaderboard</option>
+                <option value="teamsDiv">Teams Leaderboard</option>
+            </select>
+        </div>
+        <div>
+            <br>
+        </div>
+        <div class="d-flex box" id="tablesDiv">
+            <p id="msg">Select a table to display</p>
+            <div id="playersDiv">
+                <table class="table table-bordered table-dark">
+                    <thead>
                         <tr>
-                            <td>{{ request.user.username }}</td>
-                            <td>UID for now: {{ request.user.id }}</td>
+                            <th>Player Name</th>
+                            <th>Player Domination Percent</th>
                         </tr>
-                </tbody>
-            </thead>
-        </table>
-        {% endif %}
-        <table class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th>Player Name</th>
-                    <th>Player Domination Percent</th>
-                </tr>
-                <tbody>
-                    {% for player,score in player_scores.items %}
+                        <tbody>
+                            {% for player,score in player_scores.items %}
+                                <tr>
+                                <td>{{ player }}</td>
+                                <td>{{ score }}%</td>
+                                </tr>         
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+            <div id="teamsDiv">
+                <table class="table table-bordered table-dark">
+                    <thead>
                         <tr>
-                        <td>{{ player }}</td>
-                        <td>{{ score }}%</td>
-                        </tr>         
-                    {% endfor %}
-                </tbody>
-            </thead>
-        </table>
-        <table class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th>Team Name</th>
-                    <th>Team Domination Percent</th>
-                </tr>
-                <tbody>
-                    {% for team,score in team_scores.items %}
-                        <tr>
-                        <td>{{ team }}</td>
-                        <td>{{ score }}%</td>
-                        </tr>         
-                    {% endfor %}
-                </tbody>
-            </thead>
-        </table>
-    </div>
+                            <th>Team Name</th>
+                            <th>Team Domination Percent</th>
+                        </tr>
+                        <tbody>
+                            {% for team,score in team_scores.items %}
+                                <tr>
+                                <td>{{ team }}</td>
+                                <td>{{ score }}%</td>
+                                </tr>         
+                            {% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
 </body>
 </html>

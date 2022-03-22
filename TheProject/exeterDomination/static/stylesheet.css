@@ -132,3 +132,11 @@ html {
     background-image: url("/static/campus.jpg");
     height: 94vh;
 }
+
+#teamsDiv {
+    display: none;
+}
+
+#playersDiv {
+    display: none;
+}
