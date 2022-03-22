@@ -34,6 +34,9 @@ class SignUpForm(UserCreationForm):
         self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
         if len(self.fields['teamName'].choices) == 0:
             self.fields['teamName'].choices = ((0, "None"),)
+        
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
     username = forms.CharField(
         max_length=128,
@@ -61,11 +64,6 @@ class SignUpForm(UserCreationForm):
 
     teamName = forms.ChoiceField(widget=forms.Select, choices=getMyChoices())
 
-    def __init__(self, *args, **kwargs) -> None:
-        super(SignUpForm, self).__init__(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
-
 class JoinTeamForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(JoinTeamForm, self).__init__(*args, **kwargs)
@@ -73,16 +71,14 @@ class JoinTeamForm(forms.Form):
         self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
         if len(self.fields['teamName'].choices) == 0:
             self.fields['teamName'].choices = ((0, "None"))
+        
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-select'
+
     try:
         teamName = forms.ChoiceField(widget=forms.Select, choices=getMyChoices())
     except Exception:
         teamName = forms.ChoiceField(widget=forms.Select, choices=((0, "None")))
-
-    def __init__(self, *args, **kwargs) -> None:
-        super(JoinTeamForm, self).__init__(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-select'
-
 
 class CreateTeamForm(forms.Form):
     teamName2 = forms.CharField(
