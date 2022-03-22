@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ulz!3*per2=chn0a_e)o_n$qa1(#j3$3jeuiz8%l+()@b)^9k_
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = Path(BASE_DIR).joinpath('staticfiles')
+STATIC_ROOT = Path(BASE_DIR).joinpath('static')
 
 STATICFILES_DIRS = (Path(BASE_DIR).joinpath('static'),)
 
