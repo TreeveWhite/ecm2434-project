@@ -116,6 +116,7 @@ class SignUpPageTests(SimpleTestCase):
     This class contains the basic base case tests for the signup
     page.
     """
+    databases = '__all__'
 
     def testResponseCode(self):
         """
