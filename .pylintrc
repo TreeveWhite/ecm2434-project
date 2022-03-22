@@ -324,14 +324,14 @@ argument-naming-style=camelCase
 
 # Regular expression matching correct argument names. Overrides argument-
 # naming-style.
-#argument-rgx=
+argument-rgx=_?[a-z][A-Za-z0-9]{1,30}$
 
 # Naming style matching correct attribute names.
 attr-naming-style=camelCase
 
 # Regular expression matching correct attribute names. Overrides attr-naming-
 # style.
-#attr-rgx=
+attr-rgx=_?_?[a-z][A-Za-z0-9]{1,30}$
 
 # Bad variable names which should always be refused, separated by a comma.
 bad-names=foo,
@@ -382,7 +382,7 @@ function-naming-style=camelCase
 
 # Regular expression matching correct function names. Overrides function-
 # naming-style.
-#function-rgx=
+function-rgx=_?_?[a-z][A-Za-z0-9]{1,30}$
 
 # Good variable names which should always be accepted, separated by a comma.
 good-names=i,
@@ -404,14 +404,14 @@ inlinevar-naming-style=any
 
 # Regular expression matching correct inline iteration names. Overrides
 # inlinevar-naming-style.
-#inlinevar-rgx=
+inlinevar-rgx=_?[a-z][A-Za-z0-9]{1,30}$
 
 # Naming style matching correct method names.
 method-naming-style=camelCase
 
 # Regular expression matching correct method names. Overrides method-naming-
 # style.
-#method-rgx=
+method-rgx=_?_?[a-z][A-Za-z0-9]{1,30}$
 
 # Naming style matching correct module names.
 module-naming-style=camelCase
@@ -438,7 +438,7 @@ variable-naming-style=camelCase
 
 # Regular expression matching correct variable names. Overrides variable-
 # naming-style.
-#variable-rgx=
+variable-rgx=_?[a-z][A-Za-z0-9]{1,30}$
 
 
 [STRING]

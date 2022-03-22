@@ -10,6 +10,10 @@ from django.contrib.auth.models import Group
 
 
 def getMyChoices():
+    """
+    This function displays the list of team choices available at account
+    creation
+    """
     try:
         listOfList = []
         choices = Group.objects.exclude(name="Game Masters")
@@ -34,7 +38,7 @@ class SignUpForm(UserCreationForm):
         self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
         if len(self.fields['teamName'].choices) == 0:
             self.fields['teamName'].choices = ((0, "None"),)
-        
+
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
 
@@ -65,13 +69,17 @@ class SignUpForm(UserCreationForm):
     teamName = forms.ChoiceField(widget=forms.Select, choices=getMyChoices())
 
 class JoinTeamForm(forms.Form):
+    """
+    This class displays a form which allows the
+    user to join a specified team
+    """
     def __init__(self, *args, **kwargs):
         super(JoinTeamForm, self).__init__(*args, **kwargs)
         choices = Group.objects.exclude(name="Game Masters")
         self.fields['teamName'].choices = tuple([(c.id, c.name) for c in choices])
         if len(self.fields['teamName'].choices) == 0:
             self.fields['teamName'].choices = ((0, "None"))
-        
+
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-select'
 
@@ -81,16 +89,20 @@ class JoinTeamForm(forms.Form):
         teamName = forms.ChoiceField(widget=forms.Select, choices=((0, "None")))
 
 class CreateTeamForm(forms.Form):
+    """
+    This class displays a form which allows the
+    user to create their own team
+    """
     teamName2 = forms.CharField(
-      
+
             max_length=128,
             required=True,
             help_text='Team Name: ',
             widget=forms.TextInput(attrs={
                 'name'       : 'teamName2',
                 'placeholder': 'Team Name: '}))
-            
-    
+
+
     def __init__(self, *args, **kwargs) -> None:
         super(CreateTeamForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
