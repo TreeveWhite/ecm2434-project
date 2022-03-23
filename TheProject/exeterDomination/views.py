@@ -127,7 +127,7 @@ def signup(request: request) -> HttpResponse:
                 if user2 is not None:
                     print(group)
                     k(request, user2)
-                    grp = Group.objects.get(id=group)
+                    grp, created = Group.objects.get_or_create(id=group)
                     grp.user_set.add(User.objects.get(id=request.user.id))
                     grp.save()
                 return redirect(reverse('index'))
