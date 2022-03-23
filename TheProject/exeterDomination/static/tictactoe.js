@@ -110,10 +110,12 @@ function handleResultValidation() {
                 roundWon = true;
                 gameActive = false;
                 alert("You have won!");
+                document.getElementById('isGameWon').checked = true;
                 break;
             } else {
                 gameActive = false;
                 alert("You have lost better luck next time!");
+                location.reload();
                 break;
             }
             
@@ -129,6 +131,7 @@ function handleResultValidation() {
     let roundDraw = !gameState.includes("");
     if (roundDraw && gameActive) {
         alert("Game has ended a draw");
+        location.reload();
         gameActive = false;
         return;
     }
