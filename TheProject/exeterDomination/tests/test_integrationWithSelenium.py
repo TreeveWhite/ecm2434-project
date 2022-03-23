@@ -4,14 +4,13 @@ test. Many aspects of the site
 are tested as one.
 """
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.test import TestCase
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.webdriver import WebDriver
-from django.test import TestCase
 from selenium.webdriver.support.ui import Select
 from get_gecko_driver import GetGeckoDriver
 
-
-# Insert geckodriver executable here
+#Insert geckodriver executable here
 pathToGeckodriver = GetGeckoDriver()
 pathToGeckodriver.install()
 options = Options()
@@ -86,14 +85,13 @@ class SignUpWithSeleniumTest(StaticLiveServerTestCase, TestCase):
             "//input[@class='formButton arcade-font']")
         signUpButton.click()
         self.selenium.implicitly_wait(5)
-        assert self.selenium.title != "Sign Up | Exeter Domination" or "Log In | Exeter Domination"
+        assert self.selenium.title != "Sign Up | Exeter Domination" or self.selenium.title!= "Log In | Exeter Domination"
 
 
 class testNavigationLinks(StaticLiveServerTestCase, TestCase):
     """
     This class is mainly just to test that the hyperlinks, and navigation buttons are
-    in order and working correctly. This is not currently comprehensive, but will be
-    in time for release.
+    in order and working correctly.
     """
     fixtures = ['../fixtures/coordinates.json', '../fixtures/locations.json']
 
