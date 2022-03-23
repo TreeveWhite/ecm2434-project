@@ -149,6 +149,25 @@ html {
     height: 94vh;
 }
 
+.ticTacToeBox {
+    text-align: center;
+    width:5vw;
+    height:10vh;
+    border: 5px solid var(--dark1Contrast);
+    background-color: var(--dark2Contrast);
+    cursor:pointer;
+    font-size:6vh;
+    color: #ced0ce;
+}
+
+.ticTacToeGrid {
+    display:grid;
+    grid-template-columns: repeat(3, auto);
+    width:15vw;
+    height:15vw;
+    background-color: var(--dark1Contrast)
+}
+
 #teamsDiv {
     display: none;
 }
