@@ -156,3 +156,56 @@ html {
 #playersDiv {
     display: none;
 }
+
+@media screen and (max-width: 568px) {
+    .mainTitle {
+        color: var(--dark1Contrast);
+        font-size: 10vw;
+    }
+    
+    .pageTitle {
+        color: var(--dark1Contrast);
+        font-size: 5vw;
+    }
+
+    .cell {
+        width: 9vw;
+        height: 6vh;
+        line-height: 60px;
+        border: 1px solid #aaa;
+        display: inline-block;
+        margin: 5px;
+        font-size: 3vw;
+        font-weight: bold;
+    }
+
+    .formButton {
+        background-color: var(--med1Contrast);
+        width: 15vw;
+        height: 8vh;
+        font-size: 1.5vw;
+    }
+    
+    .claimBuilding {
+        background-color: var(--med1Contrast);
+        width: 50vw;
+        height: 8vh;
+        font-size: 4vw;
+        color: #ced0ce;
+    }
+    
+    .cancelButton {
+        background-color: red;
+        width: 15vw;
+        height: 8vh;
+        font-size: 1.5vw;
+    }
+    
+    .gameButton {
+        background-color: var(--dark2Contrast);
+        width: 40vw;
+        height: 8vh;
+        font-size: 4vw;
+        color: #ced0ce;
+    }
+}

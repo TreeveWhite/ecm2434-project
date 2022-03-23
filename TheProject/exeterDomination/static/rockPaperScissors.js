@@ -59,8 +59,8 @@ function buttonPress(){
 function game(element){
     if (totalCounter==5){
         if (winCounter > computerScore){
+            document.getElementById('isGameWon').checked = true;
             alert("YOU HAVE WON! CLAIM THE BUILDING")
-            document.getElementById('claimButton').disabled = false;
         } else if (computerScore > winCounter){
             alert("YOU HAVE LOST. THE PAGE WILL RELOAD AND YOU CAN TRY AGAIN");
             location.reload();

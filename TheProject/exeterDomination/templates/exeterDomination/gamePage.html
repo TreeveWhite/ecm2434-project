@@ -20,6 +20,7 @@
 <body>
     {% block nav %} {% include 'exeterDomination/navbar.html' %} {% endblock nav %}
     <div class="bg-image d-flex flex-column justify-content-center align-items-center backGroundImg">
+        <input type="checkbox" id="isGameWon" hidden>
         <div class="d-flex">
             <h1 class="arcade-font pageTitle">Exeter Domination</h1>
         </div class="d-flex">
@@ -32,8 +33,7 @@
                 <script src="{% static 'randomGame.js' %}"></script>
             </div>
             <br>
-            <button id="claimButton" class="claimBuilding arcade-font" value="Claim Building" onclick="getLocation()"
-                disabled>Claim Building</button>
+            <button id="claimButton" class="claimBuilding arcade-font" value="Claim Building" onclick="getLocation()">Claim Building</button>
         </div>
     </div>
 </body>
