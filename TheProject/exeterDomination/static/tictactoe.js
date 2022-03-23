@@ -6,26 +6,16 @@ var paragraph = document.getElementById("gameText");
 paragraph.innerHTML = "Defeat our TicTacToe Bot!";
 
 //Adding in the 3x3 board into the grid div along with css for styling
-grid.innerHTML+="<div class='Game' style='display:grid;grid-template-columns: repeat(3, auto);"+
-    "width:312px;margin:10px auto;background-color:#11213a;color:#04c0b2;'>"+
-        "<div id='0' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='0' class='Cell'></div>"+
-        "<div id='1' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='1' class='Cell'></div>"+
-        "<div id='2' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='2' class='Cell'></div>"+
-        "<div id='3' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='3' class='Cell'></div>"+
-        "<div id='4' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='4' class='Cell'></div>"+
-        "<div id='5' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='5' class='Cell'></div>"+
-        "<div id='6' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='6' class='Cell'></div>"+
-        "<div id='7' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='7' class='Cell'></div>"+
-        "<div id='8' style='text-align:center;width:100px;height:100px;border:2px solid #ecd7ba;"+
-        "cursor:pointer;line-height:100px;font-size:60px;' cellIndex='8' class='Cell'></div>"+
+grid.innerHTML+="<div class='Game ticTacToeGrid'>"+
+        "<div id='0' class='Cell ticTacToeBox' cellIndex='0'></div>"+
+        "<div id='1' class='Cell ticTacToeBox' cellIndex='1'></div>"+
+        "<div id='2' class='Cell ticTacToeBox' cellIndex='2'></div>"+
+        "<div id='3' class='Cell ticTacToeBox' cellIndex='3'></div>"+
+        "<div id='4' class='Cell ticTacToeBox' cellIndex='4'></div>"+
+        "<div id='5' class='Cell ticTacToeBox' cellIndex='5'></div>"+
+        "<div id='6' class='Cell ticTacToeBox' cellIndex='6'></div>"+
+        "<div id='7' class='Cell ticTacToeBox' cellIndex='7'></div>"+
+        "<div id='8' class='Cell ticTacToeBox' cellIndex='8'></div>"+
     "</div>";
 
 //If any of the cells on the board are clicked a function is called as long as that
