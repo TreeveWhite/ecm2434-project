@@ -17,6 +17,10 @@ from exeterDomination.models import Locations, CoOrds
 
 
 class CustomUserAdmin(UserAdmin):
+    """
+    This class is required for an Admin to create their own user of any type
+    They can also assign buildings to them
+    """
     list_display = [
         'id',
         'username',
@@ -26,6 +30,9 @@ class CustomUserAdmin(UserAdmin):
         "claimedBy"]
 
     def claimedBy(self, obj):
+        """
+        This function is used to assign a building to a newly created user
+        """
         url = (
             reverse("admin:exeterDomination_locations_changelist")
             + "?"
@@ -56,6 +63,10 @@ class LocationsAdmin(admin.ModelAdmin):
     )
 
     def claimedLink(self, obj):
+        """
+        This function is used to give the class it's functionality in changing
+        locations in the database
+        """
         url = (
             reverse("admin:auth_user_changelist")
             + "?"
@@ -76,6 +87,10 @@ class CoOrdsAdmin(admin.ModelAdmin):
     list_display = ("id", "longitude", "latitude", "linked_location")
 
     def linked_location(self, obj) -> SafeString:
+        """
+        This function allows the superuser to change coordinates for
+        a specific location
+        """
         if len(Locations.objects.filter(bottomLeftCoordinate_id=obj.id)) == 1:
             url = (
                 reverse("admin:exeterDomination_locations_changelist")
@@ -98,5 +113,3 @@ class CoOrdsAdmin(admin.ModelAdmin):
                 url,
                 Locations.objects.get(
                     topRightCoordinate_id=obj.id).name)
-
-    pass

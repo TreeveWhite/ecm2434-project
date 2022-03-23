@@ -52,8 +52,10 @@ def posInRec(userID: int, posLat: int, posLong: int) -> bool:
               posLong >= location.bottomLeftCoordinate.longitude)
         print()
 
-        if (location.topRightCoordinate.latitude >= posLat >= location.bottomLeftCoordinate.latitude) and (
-            location.topRightCoordinate.longitude >= posLong >= location.bottomLeftCoordinate.longitude):
+        if (location.topRightCoordinate.latitude >=
+            posLat >= location.bottomLeftCoordinate.latitude) and (
+            location.topRightCoordinate.longitude >=
+            posLong >= location.bottomLeftCoordinate.longitude):
             # Users position is inside location
             location.claimedBy = User.objects.get(pk=userID)
             location.save()
