@@ -46,11 +46,79 @@ let score = 0
  * This function initiates the grid on the page and adds a keyboard listener to the window
  */
 function startGame(){
-    let grid = document.createElement('div')
-    grid.id = 'grid'
     buildGrid()
+    createKeyboard()
     updateGrid()
-    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keypress', handleKeyDown)
+    const wrapper = document.getElementById('keyboard-cont');
+    wrapper.addEventListener('click', (event)=>{
+      const isButton = event.target.nodeName === 'BUTTON';
+      if (!isButton){
+        return;
+      }
+      onScreenInput(event.target);
+    })
+}
+function createKeyboard(){
+  grid.innerHTML+="<div id='keyboard-cont'><div class='first-row'><button class='keyboard-button'>q</button><button class='keyboard-button'>w</button>"+
+  "<button class='keyboard-button'>e</button>"+
+      "<button class='keyboard-button'>r</button>"+
+      "<button class='keyboard-button'>t</button>"+
+      "<button class='keyboard-button'>y</button>"+
+      "<button class='keyboard-button'>u</button>"+
+      "<button class='keyboard-button'>i</button>"+
+      "<button class='keyboard-button'>o</button>"+
+      "<button class='keyboard-button'>p</button></div><div class='second-row'>"+
+      "<button class='keyboard-button'>a</button>"+
+      "<button class='keyboard-button'>s</button>"+
+      "<button class='keyboard-button'>d</button>"+
+      "<button class='keyboard-button'>f</button>"+
+      "<button class='keyboard-button'>g</button>"+
+      "<button class='keyboard-button'>h</button>"+
+      "<button class='keyboard-button'>k</button>"+
+      "<button class='keyboard-button'>l</button>"+
+      "</div>"+
+      "<div class='third-row'>"+
+      "<button class='keyboard-button'>backspace</button>"+
+      "<button class='keyboard-button'>z</button>"+
+      "<button class='keyboard-button'>x</button>"+
+      "<button class='keyboard-button'>c</button>"+
+      "<button class='keyboard-button'>v</button>"+
+      "<button class='keyboard-button'>b</button>"+
+      "<button class='keyboard-button'>n</button>"+
+      "<button class='keyboard-button'>m</button>"+
+      "<button class='keyboard-button'>enter</button>"+
+      "</div>",
+    "</div>"
+}
+
+  
+
+
+function onScreenInput(e){
+  let letter = e.innerHTML
+  if (letter === 'enter') {
+    if (currentAttempt.length < 5) {
+      return
+    }
+    if (!wordList.includes(currentAttempt)) {
+      alert('Not in the word list')
+      return
+    }
+    history.push(currentAttempt)
+    counter+=1
+    this.check_if_lost()
+    currentAttempt = ''
+  } else if (letter === 'backspace') {
+    currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1)
+  } else if(letter.match(/[a-z]/gi)){
+    if (letter.length==1){
+      if (currentAttempt.length < 5){
+        currentAttempt+=letter
+      }
+    }
+  }
+  updateGrid()
 }
 /**
  * @param {event} e the key pressed by the user
@@ -74,138 +142,13 @@ function handleKeyDown(e) {
     currentAttempt = ''
   } else if (letter === 'backspace') {
     currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1)
-    //#region 
-  } else if (letter === 'a') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
+  } else if(letter.match(/[a-z]/gi)){
+    if (letter.length==1){
+      if (currentAttempt.length < 5){
+        currentAttempt+=letter
+      }
     }
   }
-  else if (letter === 'b') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'c') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'd') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'e') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'f') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'g') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'h') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'i') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'j') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'k') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'l') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'm') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'n') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'o') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'p') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'q') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'r') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 's') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 't') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'u') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'v') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'w') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'x') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'y') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  else if (letter === 'z') {
-    if (currentAttempt.length < 5) {
-      currentAttempt += letter
-    }
-  }
-  //#endregion
   updateGrid()
 }
 
@@ -214,7 +157,8 @@ function handleKeyDown(e) {
  */
 function check_if_lost(){
   if (counter==6 && green_counter < 5) {
-    alert("Game lost, please restart")
+    alert("Game lost. The word was: " + secret +". The page will now reload.")
+    location.reload();
   }
 }
 
@@ -238,6 +182,7 @@ function buildGrid() {
     }
     grid.appendChild(row)
   }
+  //grid.appendChild(createKeyboard())
 }
 
 /**
