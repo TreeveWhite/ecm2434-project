@@ -114,8 +114,7 @@ class testNavigationLinks(StaticLiveServerTestCase, TestCase):
         page to the about page and back are in working order.
         """
         self.selenium.get(self.live_server_url + "/")
-        aboutButton = self.selenium.find_element_by_xpath(
-            "//input[@class='arcade-font button2']")
+        aboutButton = self.selenium.find_element_by_link_text("About")
         aboutButton.click()
         assert self.selenium.title == "About | Exeter Domination"
         assert self.selenium.current_url == self.live_server_url + "/about"
