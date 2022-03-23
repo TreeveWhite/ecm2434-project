@@ -54,6 +54,9 @@ class Locations(models.Model):
         return f"{self.name}"
 
     class Meta:
+        """
+        This class defines the verbose location names
+        """
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
 
@@ -83,5 +86,8 @@ class CoOrds(models.Model):
         return f"Long: {self.longitude}, Lat: {self.latitude}"
 
     class Meta:
+        """
+        This class defines the verbose coordinate names
+        """
         verbose_name = _("Coordinate")
         verbose_name_plural = _("Coordinates")

@@ -254,7 +254,7 @@ def teams(teamRequest : request) -> HttpRequest:
                 newGroup, yesno = Group.objects.get_or_create(name=group2)
                 newGroup.save()
                 if yesno:
-                    meow2 = teamRequest.user.groups.filter(user=User.objects.get(id=teamRequest.user.id))
+                    meow2=teamRequest.user.groups.filter(user=User.objects.get(id=teamRequest.user.id))
                     if len(meow2) > 0:
                         for i in meow2:
                             groupToRemoveUserFrom = teamRequest.user.groups.get(id=i.id)
