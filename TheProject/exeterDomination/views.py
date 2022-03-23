@@ -25,10 +25,8 @@ def index(indexRequest: request) -> HttpResponse:
     """
     This is the index view. It renders the home
     page for the user.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -40,10 +38,8 @@ def about(aboutRequest: request) -> HttpResponse:
     """
     This is the about view. It renders the about
     page for the user.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -56,7 +52,6 @@ def login(loginRequest: request) -> HttpResponse:
     This is the login view. If the user is authenticated, then
     they are redirecred to the game page; otherwise the type of
     request is checked.
-
         * GET request: It will render the loginPage
             with empty fields.
         * POST request: It will get the username and
@@ -65,10 +60,8 @@ def login(loginRequest: request) -> HttpResponse:
             match, then the user is logged in and taken
             to the game page. Otherwise the form is
             reset.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -93,7 +86,6 @@ def signup(signUpRequest: request) -> HttpResponse:
     This is the signup view. If the user is authenticated, then
     they are redirected to the game page; otherwise the type of
     request is checked:
-
         * GET request: It will render the signUpPage
             with empty form fields.
         * POST request: It will get the username and
@@ -102,10 +94,8 @@ def signup(signUpRequest: request) -> HttpResponse:
             and then the user is added to the database.
             Finally, the user is logged in and redirected
             to the home page.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -150,10 +140,8 @@ def game(gameRequest: request) -> HttpResponse:
     logged-in users; if an un-logged in user tries to
     access it, they are redirected to the login page.
     Otherwise, the game page is rendered.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -175,10 +163,8 @@ def leaderboard(request: request) -> HttpResponse:
     """
     This is the leaderboard view. It renders
     the leaderboard page.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -200,7 +186,23 @@ def leaderboard(request: request) -> HttpResponse:
     except Exception:
         playerScores = {"Unclaimed": 100}
 
-    context = {'player_scores': playerScores}
+    try:
+        teams = Group.objects.all().exclude(name="GameMasters")
+
+        teamScores = {}
+        for team in teams:
+            teamScores[team.name] = 0
+
+            for player in playerScores.keys():
+                if player in team.user_set.all():
+                    teamScores[team.name] += playerScores[player]
+        
+        teamScores["Unclaimed"] = playerScores["Unclaimed"]
+    
+    except Exception:
+        teamScores = {"Unclaimed": 100}
+
+    context = {'player_scores': playerScores, 'team_scores' : teamScores}
     return render(request, "exeterDomination/leaderboardPage.html", context)
 
 
@@ -210,10 +212,8 @@ def teams(teamRequest : request) -> HttpRequest:
     This is the teams view. It renders
     the page which allows users to create
     or join different teams.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -277,10 +277,8 @@ def locations(locationRequest: request) -> HttpResponse:
     locations database, and passes them as
     context to the main page. They are then
     displayed on a map of the campus.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
@@ -304,10 +302,8 @@ def claim(claimRequest: request) -> HttpResponse:
     """
     This is the claim method. It enables
     a player to claim a location.
-
     :param request: the Http Request the server has received
     :type request: HttpRequest
-
     :return: the rendered template for this page
     :rtype: HttpResponse
     """
