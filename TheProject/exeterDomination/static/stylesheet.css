@@ -86,7 +86,6 @@
 .cell {
     width: 3vw;
     height: 5vh;
-    line-height: 60px;
     border: 1px solid #aaa;
     display: inline-block;
     margin: 10px;
@@ -110,7 +109,6 @@
     height: 100px;
     border: 2px solid var(--dark2Contrast);
     cursor: pointer;
-    line-height: 100px;
     font-size: 60px;
 }
 
@@ -145,7 +143,6 @@
     .cell {
         width: 9vw;
         height: 6vh;
-        line-height: 60px;
         border: 1px solid #aaa;
         display: inline-block;
         margin: 5px;
