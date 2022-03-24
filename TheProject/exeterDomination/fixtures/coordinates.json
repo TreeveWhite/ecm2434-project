@@ -35,16 +35,16 @@
         "model" : "exeterDomination.CoOrds",
         "pk" : 5,
         "fields": {
-            "longitude" : 50.738144789555776,
-            "latitude" : -3.5316759183983493
+            "longitude" : 49.738144789555776,
+            "latitude" : -3.6316759183983493
         }
     },
     {
         "model" : "exeterDomination.CoOrds",
         "pk" : 6,
         "fields": {
-            "longitude" : 50.73858768536155,
-            "latitude" : -3.5307086383058106
+            "longitude" : 51.73858768536155,
+            "latitude" : -3.4307086383058106
         }
     },
     {
