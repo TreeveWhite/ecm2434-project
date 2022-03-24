@@ -2,6 +2,13 @@ var winCounter = 0;
 var totalCounter = 0;
 var computerScore = 0;
 
+/**
+ * Function to update the game text to tell the user what the game is
+ * as well as the latest scores
+ * @param {int} winCounter Player win counter
+ * @param {int} computerScore Computer win counter
+ * @param {int} totalCounter Total moves
+ */
 function updateText(winCounter, computerScore, totalCounter) {
     var paragraph = document.getElementById("gameText");
     paragraph.style.textAlign = "center";
@@ -15,6 +22,9 @@ function updateText(winCounter, computerScore, totalCounter) {
     paragraph.innerHTML += "Total moves: " + totalCounter;
 }
 
+/**
+ * Method to create the buttons the user clicks
+ */
 function loadGame(){
     updateText(winCounter, computerScore, totalCounter);
     var rock = document.createElement('button');
@@ -34,6 +44,10 @@ function loadGame(){
     document.getElementById('grid').appendChild(scissors);
 }
 
+/**
+ * Method to allow the buttons to be pressed and the parsing the 
+ * inner HTML to the game function
+ */
 function buttonPress(){
     if (winCounter==3&&totalCounter<=5){
         alert("YOU HAVE WON! CLAIM THE BUILDING")
@@ -56,7 +70,12 @@ function buttonPress(){
     }
 }
 
+/**
+ * Method to run the main game functionality
+ * @param {String} element inner HTML of button clicked
+ */
 function game(element){
+    //checking win conditions
     if (totalCounter==5){
         if (winCounter > computerScore){
             document.getElementById('isGameWon').checked = true;
@@ -69,9 +88,11 @@ function game(element){
             location.reload();
         }
     } else {
+        //Choosing a random computer move
         var computerMoves = ['Rock', 'Paper', 'Scissors']
         var index = Math.floor(Math.random()*computerMoves.length);
         var computerMove = computerMoves[index];
+        //Draw conditon adds 1 to total moves
         if (element==computerMove){
             totalCounter++;
             alert("Draw")
@@ -107,7 +128,7 @@ function game(element){
                 totalCounter++;
             }
         }
-    updateText(winCounter, computerScore, totalCounter);
+    updateText(winCounter, computerScore, totalCounter); //Updating the text on screen based on what happened
     }
 }
 loadGame()
