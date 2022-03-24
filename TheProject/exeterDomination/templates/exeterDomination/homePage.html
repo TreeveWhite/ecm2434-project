@@ -18,8 +18,10 @@
     {% block nav %} {% include 'exeterDomination/navbar.html' %} {% endblock nav %}
     <div class="bg-image d-flex flex-column justify-content-center align-items-center backGroundImg">
         <h1 class="arcade-font mainTitle">Exeter Domination</h1>
+        {% if not request.user.is_authenticated %}
         <br>
         <p class="arcade-font">Login to Play</p>
+        {% endif %}
     </div>
 </body>
 </html>
