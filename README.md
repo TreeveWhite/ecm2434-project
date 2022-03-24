@@ -115,7 +115,7 @@ The leaderboard page shows you how much of campus is claimed. You can choose bet
 This page contains all of the details about the project as well as the Privacy Policy and GDPR compliance.
 
 ## Types of users
-
+The site has three different types of users: Super users, Game Masters and players. A Super user is a admin account which has access to all administrator features and is typically the admin for the server hence has access to the backend of the site. A Game Master is a normal user who has been chosen by a super user to be an assistant admin. These users have some power and can access the admin page to view and edit locations but cannot view the users themselves as per the GDRP policy. The normal players are user who are playing the site.
 
 # Testing
 To run the tests enter the directory in which the django commands were typed above. It should be along the lines of /ecm2434-project/TheProject.
