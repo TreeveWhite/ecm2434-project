@@ -186,21 +186,22 @@ def leaderboard(request: request) -> HttpResponse:
     except Exception:
         playerScores = {"Unclaimed": 100}
 
-    try:
-        teams = Group.objects.all().exclude(name="GameMasters")
+    # try:
+    teams = Group.objects.all()
 
-        teamScores = {}
-        for team in teams:
-            teamScores[team.name] = 0
+    teamScores = {}
+    for team in teams:
+        teamScores[team.name] = 0
 
-            for player in playerScores.keys():
-                if player in team.user_set.all():
-                    teamScores[team.name] += playerScores[player]
-        
-        teamScores["Unclaimed"] = playerScores["Unclaimed"]
+        for player in playerScores.keys():
+            print(player, team.user_set.all(), [pname.username for pname in team.user_set.all()])
+            if player in [pname.username for pname in team.user_set.all()]:
+                teamScores[team.name] += playerScores[player]
     
-    except Exception:
-        teamScores = {"Unclaimed": 100}
+    teamScores["Unclaimed"] = playerScores["Unclaimed"]
+    
+    # except Exception:
+    #     teamScores = {"Unclaimed": 100}
 
     context = {'player_scores': playerScores, 'team_scores' : teamScores}
     return render(request, "exeterDomination/leaderboardPage.html", context)
